@@ -2,8 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \\\"Error: no test.js specified\\\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -11,5 +13,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

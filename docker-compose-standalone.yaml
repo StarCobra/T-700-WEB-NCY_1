@@ -22,11 +22,11 @@ services:
       - .env
     environment:
       - MIX_DEV=dev
+    volumes:
+      - ./app:/app
     working_dir: /app
     ports:
       - "80:80"
-    depends_on:
-      - api
 
   api:
     build:
@@ -37,9 +37,11 @@ services:
     environment:
       - MIX_ENV=dev
     volumes:
-      - ./api:/app_api
-    working_dir: /app_api
+      - ./api:/api
+    working_dir: /api
     ports:
       - "3000:3000"
     depends_on:
-        - database
+      - database
+    command: >
+      sh -c "npm install && npx nodemon index.js"

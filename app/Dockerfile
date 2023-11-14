@@ -9,13 +9,13 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+CMD ["npm", "start"]
 
 # Deuxième étape pour utiliser une image plus légère
-FROM nginx:alpine
-
-COPY --from=builder /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+#FROM nginx:alpine as dev
+#
+#COPY --from=builder /app/build /usr/share/nginx/html
+#
+#EXPOSE 80
+#
+#CMD ["nginx", "-g", "daemon off;"]
