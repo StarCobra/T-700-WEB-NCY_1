@@ -1,6 +1,7 @@
 $bg-color: #2F2F2F;
 $bg-color-semidark:#414040;
 $bg-color-semilight:#484848;
+$bg-color-light:#737373;
 $font-color-dark-bg: #FFFFFF;
 $borderColor: #F4733A;
 $borderColorLight:#d49d42;
@@ -10,4 +11,19 @@ $borderRadius:5px;
 body {
     background-color: $bg-color;
     color:$font-color-dark-bg;
-  }
+}
+
+.layoutContainer{
+    display:flex;
+    height: 95vh;
+    padding:15px;
+}
+
+.dataContainer{
+    flex: 9;
+    border:solid $borderColor 2px;
+    border-radius: $borderRadius;
+    background-color: $bg-color-semidark;
+    margin:5px;
+    padding:10px;
+}
