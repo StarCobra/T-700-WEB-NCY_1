@@ -8,12 +8,6 @@ $borderColorLight:#d49d42;
 $borderRadius:5px;
 
 
-.layoutContainer{
-    display:flex;
-    height: 95vh;
-    padding:15px;
-}
-
 .sideBarContainer{
     background-color: $bg-color-semidark;
     border:solid $borderColor 2px;
@@ -111,10 +105,4 @@ $borderRadius:5px;
             margin-left: 10px;
         }
     }
-}
-.dataContainer{
-    flex: 9;
-    border:solid blue 1px;
-    margin:5px;
-    padding:10px;
 }
