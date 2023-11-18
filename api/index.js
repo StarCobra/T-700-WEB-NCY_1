@@ -1,5 +1,6 @@
 import { test } from "./test.js";
 import express from "express";
+import bcrypt from "bcryptjs";
 
 const app = express();
 const port = 3000;
@@ -10,11 +11,20 @@ app.get("/", (req, res) => {
   res.send(test());
 });
 
-app.post("/users/register", (req, res) => {
+app.post("/users/register", async (req, res) => {
   try {
-    let body = req.body.test;
-    console.log(body);
-    res.send("Data Received :" + JSON.stringify(body));
+    // Get user data
+    let user = req.body.user;
+
+    // Hash password
+    const saltRounds = 10;
+    const salt = await bcrypt.genSaltSync(saltRounds);
+    const hash = await bcrypt.hashSync(user.password, salt);
+
+    // Save user in database
+
+    // Send response successful
+    res.status(201).send("The user has been registered");
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
