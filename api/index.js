@@ -1,14 +1,29 @@
-import { test } from "./test.js";
 import express from "express";
 import bcrypt from "bcryptjs";
+require("./auth-google");
+
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.status(401);
+}
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send(test());
+// Middlewares pour la gestion des sessions
+app.use(
+  session({
+    secret: process.env.SESSION_SECREY_KEY,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/", isLoggedIn, (req, res) => {
+  res.send(req.user);
 });
 
 app.post("/users/register", async (req, res) => {
@@ -49,6 +64,20 @@ app.post("/users/login", async (req, res) => {
     res.status(500).send({ message: error + "Internal server error" });
   }
 });
+
+app.get(
+  "users/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+app.get(
+  "users/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/users/login" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
 app.listen(port, () => {
   console.log(`API server listening at http://localhost:${port}`);
