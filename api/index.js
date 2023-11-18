@@ -17,8 +17,8 @@ app.post("/users/register", async (req, res) => {
     let user = req.body.user;
 
     // Hash password
-    const saltRounds = 10;
-    const salt = await bcrypt.genSaltSync(saltRounds);
+    const salt_rounds = 10;
+    const salt = await bcrypt.genSaltSync(salt_rounds);
     const hash = await bcrypt.hashSync(user.password, salt);
 
     // Save user in database
@@ -26,7 +26,27 @@ app.post("/users/register", async (req, res) => {
     // Send response successful
     res.status(201).send("The user has been registered");
   } catch (error) {
-    res.status(500).send("Internal Server Error");
+    res.status(500).send({ message: error + "Internal server error" });
+  }
+});
+
+app.post("/users/login", async (req, res) => {
+  try {
+    // Get user login informations
+    let user_login = req.body;
+
+    // Verify user existing in the database
+    let user = true;
+
+    if (user) {
+      res
+        .status(200)
+        .send({ message: "Successful authentication", user: user });
+    } else {
+      res.status(401).send({ message: "Authentication failed" });
+    }
+  } catch (error) {
+    res.status(500).send({ message: error + "Internal server error" });
   }
 });
 
