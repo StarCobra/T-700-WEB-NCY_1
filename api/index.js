@@ -1,10 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 require("./auth-google");
-
-function isLoggedIn(req, res, next) {
-  req.user ? next() : res.status(401);
-}
+require("./auth-basic");
 
 const app = express();
 const port = 3000;
@@ -21,10 +18,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.get("/", isLoggedIn, (req, res) => {
-  res.send(req.user);
-});
 
 app.post("/users/register", async (req, res) => {
   try {
@@ -45,39 +38,63 @@ app.post("/users/register", async (req, res) => {
   }
 });
 
-app.post("/users/login", async (req, res) => {
-  try {
-    // Get user login informations
-    let user_login = req.body;
-
-    // Verify user existing in the database
-    let user = true;
-
-    if (user) {
-      res
-        .status(200)
-        .send({ message: "Successful authentication", user: user });
-    } else {
-      res.status(401).send({ message: "Authentication failed" });
-    }
-  } catch (error) {
-    res.status(500).send({ message: error + "Internal server error" });
+app.post(
+  "/users/login",
+  passport.authenticate("local", {
+    failureRedirect: "/login-failed",
+  }),
+  (req, res) => {
+    res
+      .status(200)
+      .json({ message: "Successful authentication", redirectUrl: "/" });
   }
-});
-
-app.get(
-  "users/auth/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
 app.get(
-  "users/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/users/login" }),
+  "/users/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "email",
+      "profile",
+      "openid",
+      "https://www.googleapis.com/auth/user.birthday.read",
+    ],
+  })
+);
+
+app.get(
+  "/users/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login-failed" }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect("/");
   }
 );
+
+app.post("/users/logout", (req, res) => {
+  // Vérifiez si l'utilisateur est connecté avant de le déconnecter
+  if (req.isAuthenticated()) {
+    // Utilisez la fonction de Passport pour déconnecter l'utilisateur
+    req.logout();
+    // Renvoyez une réponse indiquant que la déconnexion est réussie
+    res.status(200).json({ message: "Logout successful", redirectUrl: "/" });
+  } else {
+    // Renvoyez une réponse indiquant que l'utilisateur n'est pas connecté
+    res.status(401).json({ message: "User not authenticated" });
+  }
+});
+
+// Route pour gérer l'échec d'authentification côté serveur
+app.get("/login-failed", (req, res) => {
+  res.redirect("/users/login?error=auth_failed");
+});
+
+app.get("/users/profile", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.status(200).json({ user: req.user });
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`API server listening at http://localhost:${port}`);
