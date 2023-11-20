@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 19 nov. 2023 à 14:26
+-- Généré le : lun. 20 nov. 2023 à 15:13
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.1.17
 
@@ -109,8 +109,8 @@ CREATE TABLE `rss_flux` (
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(50) NOT NULL,
-  `user_mail` varchar(50) NOT NULL,
-  `user_password` varchar(120) NOT NULL,
+  `user_mail` varchar(50) DEFAULT NULL,
+  `user_password` varchar(120) DEFAULT NULL,
   `user_birth_date` date NOT NULL,
   `provider_id` int(11) DEFAULT NULL,
   `provider` varchar(50) DEFAULT NULL
