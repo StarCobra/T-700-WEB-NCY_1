@@ -5,22 +5,22 @@
 
 ### Start the Application
 ```bash
-docker compose -f docker-compose-standalone.yaml up
+docker compose -f docker-compose.yaml up
 ```
 
 ### Stop the Application
 ```bash
-docker compose -f docker-compose-standalone.yaml down
+docker compose -f docker-compose.yaml down
 ```
 
 ### Force Application Rebuilding ( without cache )
 ```bash
-docker compose -f docker-compose-standalone.yaml build --no-cache
+docker compose -f docker-compose.yaml build --no-cache
 ```
 
 ### Basic Command
 ```bash
-docker compose -f docker-compose-standalone.yaml <command> <dockername>
+docker compose -f docker-compose.yaml <command> <dockername>
 ```
 
 #### Useful Commands
