@@ -1,0 +1,120 @@
+@import 'Config/config';
+
+.sideBarContainer{
+    background-color: $bg-color-semidark;
+    border:solid $borderColor 2px;
+    box-shadow: 0px 0px 5px $borderColor;
+
+    flex: 3;
+    margin:5px;
+    border-radius: $borderRadius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logoLocation{
+        flex-grow:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width:60%;
+            &:hover{
+                animation: shadowAnim 0.5s forwards alternate;
+                color:$borderColor;
+                background-color: $bg-color-semilight;
+                cursor:pointer;
+            }
+        }
+    }
+
+    .userLocation{
+        width:90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $bg-color-semilight;
+        border-radius: $borderRadius;
+        padding-left: 10px;
+        .userProfilePicture{
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            img{
+                width:75px;
+                border-radius: 100%;
+                margin:auto;
+            }
+        }
+        
+        .usernameContainer{
+            flex-grow: 10;
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            margin-right: 15px;
+            .userName{
+                font-weight: bold;
+            }
+            
+            .userMail{
+                font-size: 12px;
+                font-style: oblique;
+                color:$borderColorLight;
+            }
+        }
+
+        &:hover{
+            cursor:pointer;
+            background-color: $bg-color-light;
+            animation: shadowAnim 0.5s forwards alternate;
+        }
+    }
+    
+    .differentMenus{
+        flex-grow: 8;
+        display: grid;
+        grid-template-columns: 100%;
+        gap:5px;
+        width:92.5%;
+        padding: 15px;
+
+        .Menu{
+            border:$borderColor;
+            display: flex;
+            align-items: center;
+            &:hover{
+                color:$borderColor;
+                background-color: $bg-color-semilight;
+                cursor:pointer;
+                .menuLabel{
+                    text-decoration: underline;
+                }
+                animation: shadowAnim 0.5s forwards alternate;
+            }
+        }
+
+        .menuIcon{
+            padding-left: 5px;;
+            width:25px;
+        }
+
+        .menuLabel{
+            margin-left: 10px;
+        }
+    }
+}
+
+
+@keyframes shadowAnim {
+    0% {
+    box-shadow: none;
+    }
+    100% {
+        box-shadow: 0px 0px 5px $borderColor;
+    }
+}

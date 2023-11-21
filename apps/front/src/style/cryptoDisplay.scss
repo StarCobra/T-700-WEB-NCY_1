@@ -1,0 +1,94 @@
+@import 'Config/config';
+
+
+.selectCryptoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    .SelectCryptoLabel{
+        margin:5px;
+        width:300px;
+        color:white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border-width: 1px !important;
+        border-color: $borderColor !important;
+        color: $borderColor !important;
+      }
+      
+      .Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: $borderColor !important;
+      }
+
+      .MuiInputLabel-animated{
+        color:$borderColor !important;
+      }
+
+      .MuiOutlinedInput-input{
+        color:$borderColor !important;
+      }
+
+      .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+        color: $borderColor !important;
+      }
+
+    }
+    
+    .MuiTableContainer-root{
+      max-height: 200px !important;
+    }
+    .MuiMenu-paper{
+      background-color: $bg-color-semilight !important;
+      color:$borderColor;
+    }
+    .MuiMenuItem-gutters{
+        color:$borderColor !important;
+    }
+    .css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
+        color:$borderColor !important;
+    }
+    .css-rqglhn-MuiTable-root{
+        max-height: 200px;
+    }    
+
+.cryptoTableContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .cryptoArray{
+        padding: 5px;
+        table{
+            background-color: $bg-color;
+            border:solid $borderColor 2px;
+            border-radius: $borderRadius;
+            border-collapse: collapse;
+
+        }
+        th{
+            background-color: $borderColor;
+            padding:10px;
+            border:solid 1px $bg-color-light;
+            color:white;
+
+        }
+        tr{
+            border:solid 1px $bg-color-light;
+            &:hover{
+                background-color: $bg-color-semidark;
+            }
+        }
+        td{
+            border:solid 1px $bg-color-light;
+            margin:auto;
+            color:white;
+        }
+    }
+    
+    .positivePercentage{
+        color:#93FFA5 !important;
+    }
+    .negativePercentage{
+        color:#FF9393 !important;
+    }
+}

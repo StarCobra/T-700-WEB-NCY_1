@@ -1,0 +1,28 @@
+@import 'Config/config';
+
+body {
+    background-color: $bg-color;
+    color:$font-color-dark-bg;
+}
+
+.layoutContainer{
+    display:flex;
+    height: 95vh;
+    padding:15px;
+}
+
+.displayContainer{
+    display: flex;
+    flex:9;
+    flex-direction: column;
+}
+
+.dataContainer{
+    flex: 2;
+    border:solid $borderColor 2px;
+    border-radius: $borderRadius;
+    background-color: $bg-color-semidark;
+    margin:5px;
+    padding:10px;
+    box-shadow: 0px 0px 5px $borderColor;
+}
