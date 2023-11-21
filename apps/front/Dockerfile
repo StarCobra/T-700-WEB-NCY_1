@@ -9,7 +9,7 @@ RUN apk update \
 # Supprimer le cache npm
 RUN rm -rf /root/.npm
 
-WORKDIR /var/www/apps/client
+WORKDIR /var/www/apps/front
 
 COPY package*.json ./
 
