@@ -1,0 +1,89 @@
+version: '3.9'
+
+services:
+
+  # API (NodeJS)
+  api:
+    build:
+      context: apps/api
+    user: "${USER_ID}:${GROUP_ID}"
+    container_name: "${PROJECT_NAME}-api"
+    tty: true
+    volumes:
+      - ./apps/api:/var/www/apps/api
+    environment:
+      - APP_ENV=${APP_ENV:-local}
+      - HOME=/tmp
+      - TZ=Europe/Paris
+    ports:
+      - "3005:3005"
+    depends_on:
+      - mariadb
+    networks:
+      - default
+
+  # Frontend (ReactJS)
+  front:
+    build:
+      context: apps/front
+      args:
+        - NODE_ENV=development
+    user: "${USER_ID}:${GROUP_ID}"
+    container_name: "${PROJECT_NAME}-front"
+    tty: true
+    volumes:
+      - ./apps/front:/var/www/apps/front
+    environment:
+      - NODE_ENV=development
+      - HOME=/tmp
+    ports:
+      - "3004:3000"
+    depends_on:
+      - api
+    networks:
+      - default
+
+  # Server web (Nginx)
+  # Documentation : https://hub.docker.com/_/nginx
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: "${PROJECT_NAME}-nginx"
+    volumes:
+      - ./apps:/var/www/apps
+      - ./docker/images/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
+    ports:
+      - "80:80"
+    networks:
+      - default
+    depends_on:
+      - api
+      - front
+
+  # Database (MariaDB)
+  # Documentation : https://hub.docker.com/r/bitnami/mariadb
+  mariadb:
+    image: bitnami/mariadb:10.6-debian-11
+    container_name: "${PROJECT_NAME}-mariadb"
+    volumes:
+      - ./docker/images/mariadb/my.cnf:/opt/bitnami/mariadb/conf/my.cnf:delegated
+      - ./docker/images/mariadb/docker-entrypoint-startdb.d:/docker-entrypoint-startdb.d:delegated
+    environment:
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_SKIP_TEST_DB=true
+      - MARIADB_ENABLE_SLOW_QUERY=1
+      - MARIADB_LONG_QUERY_TIME=10.0
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+
+networks:
+    default:
+      name: ${PROJECT_NAME}
+      driver: bridge
+
+volumes:
+  mariadb:
+    name: ${PROJECT_NAME}-mariadb
+    driver: local
