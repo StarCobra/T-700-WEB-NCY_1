@@ -1,12 +1,4 @@
-$bg-color: #2F2F2F;
-$bg-color-semidark:#414040;
-$bg-color-semilight:#484848;
-$bg-color-light:#737373;
-$font-color-dark-bg: #FFFFFF;
-$borderColor: #F4733A;
-$borderColorLight:#d49d42;
-$borderRadius:5px;
-
+@import './Config/config.scss';
 
 .sideBarContainer{
     background-color: $bg-color-semidark;
@@ -25,6 +17,12 @@ $borderRadius:5px;
         align-items: center;
         img {
             width:60%;
+            &:hover{
+                animation: shadowAnim 0.5s forwards alternate;
+                color:$borderColor;
+                background-color: $bg-color-semilight;
+                cursor:pointer;
+            }
         }
     }
 
@@ -71,6 +69,7 @@ $borderRadius:5px;
         &:hover{
             cursor:pointer;
             background-color: $bg-color-light;
+            animation: shadowAnim 0.5s forwards alternate;
         }
     }
     
@@ -93,6 +92,7 @@ $borderRadius:5px;
                 .menuLabel{
                     text-decoration: underline;
                 }
+                animation: shadowAnim 0.5s forwards alternate;
             }
         }
 
@@ -104,5 +104,15 @@ $borderRadius:5px;
         .menuLabel{
             margin-left: 10px;
         }
+    }
+}
+
+
+@keyframes shadowAnim {
+    0% {
+    box-shadow: none;
+    }
+    100% {
+        box-shadow: 0px 0px 5px $borderColor;
     }
 }

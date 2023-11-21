@@ -1,12 +1,4 @@
-$bg-color: #2F2F2F;
-$bg-color-semidark:#414040;
-$bg-color-semilight:#484848;
-$bg-color-light:#737373;
-$font-color-dark-bg: #FFFFFF;
-$borderColor: #F4733A;
-$borderColorLight:#d49d42;
-$borderRadius:5px;
-
+@import './Config/config.scss';
 
 body {
     background-color: $bg-color;
@@ -19,8 +11,14 @@ body {
     padding:15px;
 }
 
+.displayContainer{
+    display: flex;
+    flex:9;
+    flex-direction: column;
+}
+
 .dataContainer{
-    flex: 9;
+    flex: 2;
     border:solid $borderColor 2px;
     border-radius: $borderRadius;
     background-color: $bg-color-semidark;
