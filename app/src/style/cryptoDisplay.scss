@@ -32,8 +32,12 @@
       .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
         color: $borderColor !important;
       }
+
     }
     
+    .MuiTableContainer-root{
+      max-height: 200px !important;
+    }
     .MuiMenu-paper{
       background-color: $bg-color-semilight !important;
       color:$borderColor;
@@ -44,7 +48,10 @@
     .css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
         color:$borderColor !important;
     }
-        
+    .css-rqglhn-MuiTable-root{
+        max-height: 200px;
+    }    
+
 .cryptoTableContainer{
     display: flex;
     justify-content: center;

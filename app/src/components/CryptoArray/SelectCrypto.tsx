@@ -37,6 +37,3 @@ export default function selectCrypto() {
     </div>
   )
 }
-
-
-const cryptosExample=[{id:0, name:"BTC"}, {id:1, name:"ETH"}, {id:2, name:"BNB"}, {id:3, name:"USDC"}, {id:4, name:"SOL"}, {id:5, name:"ADA"}]
