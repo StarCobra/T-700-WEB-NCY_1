@@ -1,0 +1,54 @@
+@import 'Config/config';
+
+.articleSampleContainer{
+    display:flex;
+    padding:5px;
+    border:solid $borderColor 2px;
+    background-color: $bg-color;
+    border-radius: 5px;
+    margin-bottom: 5px;;
+    .articleSample{
+        display: flex;
+        flex-grow: 1;
+
+        .articleThumbnail{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 300px;
+            flex-grow: 2;
+            margin-right: 5px;
+            img{
+            max-width: 300px;
+            border-radius: 5px;
+            }
+        }
+        .articleSampleContent{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .articleTitle{
+                flex-grow: 10;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20 !important;
+            }
+            .articleSampleContent{
+                text-justify: auto;
+                a{
+                    color: $borderColor;
+                    &:hover{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .articleDateSample{
+                color:$bg-color-light;
+            }
+
+        }
+    }
+}
