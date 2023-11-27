@@ -4,7 +4,7 @@ ARG NODE_ENV=development
 FROM node:${NODE_VERSION}-alpine
 
 RUN apk update \
-    && apk add --no-cache bash
+    && apk add --no-cache mysql-client bash
 
 # Supprimer le cache npm
 RUN rm -rf /root/.npm
@@ -16,8 +16,8 @@ COPY package*.json ./
 # Installer les dépendances
 RUN npm install
 
-# Copier la configuration pour la base de données
-#COPY database /var/www/apps/api/database
+# Installer nodemon de manière globale
+RUN npm install -g nodemon
 
 # Define environment variables
 ENV NODE_ENV=${NODE_ENV}
@@ -28,4 +28,5 @@ ENV MARIADB_ROOT_PASSWORD=root
 # Exposer le port sur lequel l'API va écouter
 EXPOSE 3005
 
-CMD ["npm", "start"]
+# CMD avec nodemon
+CMD ["npm", "run", "start:watch"]
