@@ -1,2 +1,0 @@
-CREATE DATABASE IF NOT EXISTS 'count-of-money' COLLATE 'utf8_general_ci';
-FLUSH PRIVILEGES;
