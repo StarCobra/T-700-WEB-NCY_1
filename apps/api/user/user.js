@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
-import "../auth-basic.js";
-import "../auth-google.js";
+import "./auth-basic.js";
+import "./auth-google.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {

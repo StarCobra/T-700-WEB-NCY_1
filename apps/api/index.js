@@ -1,7 +1,7 @@
 import express from "express";
 import session from "express-session";
 import passport from "passport";
-import userRoutes from "./user/users.js";
+import userRoutes from "./user/user.js";
 import cryptoRoutes from "./crypto/crypto.js";
 
 const app = express();
