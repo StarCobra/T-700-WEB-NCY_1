@@ -5,6 +5,10 @@ import {test} from "./test.js";
 const app = express();
 const port = 3005;
 
+createDatabase().then(r => {
+  console.log("bdd");
+});
+
 app.get('/', (req, res) => {
   res.send(test());
 });
