@@ -1,12 +1,14 @@
 import bcrypt from "bcryptjs";
-
-const bcrypt = require("bcryptjs");
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
 
 passport.use(
   new LocalStrategy((username, password, done) => {
     // Find the user with the given username
     const query = `SELECT * FROM users WHERE username = ?;`;
     const values = [username];
+
+    console.log(username);
 
     db.query(query, values, (err, results) => {
       if (err) {
