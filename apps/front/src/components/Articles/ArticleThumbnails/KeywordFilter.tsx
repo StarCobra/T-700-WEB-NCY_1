@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/article.scss'
+import '../../../style/article.scss'
 import { Box, MenuItem, TextField } from '@mui/material';
 
 export default function KeywordFilter() {
