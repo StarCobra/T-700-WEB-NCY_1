@@ -1,0 +1,136 @@
+@import 'Config/config';
+
+.dataContainer{
+    max-height: 95.25%;
+    margin:5px;
+}
+
+// .keywordFilterContainer{
+//     display:flex;
+//     background-color: $bg-color;
+//     border:$borderColor 2px solid;
+//     border-radius: $borderRadius;
+//     margin:5px;
+//     padding:5px;
+//     .selectFilter{
+//         display: flex;
+//         flex-grow: 1;
+//         justify-content: center;
+//         align-items: center;
+        
+//     }
+// }
+
+.keywordFilterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: $bg-color;
+    border:$borderColor solid 2px;
+    border-radius: $borderRadius;
+    padding:5px;
+    .css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root{
+        width:250px;
+    }
+    .SelectKeywordLabel{
+        margin:5px;
+        width:300px;
+        color:white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border-width: 1px !important;
+        border-color: $borderColor !important;
+        color: $borderColor !important;
+      }
+      
+      .Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: $borderColor !important;
+      }
+
+      .MuiInputLabel-animated{
+        color:$borderColor !important;
+      }
+
+      .MuiOutlinedInput-input{
+        color:$borderColor !important;
+      }
+
+      .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+        color: $borderColor !important;
+      }
+
+    }
+    .MuiTableContainer-root{
+        max-height: 200px !important;
+      }
+      .MuiMenu-paper{
+        background-color: $bg-color-semilight !important;
+        color:$borderColor;
+      }
+      .MuiMenuItem-gutters{
+          color:$borderColor !important;
+      }
+      .css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
+          color:$borderColor !important;
+      }
+      .css-rqglhn-MuiTable-root{
+          max-height: 200px;
+      }    
+
+.articleMasterContainer{
+    max-height:90%;
+    overflow-y: auto;
+}
+.articleSampleContainer{
+    display: inline-block;
+    padding:5px;
+    border:solid $borderColor 2px;
+    background-color: $bg-color;
+    border-radius: $borderRadius;
+    margin-bottom: 5px;
+    .articleSample{
+        display: flex;
+        flex-grow: 1;
+
+        .articleThumbnail{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 300px;
+            flex-grow: 2;
+            margin-right: 5px;
+            img{
+            max-width: 300px;
+            border-radius: $borderRadius;
+            }
+        }
+        .articleSampleContent{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .articleTitle{
+                flex-grow: 10;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20 !important;
+            }
+            .articleSampleContent{
+                text-justify: auto;
+                a{
+                    color: $borderColor;
+                    &:hover{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .articleDateSample{
+                color:$bg-color-light;
+            }
+
+        }
+    }
+}
