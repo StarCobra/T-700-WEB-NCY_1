@@ -4,7 +4,7 @@ import OneArticleSample from './OneArticleSample';
 
 export default function MultipleArticlesDisplay() {
   return (
-    <div>
+    <div className='articleMasterContainer'>
         <div className="articleSampleContainer">
             <OneArticleSample />
         </div>

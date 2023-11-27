@@ -1,12 +1,20 @@
 @import 'Config/config';
 
+.dataContainer{
+    max-height: 95.25%;
+    margin:5px;
+}
+.articleMasterContainer{
+    max-height:100%;
+    overflow-y: auto;
+}
 .articleSampleContainer{
-    display:flex;
+    display: inline-block;
     padding:5px;
     border:solid $borderColor 2px;
     background-color: $bg-color;
     border-radius: 5px;
-    margin-bottom: 5px;;
+    margin-bottom: 5px;
     .articleSample{
         display: flex;
         flex-grow: 1;
