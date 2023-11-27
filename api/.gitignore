@@ -1,8 +1,0 @@
-# Ignore everything in this directory
-.idea/
-.vscode/
-/node_modules
-
-# Ignore this files
-.env
-package-lock.json
