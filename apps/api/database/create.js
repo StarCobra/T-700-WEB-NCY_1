@@ -3,10 +3,11 @@ import mysql from "mysql";
 export async function createDatabase() {
     // Create a connection to the MySQL server
     const connection = mysql.createConnection({
-        host: 'database',
+        host: 'mariadb',
         user: 'root',
         password: 'root',
-        database: 'CountOfMoney',
+        database: 'teeeeest',
+
     });
 
     // Connect to MySQL

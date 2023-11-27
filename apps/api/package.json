@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
+    "start:watch": "nodemon index.js",
     "test": "echo \\\"Error: no test.js specified\\\" && exit 1"
   },
   "keywords": [],
