@@ -1,7 +1,9 @@
 import express from "express";
 import passport from "passport";
+import bcrypt from "bcryptjs";
 import "./auth-basic.js";
 import "./auth-google.js";
+import { createDatabase } from "../database/create.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
@@ -15,6 +17,12 @@ router.post("/register", async (req, res) => {
     const hash = await bcrypt.hashSync(user.password, salt);
 
     // Save user in database
+    const pool = await createDatabase();
+    const connection = await pool.getConnection();
+    await connection.query(
+      "INSERT INTO users (name, password, birth_date) VALUES (?, ?, ?)",
+      [user.username, hash, user.birth_date]
+    );
 
     // Send response successful
     res.status(201).send("The user has been registered");
