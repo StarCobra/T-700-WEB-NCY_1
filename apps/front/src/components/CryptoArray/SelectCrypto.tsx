@@ -5,7 +5,6 @@ import { Box, TextField, MenuItem } from '@mui/material';
 
 export default function selectCrypto() {
   const [cryptos, setCryptos] = useState<string[]>([])
-  console.log(cryptos)
   const handleChangeSelectedCryptos = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
     setCryptos(typeof value === 'string' ? value.split(',') : value)
