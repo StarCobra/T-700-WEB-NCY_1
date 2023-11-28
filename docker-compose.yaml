@@ -65,7 +65,7 @@ services:
     image: bitnami/mariadb:10.6-debian-11
     container_name: "${PROJECT_NAME}-mariadb"
     volumes:
-      - ./docker/images/mariadb/my.cnf:/opt/bitnami/mariadb/conf/my.cnf:delegated
+      - ./docker/images/mariadb/my.cnf:/etc/mysql/mariadb.conf.d/my.cnf:delegated
       - ./docker/images/mariadb/docker-entrypoint-startdb.d:/docker-entrypoint-startdb.d:delegated
     environment:
       - MARIADB_ROOT_USER=root
