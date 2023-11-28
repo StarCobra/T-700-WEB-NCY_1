@@ -1,23 +1,27 @@
-import mysql from "mysql";
+import mariadb from "mariadb";
 
 export async function createDatabase() {
-    // Create a connection to the MySQL server
-    const connection = mysql.createConnection({
-        host: 'database',
-        user: 'root',
-        password: 'root',
-        database: 'CountOfMoney',
-    });
+  // Create a connection to the MySQL server
+  const connection = mariadb.createPool({
+    host: "mariadb.count-of-money.local",
+    user: "root",
+    password: "root",
+    database: "count-of-money",
+  });
 
-    // Connect to MySQL
-    connection.connect((err) => {
-        if (err) {
-            console.error('Error connecting to MySQL:', err);
-            return;
-        }
-        console.log('Connected to MySQL!');
-    });
+  try {
+    // Get a connection from the pool
+    connection = await pool.getConnection();
 
-    // Close the MySQL connection
-    connection.end();
+    // Perform database operations here...
+
+    console.log("Connected to MariaDB!");
+  } catch (err) {
+    console.error("Error connecting to MariaDB:", err);
+  } finally {
+    if (connection) {
+      // Release the connection back to the pool
+      connection.release();
+    }
+  }
 }

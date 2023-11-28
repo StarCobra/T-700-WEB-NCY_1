@@ -21,7 +21,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/users", userRoutes);
-app.use("/crypto", cryptoRoutes);
+app.use("/cryptos", cryptoRoutes);
 
 app.listen(port, () => {
   console.log(`API server listening at http://localhost:${port}`);
