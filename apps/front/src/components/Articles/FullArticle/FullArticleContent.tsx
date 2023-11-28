@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../../../style/article.scss'
 
-export default function fullArticleContent() {
+export default function FullArticleContent() {
   return (
     <div className="fullArticleContent">
         <p>In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn raises questions about the long-term sustainability of the digital currency and its role in the ever-evolving landscape of finance and technology.</p>

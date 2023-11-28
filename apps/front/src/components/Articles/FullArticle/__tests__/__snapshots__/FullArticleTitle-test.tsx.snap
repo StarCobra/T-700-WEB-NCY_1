@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+<div
+  className="articleTitleContainer"
+>
+  <div
+    className="title"
+  >
+    Bitcoin Collapse
+  </div>
+  <div
+    className="dateAndSource"
+  >
+    From ChatGPT the 2023-11-13
+  </div>
+</div>
+`;
