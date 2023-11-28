@@ -8,6 +8,8 @@ passport.use(
     const query = `SELECT * FROM users WHERE username = ?;`;
     const values = [username];
 
+    console.log(username);
+
     db.query(query, values, (err, results) => {
       if (err) {
         return done(err);
