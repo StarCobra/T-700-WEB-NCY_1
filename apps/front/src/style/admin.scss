@@ -1,0 +1,11 @@
+@import "Config/config";
+
+// Path: apps/front/src/style/Config/config.scss
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
