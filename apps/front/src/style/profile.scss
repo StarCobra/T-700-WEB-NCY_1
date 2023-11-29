@@ -1,0 +1,86 @@
+@import 'Config/config';
+.profileLayout{
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    .profileThumbnailContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            max-width: 250px;
+            max-height: 250px;
+            border-radius: $borderRadius;
+        }
+    }
+    .centeringDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .profileInfoContainer{
+            div{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #edit{
+                grid-area: edit;
+                button{
+                    width:125px;
+                }
+            }
+            #delete{
+                grid-area: delete;
+                button{
+                    width:125px;
+                }
+            }
+            #usernameLabel{
+                grid-area: usernameLabel; 
+            }
+            #mailLabel{
+                grid-area: mailLabel;
+            }
+            #birthLabel{
+                grid-area: birthLabel;
+            }
+            #username{
+                grid-area: username;
+            }
+            #mail{
+                grid-area: mail;
+            }
+            #birth{
+                grid-area: birth;
+            }
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-template-areas: "usernameLabel username"
+            "mailLabel mail"
+            "birthLabel birth"
+            "edit edit"
+            "delete delete";
+            width:100%;
+            margin:5px;
+            gap:5px;
+            div{
+            }
+            .userInfo{
+                display: flex;
+                margin-right: auto;
+                align-items: center;
+            }
+            .labelInfo{
+                display:flex;
+                margin-left: auto;
+                margin-right: 10px;
+                align-items: center;
+                color:$borderColor;
+                grid-area: labelinfo;
+    
+            }
+        }
+    }
+}

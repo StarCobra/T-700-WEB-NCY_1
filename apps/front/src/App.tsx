@@ -1,13 +1,13 @@
 import React from 'react';
 import SideBar from './components/SideBar/SideBar';
-import FullArticleDisplay from './components/Articles/FullArticle/FullArticleDisplay';
+import Profile from './components/Profile/Profile';
 function App() {
   return (
     <div className="layoutContainer">
       <SideBar />
       <div className="displayContainer">
         <div className="dataContainer">
-          <FullArticleDisplay />
+          <Profile />
         </div>
       </div>
     </div>
