@@ -4,5 +4,31 @@ $bg-color-semilight:#484848;
 $bg-color-light:#737373;
 $font-color-dark-bg: #FFFFFF;
 $borderColor: #F4733A;
+$borderColorHover: #ff804a;
+$borderColorClick:#f56020;
 $borderColorLight:#d49d42;
 $borderRadius:5px;
+
+.hidden{
+    display:none !important;
+}
+
+button{
+    background-color: $borderColor;
+    width:auto;
+    height:auto;
+    padding:10px;
+    border:$bg-color;
+    color:white;
+    border-radius: $borderRadius;
+
+    &:hover{
+        background-color: $borderColorHover;
+        cursor:pointer;
+        box-shadow: 0px 0px 5px $borderColorHover;
+    }
+
+    &:active{
+        background-color: $borderColorClick;
+    }
+}
