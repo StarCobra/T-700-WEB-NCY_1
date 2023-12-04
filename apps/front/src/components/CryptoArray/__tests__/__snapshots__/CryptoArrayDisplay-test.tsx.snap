@@ -55,6 +55,7 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
               autoFocus={false}
               className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               disabled={false}
+              name="SelectCrypto"
               onAnimationStart={[Function]}
               onChange={[Function]}
               required={false}

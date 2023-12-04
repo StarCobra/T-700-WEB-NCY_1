@@ -1,6 +1,7 @@
-import React from 'react';
-import SideBar from './components/SideBar/SideBar';
-import Profile from './components/Profile/Profile';
+import React from "react"
+import SideBar from "./components/SideBar/SideBar"
+import Profile from "./components/Profile/Profile"
+
 function App() {
   return (
     <div className="layoutContainer">
@@ -11,8 +12,7 @@ function App() {
         </div>
       </div>
     </div>
-
-  );
+  )
 }
 
-export default App;
+export default App

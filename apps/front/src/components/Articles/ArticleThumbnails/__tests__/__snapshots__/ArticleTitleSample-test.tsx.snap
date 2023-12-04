@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+exports[`Components > ArticleThumbnails > ArticleTitleSample should render the component generic 1`] = `
 <div
   className="articleTitle"
 >

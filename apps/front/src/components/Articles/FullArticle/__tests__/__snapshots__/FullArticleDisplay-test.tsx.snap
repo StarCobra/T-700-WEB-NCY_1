@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+exports[`Components > FullArticle > FullArticleDisplay should render the component generic 1`] = `
 <div
   className="fullArticleDisplay"
 >
@@ -11,6 +11,7 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
       className="articleThumbnail"
     >
       <img
+        alt=""
         src="default"
       />
     </div>

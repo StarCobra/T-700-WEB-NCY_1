@@ -1,0 +1,47 @@
+name: Count-of-money-front
+
+on:
+  pull_request:
+    paths:
+      - "apps/api/**"
+      - ".github/workflows/api.yml"
+
+  push:
+    branches:
+      - master
+      - dev
+    paths:
+      - "apps/api/**"
+      - ".github/workflows/api.yml"
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  front:
+    name: api-test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./apps/api
+
+      - name: Run lint js
+        run: npm run lint
+        working-directory: ./apps/api

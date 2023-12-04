@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+exports[`Components > ArticleThumbnails > KeywordFilter should render the component generic 1`] = `
 <div
   className="keywordFilterContainer"
 >
@@ -51,6 +51,7 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
             autoFocus={false}
             className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             disabled={false}
+            name="SelectKeywords"
             onAnimationStart={[Function]}
             onChange={[Function]}
             required={false}
