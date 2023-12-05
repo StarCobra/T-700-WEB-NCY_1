@@ -1,6 +1,6 @@
 -- This file is used to create the database and the tables
 -- It is executed when the container is created
-
+DROP DATABASE `count-of-money`;
 -- Create the database
 -- Name: count-of-money
 CREATE DATABASE IF NOT EXISTS `count-of-money` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
@@ -29,15 +29,17 @@ CREATE TABLE `article` (
 -- Foreign key: user_id
 CREATE TABLE `chosen_cryptos` (
     `id` int(11) NOT NULL,
-    `user_id` int(11) NOT NULL
+    `user_id` int(11) NOT NULL,
+    `crypto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Name: crypto
 -- Columns: id, name
 -- Primary key: id
 CREATE TABLE `crypto` (
-    `id` int(11) NOT NULL,
-    `name` varchar(50) NOT NULL
+    `id` varchar(50) NOT NULL,
+    `name` varchar(50) NOT NULL,
+    `image` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Name: favorite_keywords
@@ -45,7 +47,8 @@ CREATE TABLE `crypto` (
 -- Primary key: id
 CREATE TABLE `favorite_keywords` (
     `id` int(11) NOT NULL,
-    `user_id` int(11) NOT NULL
+    `user_id` int(11) NOT NULL,
+    `keyword_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Name: keyword
@@ -75,25 +78,17 @@ CREATE TABLE `rss_flux` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Name: user
--- Columns: id, name, mail, password, birth_date, provider_id
+-- Columns: id, name, mail, password, birth_date, provider_id, provider_name
 -- Primary key: id
--- Foreign key: provider_id
 CREATE TABLE `user` (
     `id` int(11) NOT NULL,
     `name` varchar(50) NOT NULL,
     `mail` varchar(50) DEFAULT NULL,
     `password` varchar(120) DEFAULT NULL,
     `birth_date` date NOT NULL,
-    `provider_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Name: provider
--- Columns: id, name
--- Primary key: id
-CREATE TABLE `provider` (
-    `id` int(11) NOT NULL,
-    `name` varchar(50) NOT NULL,
-    PRIMARY KEY (`id`)
+    `provider_id` int(11) DEFAULT NULL,
+    `provider_name` VARCHAR(50) DEFAULT NULL,
+    `roles` varchar(10) DEFAULT 'USER'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -108,7 +103,8 @@ ALTER TABLE `article`
 -- Index pour la table `chosen_cryptos`
 ALTER TABLE `chosen_cryptos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `crypto_id` (`crypto_id`);
 
 -- Index pour la table `crypto`
 ALTER TABLE `crypto`
@@ -117,7 +113,8 @@ ALTER TABLE `crypto`
 -- Index pour la table `favorite_keywords`
 ALTER TABLE `favorite_keywords`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `keyword_id` (`keyword_id`);
 
 -- Index pour la table `keyword`
 ALTER TABLE `keyword`
@@ -134,8 +131,7 @@ ALTER TABLE `rss_flux`
 
 -- Index pour la table `user`
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `provider_id` (`provider_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -147,10 +143,6 @@ ALTER TABLE `article`
 
 -- AUTO_INCREMENT pour la table `chosen_cryptos`
 ALTER TABLE `chosen_cryptos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
--- AUTO_INCREMENT pour la table `crypto`
-ALTER TABLE `crypto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 -- AUTO_INCREMENT pour la table `favorite_keywords`
@@ -183,18 +175,17 @@ ALTER TABLE `article`
 
 -- Contraintes pour la table `chosen_cryptos`
 ALTER TABLE `chosen_cryptos`
-  ADD CONSTRAINT `chosen_cryptos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `chosen_cryptos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chosen_cryptos_ibfk_2` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Contraintes pour la table `favorite_keywords`
 ALTER TABLE `favorite_keywords`
-  ADD CONSTRAINT `favorite_keywords_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `favorite_keywords_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `favorite_keywords_ibfk_2` FOREIGN KEY (`keyword_id`) REFERENCES `keyword` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Contraintes pour la table `keyword_article`
 ALTER TABLE `keyword_article`
   ADD CONSTRAINT `keyword_article_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- Contraintes pour la table `user`
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`provider_id`) REFERENCES `provider` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 COMMIT;
