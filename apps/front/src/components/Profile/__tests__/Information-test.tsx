@@ -1,8 +1,8 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import SideBarMenu from "../Menu";
+import Information from "../Information";
 
-describe("Components > SideBar > Menu", () => {
+describe("Components > Profile > Information", () => {
   const tests = [
     {
       description: "generic",
@@ -13,7 +13,7 @@ describe("Components > SideBar > Menu", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<SideBarMenu {...test.props} />);
+        root = create(<Information {...test.props} />);
       });
       expect(root).toMatchSnapshot();
     });

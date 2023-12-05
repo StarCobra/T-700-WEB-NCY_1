@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+exports[`Components > SideBar > Menu should render the component generic 1`] = `
 <div
-  className="differentMenus"
+  className="differentMenus MuiBox-root css-0"
 >
   <div
-    className="Menu"
+    className="Menu MuiBox-root css-0"
   >
-    <span
-      className="menuIcon"
+    <div
+      className="menuIcon MuiBox-root css-0"
     >
       <svg
         className="menuIcon"
@@ -24,18 +24,18 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
           strokeLinejoin="round"
         />
       </svg>
-    </span>
-    <span
-      className="menuLabel"
+    </div>
+    <div
+      className="menuLabel MuiBox-root css-0"
     >
       Home
-    </span>
+    </div>
   </div>
   <div
-    className="Menu"
+    className="Menu MuiBox-root css-0"
   >
-    <span
-      className="menuIcon"
+    <div
+      className="menuIcon MuiBox-root css-0"
     >
       <svg
         className="menuIcon"
@@ -51,18 +51,18 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
           strokeLinejoin="round"
         />
       </svg>
-    </span>
-    <span
-      className="menuLabel"
+    </div>
+    <div
+      className="menuLabel MuiBox-root css-0"
     >
       Profil
-    </span>
+    </div>
   </div>
   <div
-    className="Menu"
+    className="Menu MuiBox-root css-0"
   >
-    <span
-      className="menuIcon"
+    <div
+      className="menuIcon MuiBox-root css-0"
     >
       <svg
         className="menuIcon"
@@ -78,18 +78,18 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
           strokeLinejoin="round"
         />
       </svg>
-    </span>
-    <span
-      className="menuLabel"
+    </div>
+    <div
+      className="menuLabel MuiBox-root css-0"
     >
       Articles
-    </span>
+    </div>
   </div>
   <div
-    className="Menu"
+    className="Menu MuiBox-root css-0"
   >
-    <span
-      className="menuIcon"
+    <div
+      className="menuIcon MuiBox-root css-0"
     >
       <svg
         className="menuIcon"
@@ -105,12 +105,12 @@ exports[`Components > CryptoArray > CryptoArrayDisplay should render the compone
           strokeLinejoin="round"
         />
       </svg>
-    </span>
-    <span
-      className="menuLabel"
+    </div>
+    <div
+      className="menuLabel MuiBox-root css-0"
     >
       Logout
-    </span>
+    </div>
   </div>
 </div>
 `;

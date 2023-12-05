@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components > CryptoArray > CryptoArrayDisplay should render the component generic 1`] = `
+exports[`Components > SideBar > Logo should render the component generic 1`] = `
 <div
-  className="logoLocation"
+  className="logoLocation MuiBox-root css-0"
 >
   <img
     alt=""
