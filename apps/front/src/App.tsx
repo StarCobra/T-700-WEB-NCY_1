@@ -1,18 +1,20 @@
-import React from "react"
-import SideBar from "./components/SideBar/SideBar"
-import Profile from "./components/Profile/Profile"
+import React from "react";
+import { Box } from "@mui/material";
+import SideBarLayout from "./components/SideBar/Layout";
+import CryptoLayout from "./components/Crypto/Layout";
 
 function App() {
   return (
-    <div className="layoutContainer">
-      <SideBar />
-      <div className="displayContainer">
-        <div className="dataContainer">
-          <Profile />
-        </div>
-      </div>
-    </div>
-  )
+    <Box className="layoutContainer">
+      <SideBarLayout />
+
+      <Box className="displayContainer">
+        <Box className="dataContainer">
+          <CryptoLayout />
+        </Box>
+      </Box>
+    </Box>
+  );
 }
 
-export default App
+export default App;

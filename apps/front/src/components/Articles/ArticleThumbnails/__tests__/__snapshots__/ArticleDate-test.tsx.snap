@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components > ArticleThumbnails > ArticleDate should render the component generic 1`] = `
-<div
-  className="articleDateSample"
->
-  November 13, 2023
-</div>
-`;

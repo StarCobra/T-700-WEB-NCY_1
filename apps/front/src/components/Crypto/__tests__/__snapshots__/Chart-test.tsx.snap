@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Crypto > Chart should render the component generic 1`] = `
+<div
+  className="MuiBox-root css-0"
+>
+  <p>
+    theCryptoChart
+  </p>
+  ;
+</div>
+`;

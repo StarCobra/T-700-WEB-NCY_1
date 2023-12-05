@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Components > CryptoChart > CryptoChart should render the component generic 1`] = `
-<p>
-  theCryptoChart
-</p>
-`;

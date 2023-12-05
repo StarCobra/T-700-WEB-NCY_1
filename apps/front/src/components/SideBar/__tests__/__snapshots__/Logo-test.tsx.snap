@@ -2,7 +2,7 @@
 
 exports[`Components > SideBar > Logo should render the component generic 1`] = `
 <div
-  className="logoLocation"
+  className="logoLocation MuiBox-root css-0"
 >
   <img
     alt=""

@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import LogoSideBar from "../Logo";
+import SideBarLogo from "../Logo";
 
 describe("Components > SideBar > Logo", () => {
   const tests = [
@@ -13,7 +13,7 @@ describe("Components > SideBar > Logo", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<LogoSideBar {...test.props} />);
+        root = create(<SideBarLogo {...test.props} />);
       });
       expect(root).toMatchSnapshot();
     });

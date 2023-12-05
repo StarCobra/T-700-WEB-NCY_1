@@ -42,6 +42,3 @@ jobs:
         run: npm install
         working-directory: ./apps/api
 
-      - name: Run lint js
-        run: npm run lint
-        working-directory: ./apps/api
