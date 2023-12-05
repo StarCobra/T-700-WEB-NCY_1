@@ -32,12 +32,14 @@ export default function LogIn() {
               variant="outlined"
             >
               <TextField
+                style={{backgroundColor: "white"}}
                 name="email"
                 type="email"
                 placeholder="E-mail"
                 label="E-mail"
               />
               <TextField
+                style={{backgroundColor: "white"}}
                 name="password"
                 type="password"
                 placeholder="Votre mot de passe"
@@ -59,6 +61,8 @@ export default function LogIn() {
                 Connexion
               </Button>
               <GoogleButton
+                style={{margin: "auto"}}
+                label="Log In with Google"
                 type="light"
                 />
 

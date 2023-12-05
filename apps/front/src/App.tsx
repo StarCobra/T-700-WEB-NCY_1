@@ -3,7 +3,7 @@ import SideBar from './components/SideBar/SideBar';
 import MultipleArticlesDisplay from './components/Articles/ArticleThumbnails/MultipleArticlesDisplay';
 import KeywordFilter from './components/Articles/ArticleThumbnails/KeywordFilter';
 import FullArticleDisplay from './components/Articles/FullArticle/FullArticleDisplay';
-import LogIn from './components/LogIn/LogIn';
+import SignIn from './components/SignIn/SignIn';
 function App() {
   return (
     <div className="layoutContainer">
@@ -11,7 +11,7 @@ function App() {
       <div className="displayContainer">
         <div className="dataContainer">
           {/* <FullArticleDisplay /> */}
-          <LogIn />
+          <SignIn />
         </div>
         {/* <div className="dataContainer">
           <CryptoArrayDisplay />
