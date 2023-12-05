@@ -1,7 +1,6 @@
 import express from "express";
 import passport from "passport";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import "./auth-basic.js";
 import { createDatabase } from "../database/create.js";
 import dotenv from "dotenv";
