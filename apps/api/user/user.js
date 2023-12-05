@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import "./auth-basic.js";
 import { createDatabase } from "../database/create.js";
 import dotenv from "dotenv";
@@ -23,14 +24,18 @@ router.post("/register", async (req, res) => {
     // Save user in database
     const pool = await createDatabase();
     const connection = await pool.getConnection();
-    await connection.query(
-      "INSERT INTO user (name, password, birth_date, roles) VALUES (?, ?, ?, ?)",
-      [user.username, hash, user.birth_date, user.role]
-    );
-    await connection.query(
-      "INSERT INTO user (name, password, birth_date) VALUES (?, ?, ?)",
-      [user.username, hash, user.birth_date]
-    );
+    if(user.roles === "ADMIN") {
+      await connection.query(
+        "INSERT INTO user (name, password, birth_date, roles) VALUES (?, ?, ?, ?)",
+        [user.username, hash, user.birth_date, "ADMIN"]
+      );
+    }
+    else {
+      await connection.query(
+        "INSERT INTO user (name, password, birth_date) VALUES (?, ?, ?)",
+        [user.username, hash, user.birth_date]
+      );
+    }
 
     // Send response successful
     res.status(201).send("The user has been registered");
