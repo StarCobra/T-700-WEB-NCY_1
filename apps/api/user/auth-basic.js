@@ -32,13 +32,9 @@ passport.use(
           if (isMatch) {
             // Mot de passe correct, authentification réussie
             delete user.password;
-            const token = jwt.sign(
-              { user: user },
-              `${process.env.SECRET_KEY_JWT}`,
-              {
-                expiresIn: "1h",
-              }
-            );
+            const token = jwt.sign(user, process.env.SECRET_KEY_JWT, {
+              expiresIn: "1h",
+            });
             return done(null, token);
           } else {
             // Mot de passe incorrect

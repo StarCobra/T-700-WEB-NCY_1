@@ -58,24 +58,3 @@ passport.use(
     }
   )
 );
-
-// Sérialisation de l'utilisateur pour la session
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  const query = "SELECT * FROM users WHERE id = ?";
-  db.query(query, [id], (err, results) => {
-    if (err) {
-      return done(err);
-    }
-
-    if (results.length > 0) {
-      const user = results[0];
-      return done(null, user);
-    } else {
-      return done(null, false, { message: "User not found" });
-    }
-  });
-});
