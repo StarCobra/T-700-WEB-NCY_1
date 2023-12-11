@@ -1,6 +1,5 @@
 -- This file is used to create the database and the tables
 -- It is executed when the container is created
-DROP DATABASE `count-of-money`;
 -- Create the database
 -- Name: count-of-money
 CREATE DATABASE IF NOT EXISTS `count-of-money` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
