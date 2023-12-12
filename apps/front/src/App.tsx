@@ -5,6 +5,7 @@ import CryptoLayout from "./components/Crypto/Layout";
 import ProfileLayout from "./components/Profile/Layout";
 import ArticlesLayout from "./components/Articles/Layout";
 import ArticleDetailsLayout from "./components/Articles/Details/Layout";
+import PreferencesLayout from "./components/Preferences/Layout";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/profile" element={<ProfileLayout />} />
             <Route path="/settings" element={<CryptoLayout />} />
             {/* TODO: Change to SettingsLayout */}
+            <Route path="/preferences" element={<PreferencesLayout />} />
             <Route path="/articles" element={<ArticlesLayout />} />
             <Route path="/articles/:id" element={<ArticleDetailsLayout />} />
           </Routes>

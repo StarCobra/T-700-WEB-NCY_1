@@ -2,7 +2,8 @@ import React from "react";
 import CryptoArray from "../Crypto/Array";
 import CryptoChart from "../Crypto/Chart";
 import Select from "../Select";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Layout() {
   const [valueCrypto, setValueCrypto] = React.useState("");
@@ -161,12 +162,18 @@ export default function Layout() {
 
   return (
     <Box className="ArrayDisplay">
-      <Select
-        name="Select"
-        label="Select a crypto(s):"
-        options={options}
-        handleChange={(e: any) => setValueCrypto(e.target.value)}
-      />
+      <Box>
+        <Select
+          name="Select"
+          label="Select a crypto(s):"
+          options={options}
+          handleChange={(e: any) => setValueCrypto(e.target.value)}
+        />
+
+        <Button>
+          <Link to={"/preferences"}>Update preferences</Link>
+        </Button>
+      </Box>
 
       <CryptoChart
         resource={test}
@@ -177,7 +184,10 @@ export default function Layout() {
         }
       />
 
-      <CryptoArray resource={resource} />
+      <Box>
+        <h3>Table of your preferences crypto</h3>
+        <CryptoArray resource={resource} />
+      </Box>
     </Box>
   );
 }
