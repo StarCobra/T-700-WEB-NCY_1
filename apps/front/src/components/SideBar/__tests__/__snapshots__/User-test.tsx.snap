@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > SideBar > User should render the component generic 1`] = `
+<a
+  className="userLocation"
+  href="/profile"
+  onClick={[Function]}
+>
+  <div
+    className="userProfilePicture MuiBox-root css-0"
+  >
+    <img
+      alt=""
+      src="default"
+    />
+  </div>
+  <div
+    className="usernameContainer MuiBox-root css-0"
+  >
+    <h3
+      className="userName"
+    />
+    <h3
+      className="userMail"
+    />
+  </div>
+</a>
+`;

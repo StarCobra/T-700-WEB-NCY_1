@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Profile > Layout should render the component generic 1`] = `
+<div
+  className="profileLayout MuiBox-root css-0"
+>
+  <div
+    className="profileThumbnailContainer MuiBox-root css-0"
+  >
+    <img
+      alt=""
+      src="default"
+    />
+  </div>
+  <div
+    className="profileInfoContainer MuiBox-root css-0"
+  >
+    <style
+      dangerouslySetInnerHTML={
+        {
+          "__html": ".css-ks2x85{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:10px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}",
+        }
+      }
+      data-emotion="css ks2x85"
+    />
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+      id="usernameBox"
+    >
+      <h3>
+        Username :
+      </h3>
+      <h3 />
+    </div>
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+      id="mailBox"
+    >
+      <h3>
+        E-mail :
+      </h3>
+      <h3 />
+    </div>
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+      id="birhtBox"
+    >
+      <h3>
+        Birth date :
+      </h3>
+      <h3 />
+    </div>
+    <style
+      dangerouslySetInnerHTML={
+        {
+          "__html": ".css-i6jodw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;gap:20px;margin-top:20px;}",
+        }
+      }
+      data-emotion="css i6jodw"
+    />
+    <div
+      className="buttonDiv MuiBox-root css-i6jodw"
+    >
+      <style
+        dangerouslySetInnerHTML={
+          {
+            "__html": ".css-w60cv3-MuiButton-root{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:500;font-size:0.875rem;line-height:1.75;letter-spacing:0.02857em;text-transform:uppercase;min-width:64px;padding:6px 8px;border-radius:4px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:#1976d2;}.css-w60cv3-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;background-color:rgba(25, 118, 210, 0.04);}@media (hover: none){.css-w60cv3-MuiButton-root:hover{background-color:transparent;}}.css-w60cv3-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}",
+          }
+        }
+        data-emotion="css w60cv3-MuiButton-root"
+      />
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        id="edit"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Edit my profile
+        <style
+          dangerouslySetInnerHTML={
+            {
+              "__html": ".css-8je8zh-MuiTouchRipple-root{overflow:hidden;pointer-events:none;position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;border-radius:inherit;}",
+            }
+          }
+          data-emotion="css 8je8zh-MuiTouchRipple-root"
+        />
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        id="delete"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Delete my profile
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Articles > Details > ArticleContent should render the component generic 1`] = `
+<div
+  className="fullArticleContent MuiBox-root css-0"
+>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <h3>
+      Regulatory Challenges:
+    </h3>
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <h3>
+      Environmental Concerns:
+    </h3>
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <h3>
+      Technological Challenges:
+    </h3>
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <h3>
+      Market Volatility:
+    </h3>
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+  <div
+    className="contentContainer MuiBox-root css-0"
+  >
+    <h3>
+      Conclusion:
+    </h3>
+    <p>
+      LOREM IPSUM
+    </p>
+  </div>
+</div>
+`;
