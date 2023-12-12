@@ -1,11 +1,105 @@
 @import "Config/config";
 
-// Path: apps/front/src/style/Config/config.scss
 
-.flex-center {
+.ArrayDisplay{
+  display: grid;
+  height:100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.25fr 1fr 0.25fr;
+  grid-template-areas: "titleContainer"
+  "formContainer"
+  "commentContainer";
+}
+
+.titleContainer{
+  grid-area: titleContainer;
+  display:grid;
+  gap: 10px;
+  color:$borderColor;
+  grid-template-areas: "adminIcon adminTitle";
+  .title{
+    display: flex;
+    align-items: center;
+    grid-area: adminTitle;
+  }
+  .icon{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    grid-area: adminIcon;
+    svg{
+      font-size: 40px;
+    }
+  }
+}
+
+.formContainer{
+  grid-area: formContainer;
+  display:grid;
+  margin:auto;
+  grid-template-areas: "chooseCrypto"
+  "chooseKeyword"
+  "chooseRss"
+  "removeRss"
+  "addCrypto"
+  "removeCrypto";
+  gap: 5px;
+  label{
+    margin-bottom: 5px;
+  }
+  button{
+    background-color: transparent;
+    color: $borderColor;
+    margin-left: 5px;
+    &:hover{
+      border:solid 1px $borderColor;
+      background-color: $buttonHoverBg;
+      color:white;
+    }
+  }
+
+  .chooseCrypto{
+    grid-area: chooseCrypto;
+  }
+
+  .chooseKeyword{
+    grid-area: chooseKeyword;
+  }
+
+  .chooseRss{
+    grid-area: chooseRss;
+  }
+
+  .removeRss{
+    grid-area: removeRss;
+  }
+
+  .addCrypto{
+    grid-area: addCrypto;
+  }
+
+  .removeCrypto{
+    grid-area: removeCrypto;
+  }
+
+
+}
+
+.commentContainer{
+  background-color: $bg-color-semilight;
+  grid-area: commentContainer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 30px;
+  color: $borderColor;
+  padding:15px;
+  border: solid $borderColor 2px;
+  border-radius: $borderRadius;
+  a{
+    color : $borderColorLight;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }

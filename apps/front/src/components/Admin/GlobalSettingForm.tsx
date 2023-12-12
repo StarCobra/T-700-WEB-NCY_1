@@ -23,83 +23,83 @@ export default function GlobalSettingForm() {
     }
 
     return (
-        <div>
-            <Box className="Array">
-                <form>
-                    <Box>
-                        <label>Choose different crypto :</label>
-                        <TextField
-                            label="Select a crypto"
-                            select
-                            className='SelectCryptoLabel'
-                            value={crypto}
-                            onChange={handleChangeSelectedCrypto}
-                            fullWidth
-                            color='warning'
-                        >
-                            <MenuItem value="0">BTC</MenuItem>
-                            <MenuItem value="1">ETH</MenuItem>
-                            <MenuItem value="2">BNB</MenuItem>
-                            <MenuItem value="3">USDC</MenuItem>
-                            <MenuItem value="4">SOL</MenuItem>
-                            <MenuItem value="5">ADA</MenuItem>
-                        </TextField>
-                    </Box>
-                    <Box>
-                        <label>Choose default article keyword :</label>
-                        <TextField
-                            label="Select an article"
-                            select
-                            className='SelectCryptoLabel'
-                            value={article}
-                            onChange={handleChangeSelectedArticle}
-                            fullWidth
-                            color='warning'
-                        >
-                            <MenuItem value="0">BTC</MenuItem>
-                            <MenuItem value="1">ETH</MenuItem>
-                            <MenuItem value="2">BNB</MenuItem>
-                            <MenuItem value="3">USDC</MenuItem>
-                            <MenuItem value="4">SOL</MenuItem>
-                            <MenuItem value="5">ADA</MenuItem>
-                        </TextField>
-                    </Box>
-                    <Box>
-                        <label>Add RSS flux :</label>
-                        <Button>Add new RSS flux</Button>
-                    </Box>
-                    <Box>
-                        <label>Remove RSS flux :</label>
-                        <TextField
-                            label="Select an RSS flux"
-                            select
-                            className='SelectCryptoLabel'
-                            value={rssFlux}
-                            onChange={handleChangeSelectedRSSFlux}
-                            fullWidth
-                            color='warning'
-                        >
-                        </TextField>
-                    </Box>
-                    <Box>
-                        <label>Add new crypto :</label>
-                        <Button>Add new crypto</Button>
-                    </Box>
-                    <Box>
-                        <label>Remove a crypto</label>
-                        <TextField
-                            label="Select a crypto"
-                            select
-                            className='SelectCryptoLabel'
-                            value={removeCrypto}
-                            onChange={handleChangeSelectedRemoveCrypto}
-                            fullWidth
-                            color='warning'
-                        >
-                        </TextField>
-                    </Box>
-                </form>
-            </Box>
-        </div>
+    <form className="formContainer">
+        <Box className="chooseCrypto">
+            <label>Choose different crypto :</label>
+            <TextField
+                label="Select a crypto"
+                select
+                className='SelectCryptoLabel'
+                value={crypto}
+                onChange={handleChangeSelectedCrypto}
+                fullWidth
+                color='warning'
+                sx={{mt:0.5}}
+            >
+                <MenuItem value="0">BTC</MenuItem>
+                <MenuItem value="1">ETH</MenuItem>
+                <MenuItem value="2">BNB</MenuItem>
+                <MenuItem value="3">USDC</MenuItem>
+                <MenuItem value="4">SOL</MenuItem>
+                <MenuItem value="5">ADA</MenuItem>
+            </TextField>
+        </Box>
+        <Box className="chooseKeyword">
+            <label>Choose default article keyword :</label>
+            <TextField
+                label="Select an article"
+                select
+                className='SelectCryptoLabel'
+                value={article}
+                onChange={handleChangeSelectedArticle}
+                fullWidth
+                color='warning'
+                sx={{mt:0.5}}
+            >
+                <MenuItem value="0">BTC</MenuItem>
+                <MenuItem value="1">ETH</MenuItem>
+                <MenuItem value="2">BNB</MenuItem>
+                <MenuItem value="3">USDC</MenuItem>
+                <MenuItem value="4">SOL</MenuItem>
+                <MenuItem value="5">ADA</MenuItem>
+            </TextField>
+        </Box>
+        <Box className="chooseRss">
+            <label>Add RSS flux :</label>
+            <Button>Add new RSS flux</Button>
+        </Box>
+        <Box className="removeRss">
+            <label>Remove RSS flux :</label>
+            <TextField
+                label="Select an RSS flux"
+                select
+                className='SelectCryptoLabel'
+                value={rssFlux}
+                onChange={handleChangeSelectedRSSFlux}
+                fullWidth
+                color='warning'
+                sx={{mt:0.5}}
+            >
+            </TextField>
+        </Box>
+        <Box className="addCrypto">
+            <label>Add new crypto :</label>
+            <Button>Add new crypto</Button>
+        </Box>
+        <Box className="removeCrypto">
+            <label>Remove a crypto</label>
+            <TextField
+                label="Select a crypto"
+                select
+                className='SelectCryptoLabel'
+                value={removeCrypto}
+                onChange={handleChangeSelectedRemoveCrypto}
+                fullWidth
+                color='warning'
+                sx={{mt:0.5}}
+            >
+            </TextField>
+        </Box>
+    </form>
     );
 }

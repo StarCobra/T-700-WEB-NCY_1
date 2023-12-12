@@ -4,12 +4,12 @@ import {Box} from "@mui/material";
 
 export default function GlobalSettingFooter() {
     return (
-        <div className="Array">
+        <Box className="commentContainer">
             <Box>
                 <h3>
-                    Please contact a <span>developper</span> if you add a new crypto.
+                    Please <a href="mailto:developpers@cryptofanatix.com?subject=Add new crypto&body=Hello, I want to add a new crypto called : ">contact a developper</a> if you want to add a new crypto.
                 </h3>
             </Box>
-        </div>
+        </Box>
     )
 }

@@ -3,13 +3,14 @@ import '../../style/admin.scss';
 import GlobalSettingHeader from './GlobalSettingHeader';
 import GlobalSettingForm from './GlobalSettingForm';
 import GlobalSettingFooter from './GlobalSettingFooter';
+import { Box } from '@mui/material';
 
 export default function GlobalSettingDisplay() {
     return (
-        <div className="ArrayDisplay">
+        <Box className="ArrayDisplay">
             <GlobalSettingHeader />
             <GlobalSettingForm />
             <GlobalSettingFooter />
-        </div>
+        </Box>
     )
 }

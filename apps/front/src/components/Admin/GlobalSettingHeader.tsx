@@ -5,11 +5,13 @@ import {Box} from "@mui/material";
 
 export default function GlobalSettingHeader() {
     return (
-        <div>
-            <Box className="flex-center">
-                <h3>Global Settings</h3>
-                <SettingsIcon sx={{ fontSize: 40 }} />
+        <Box className="titleContainer">
+            <Box className="title">
+                <h1>Global Settings</h1>
             </Box>
-        </div>
+            <Box className="icon">
+                <SettingsIcon />
+            </Box>
+        </Box>
     )
 }
