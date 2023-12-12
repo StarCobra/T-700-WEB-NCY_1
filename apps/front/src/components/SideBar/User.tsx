@@ -3,7 +3,9 @@ import profilePic from "../../assets/sideBar/profil.png";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function User() {
+export default function User(props: any) {
+  const { user } = props;
+
   return (
     <Link to="/profile" className="userLocation">
       <Box className="userProfilePicture">
@@ -11,9 +13,8 @@ export default function User() {
       </Box>
 
       <Box className="usernameContainer">
-        <Box className="userName">Arnaud B</Box>
-
-        <Box className="userMail">arnaud.bourgoin@gmail.com</Box>
+        <h3 className="userName">{user?.name}</h3>
+        <h3 className="userMail">{user?.mail}</h3>
       </Box>
     </Link>
   );

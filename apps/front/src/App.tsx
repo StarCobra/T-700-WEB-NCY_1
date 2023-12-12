@@ -14,14 +14,14 @@ function App() {
         <SideBarLayout />
 
         <Box className="displayContainer">
-          <Box className="dataContainer">
-            <Routes>
-              <Route path="/" element={<CryptoLayout />} />
-              <Route path="/profile" element={<ProfileLayout />} />
-              <Route path="/articles" element={<ArticlesLayout />} />
-              <Route path="/articles/:id" element={<ArticleDetailsLayout />} />
-            </Routes>
-          </Box>
+          <Routes>
+            <Route path="/" element={<CryptoLayout />} />
+            <Route path="/profile" element={<ProfileLayout />} />
+            <Route path="/settings" element={<CryptoLayout />} />
+            {/* TODO: Change to SettingsLayout */}
+            <Route path="/articles" element={<ArticlesLayout />} />
+            <Route path="/articles/:id" element={<ArticleDetailsLayout />} />
+          </Routes>
         </Box>
       </Box>
     </Router>

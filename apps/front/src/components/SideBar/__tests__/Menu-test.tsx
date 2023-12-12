@@ -1,5 +1,7 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
+
 import SideBarMenu from "../Menu";
 
 describe("Components > SideBar > Menu", () => {
@@ -13,7 +15,11 @@ describe("Components > SideBar > Menu", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<SideBarMenu {...test.props} />);
+        root = create(
+          <MemoryRouter>
+            <SideBarMenu {...test.props} />
+          </MemoryRouter>,
+        );
       });
       expect(root).toMatchSnapshot();
     });

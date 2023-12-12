@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components > SideBar > User should render the component generic 1`] = `
-<div
-  className="userLocation MuiBox-root css-0"
+<a
+  className="userLocation"
+  href="/profile"
+  onClick={[Function]}
 >
   <div
     className="userProfilePicture MuiBox-root css-0"
@@ -15,16 +17,12 @@ exports[`Components > SideBar > User should render the component generic 1`] = `
   <div
     className="usernameContainer MuiBox-root css-0"
   >
-    <div
-      className="userName MuiBox-root css-0"
-    >
-      Arnaud B
-    </div>
-    <div
-      className="userMail MuiBox-root css-0"
-    >
-      arnaud.bourgoin@gmail.com
-    </div>
+    <h3
+      className="userName"
+    />
+    <h3
+      className="userMail"
+    />
   </div>
-</div>
+</a>
 `;

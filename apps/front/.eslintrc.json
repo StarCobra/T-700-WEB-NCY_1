@@ -51,21 +51,7 @@
         // Règles spécifiques à l'import
         "import/no-anonymous-default-export": "off",
         "import/max-dependencies": "off",
-        "import/order": "off",
-
-        // Règles Prettier
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": false,
-                "trailingComma": "all",
-                "bracketSpacing": true,
-                "bracketSameLine": true,
-                "parser": "babel",
-                "printWidth": 140,
-                "tabWidth": 2
-            }
-        ]
+        "import/order": "off"
     },
     "settings": {
         "react": {

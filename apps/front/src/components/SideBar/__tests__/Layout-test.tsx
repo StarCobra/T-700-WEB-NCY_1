@@ -1,5 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
 import Layout from "../Layout";
 
 describe("Components > SideBar > Layout", () => {
@@ -13,7 +14,11 @@ describe("Components > SideBar > Layout", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<Layout {...test.props} />);
+        root = create(
+          <MemoryRouter>
+            <Layout {...test.props} />
+          </MemoryRouter>,
+        );
       });
       expect(root).toMatchSnapshot();
     });

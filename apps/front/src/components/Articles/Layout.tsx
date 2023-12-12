@@ -6,21 +6,13 @@ import { Box } from "@mui/material";
 export default function Layout() {
   return (
     <Box className="articleMasterContainer">
-      <Box className="articleSampleContainer">
-        <OneArticle />
-      </Box>
+      <OneArticle />
 
-      <Box className="articleSampleContainer">
-        <OneArticle />
-      </Box>
+      <OneArticle />
 
-      <Box className="articleSampleContainer">
-        <OneArticle />
-      </Box>
+      <OneArticle />
 
-      <Box className="articleSampleContainer">
-        <OneArticle />
-      </Box>
+      <OneArticle />
     </Box>
   );
 }

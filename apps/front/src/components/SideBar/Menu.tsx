@@ -26,7 +26,7 @@ export default function Menu() {
         <Box className="menuLabel">Home</Box>
       </Link>
 
-      <Link to={"/profile"} className="Menu">
+      <Link to={"/"} className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export default function Menu() {
           </svg>
         </Box>
 
-        <Box className="menuLabel">Profil</Box>
+        <Box className="menuLabel">Settings</Box>
       </Link>
 
       <Link to={"/articles"} className="Menu">
