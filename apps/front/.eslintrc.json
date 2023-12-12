@@ -1,0 +1,61 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["prettier"],
+    "rules": {
+        // Règles spécifiques à votre projet
+        "comma-dangle": 0,
+        "curly": [2, "all"],
+        "eol-last": "off",
+        "eqeqeq": [2, "smart"],
+
+        // Règles désactivées
+        "keyword-spacing": "off",
+        "no-extra-semi": "off",
+        "no-mixed-spaces-and-tabs": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+
+        // Règles spécifiques à React
+        "react/no-did-mount-set-state": 0,
+        "react/jsx-no-bind": [
+            "error",
+            {
+                "ignoreRefs": true,
+                "allowArrowFunctions": true,
+                "allowFunctions": true,
+                "allowBind": true
+            }
+        ],
+        "react/jsx-no-duplicate-props": [
+            "error",
+            {
+                "ignoreCase": true
+            }
+        ],
+        "react/jsx-no-undef": "error",
+
+        // Règles spécifiques à l'import
+        "import/no-anonymous-default-export": "off",
+        "import/max-dependencies": "off",
+        "import/order": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}

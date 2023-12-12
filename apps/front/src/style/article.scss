@@ -3,23 +3,8 @@
 .dataContainer{
     max-height: 95.25%;
     margin:5px;
+    overflow-y: auto;
 }
-
-// .keywordFilterContainer{
-//     display:flex;
-//     background-color: $bg-color;
-//     border:$borderColor 2px solid;
-//     border-radius: $borderRadius;
-//     margin:5px;
-//     padding:5px;
-//     .selectFilter{
-//         display: flex;
-//         flex-grow: 1;
-//         justify-content: center;
-//         align-items: center;
-        
-//     }
-// }
 
 .keywordFilterContainer{
     display: flex;
@@ -131,6 +116,59 @@
                 color:$bg-color-light;
             }
 
+        }
+    }
+}
+
+.fullArticleDisplay{
+    display: flex;
+    flex-direction: column;
+    .articleHeader{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding:5px;
+        .articleThumbnail{
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            img{
+                max-width: 300px;
+                max-height: 300px;
+                border-radius:$borderRadius;
+            }
+        }
+        .articleTitleContainer{
+            flex-grow: 10;
+            display: flex;
+            flex-direction: column;
+            color: $borderColor;
+            .title{
+                flex-grow: 10;
+                margin-left: auto;
+                margin-right: 15%;
+                font-size: 40px;
+                margin-bottom: 5px;
+            }
+            .dateAndSource{
+                flex-grow: 2;
+                margin-left: auto;
+                margin-right: 15%;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .fullArticleContent{
+        max-height: 100%;
+        overflow-y: auto;
+        display: inline-block;
+        h3{
+            color:$borderColor;
+            text-decoration: underline;
+        }
+        p{
+            text-align: justify;
         }
     }
 }
