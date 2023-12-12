@@ -8,10 +8,19 @@ $borderColorHover: #ff804a;
 $borderColorClick:#f56020;
 $borderColorLight:#d49d42;
 $borderRadius:5px;
+$errorFontColor:#ff6767;
+$tabletWidth:1024px;
+$smartphoneWidth:768px;
+
 
 .hidden{
     display:none !important;
 }
+
+::selection {
+    background-color: $borderColorLight;
+    color: white;
+  }
 
 button{
     background-color: $borderColor;

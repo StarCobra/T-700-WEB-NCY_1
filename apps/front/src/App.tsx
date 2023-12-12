@@ -12,7 +12,6 @@ function App() {
     <Router>
       <Box className="layoutContainer">
         <SideBarLayout />
-
         <Box className="displayContainer">
           <Routes>
             <Route path="/" element={<CryptoLayout />} />
