@@ -1,7 +1,9 @@
 import * as React from 'react';
 import '../../style/admin.scss';
-import {Box, Button, MenuItem, TextField} from "@mui/material";
+import {Box, MenuItem, TextField} from "@mui/material";
 import {useState} from "react";
+import NewRssModal from './GlobalSettingFormModals/NewRssModal';
+import NewCryptoModal from './GlobalSettingFormModals/NewCryptoModal';
 
 export default function GlobalSettingForm() {
     const [crypto, setCrypto] = useState("")
@@ -66,7 +68,7 @@ export default function GlobalSettingForm() {
         </Box>
         <Box className="chooseRss">
             <label>Add RSS flux :</label>
-            <Button>Add new RSS flux</Button>
+            <NewRssModal />
         </Box>
         <Box className="removeRss">
             <label>Remove RSS flux :</label>
@@ -84,7 +86,7 @@ export default function GlobalSettingForm() {
         </Box>
         <Box className="addCrypto">
             <label>Add new crypto :</label>
-            <Button>Add new crypto</Button>
+            <NewCryptoModal />
         </Box>
         <Box className="removeCrypto">
             <label>Remove a crypto</label>

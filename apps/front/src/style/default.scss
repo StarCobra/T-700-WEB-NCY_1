@@ -6,12 +6,12 @@ body {
 }
 
 button{
-    background-color: transparent;
-    color: $borderColor;
+    background-color: transparent !important;
+    color: $borderColor !important;
     &:hover{
-        border:solid 1px $borderColor;
-        background-color: $buttonHoverBg;
-        color:white;
+        border:solid 1px $borderColor !important;
+        background-color: $buttonHoverBg !important;
+        color:white !important;
     }
 }
 
