@@ -1,0 +1,41 @@
+@import 'Config/config';
+
+.errorModal{
+    width: 20% !important;
+    background-color: $bg-color-semilight !important;
+    border: 2px solid $errorFontColor !important;
+    border-radius: $borderRadius;
+    outline: none;
+    color: $errorFontColor;
+    .flexTitle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .titleContainer{
+            display: flex;
+            align-items: center;
+            flex-grow:2;
+        }
+        .iconContainer{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            flex-grow: 1;
+            svg{
+                font-size: 40px;
+            }
+        }
+    }
+}
+  
+@media (max-width:$tabletWidth) {
+    .errorModal{
+        width:40% !important;
+    }
+}
+
+@media (max-width:$smartphoneWidth) {
+    .errorModal{
+        width:30% !important;
+    }
+}
