@@ -6,16 +6,18 @@ describe("Components > Profile > Information", () => {
   const tests = [
     {
       description: "generic",
-      props: {},
+      props: {
+        resource: {},
+      },
     },
   ];
+
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
-      let root;
       await act(async () => {
-        root = create(<Information {...test.props} />);
+        const root = create(<Information {...test.props} />);
+        expect(root).toMatchSnapshot();
       });
-      expect(root).toMatchSnapshot();
     });
   });
 });

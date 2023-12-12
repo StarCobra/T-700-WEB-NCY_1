@@ -12,8 +12,10 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
       src="default"
     />
   </div>
-  <div
-    className="userLocation MuiBox-root css-0"
+  <a
+    className="userLocation"
+    href="/profile"
+    onClick={[Function]}
   >
     <div
       className="userProfilePicture MuiBox-root css-0"
@@ -26,23 +28,21 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     <div
       className="usernameContainer MuiBox-root css-0"
     >
-      <div
-        className="userName MuiBox-root css-0"
-      >
-        Arnaud B
-      </div>
-      <div
-        className="userMail MuiBox-root css-0"
-      >
-        arnaud.bourgoin@gmail.com
-      </div>
+      <h3
+        className="userName"
+      />
+      <h3
+        className="userMail"
+      />
     </div>
-  </div>
+  </a>
   <div
     className="differentMenus MuiBox-root css-0"
   >
-    <div
-      className="Menu MuiBox-root css-0"
+    <a
+      className="Menu"
+      href="/"
+      onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
@@ -67,9 +67,11 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
       >
         Home
       </div>
-    </div>
-    <div
-      className="Menu MuiBox-root css-0"
+    </a>
+    <a
+      className="Menu"
+      href="/"
+      onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
@@ -92,11 +94,13 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
       <div
         className="menuLabel MuiBox-root css-0"
       >
-        Profil
+        Settings
       </div>
-    </div>
-    <div
-      className="Menu MuiBox-root css-0"
+    </a>
+    <a
+      className="Menu"
+      href="/articles"
+      onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
@@ -121,9 +125,11 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
       >
         Articles
       </div>
-    </div>
-    <div
-      className="Menu MuiBox-root css-0"
+    </a>
+    <a
+      className="Menu"
+      href="/logout"
+      onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
@@ -148,7 +154,7 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
       >
         Logout
       </div>
-    </div>
+    </a>
   </div>
 </div>
 `;

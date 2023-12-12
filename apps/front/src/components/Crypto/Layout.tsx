@@ -1,9 +1,13 @@
 import React from "react";
 import CryptoArray from "../Crypto/Array";
+import CryptoChart from "../Crypto/Chart";
 import Select from "../Select";
 import { Box } from "@mui/material";
 
 export default function Layout() {
+  const [valueCrypto, setValueCrypto] = React.useState("");
+
+  // TODO : remplacer par valeur de l'API
   const options = [
     { value: "BTC", label: "BTC" },
     { value: "ETH", label: "ETH" },
@@ -14,18 +18,166 @@ export default function Layout() {
     { value: "LINK", label: "LINK" },
   ];
 
+  // TODO : remplacer par valeur de l'API
+  const resource = [
+    {
+      id: "BTC",
+      current_price: 50000,
+      percent_price_day: 0.5,
+      highest_price_day: 55000,
+      lowest_price_day: 45000,
+    },
+    {
+      id: "ETH",
+      current_price: 5000,
+      percent_price_day: 0.5,
+      highest_price_day: 5500,
+      lowest_price_day: 4500,
+    },
+    {
+      id: "SOL",
+      current_price: 500,
+      percent_price_day: 0.5,
+      highest_price_day: 550,
+      lowest_price_day: 450,
+    },
+    {
+      id: "ADA",
+      current_price: 5,
+      percent_price_day: 0.5,
+      highest_price_day: 5.5,
+      lowest_price_day: 4.5,
+    },
+    {
+      id: "DOT",
+      current_price: 50,
+      percent_price_day: 0.5,
+      highest_price_day: 55,
+      lowest_price_day: 45,
+    },
+    {
+      id: "LUNA",
+      current_price: 50,
+      percent_price_day: 0.5,
+      highest_price_day: 55,
+      lowest_price_day: 45,
+    },
+    {
+      id: "LINK",
+      current_price: 50,
+      percent_price_day: 0.5,
+      highest_price_day: 55,
+      lowest_price_day: 45,
+    },
+  ];
+
+  // TODO : remplacer par valeur de l'API
+  const test = [
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6629.81,
+      current_price: 6650.5,
+      highest_price_day: 6623.04,
+      lowest_price_day: 6633.33,
+    },
+    {
+      id: "BTC",
+      change_price_day: 6610,
+      current_price: 6600,
+      highest_price_day: 6630,
+      lowest_price_day: 6550,
+    },
+  ];
+
   return (
     <Box className="ArrayDisplay">
       <Select
         name="Select"
         label="Select a crypto(s):"
-        type="multiple"
         options={options}
-        // eslint-disable-next-line prettier/prettier
-        handleChange={(e: any) => console.log(e.target.value)}
+        handleChange={(e: any) => setValueCrypto(e.target.value)}
       />
 
-      <CryptoArray />
+      <CryptoChart
+        resource={test}
+        title={
+          valueCrypto !== ""
+            ? `CandleStick of ${valueCrypto}`
+            : "Select a crypto"
+        }
+      />
+
+      <CryptoArray resource={resource} />
     </Box>
   );
 }

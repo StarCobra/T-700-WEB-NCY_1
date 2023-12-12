@@ -1,47 +1,98 @@
 import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 
-export default function Information() {
+export default function Information(props: any) {
+  const { user } = props;
+
+  const [edit, setEdit] = React.useState(false);
+
   return (
-    <Box className="centeringDiv">
-      <Box className="profileInfoContainer">
-        <Box id="usernameLabel" className="labelInfo">
-          Username :
-        </Box>
+    <Box className="profileInfoContainer">
+      <Box
+        id="usernameBox"
+        className="labelInfo"
+        display="flex"
+        flexDirection="row"
+        gap="10px"
+        alignItems="center"
+      >
+        <h3>Username :</h3>
 
-        <Box id="username" className="userInfo">
-          <p>Arnaud Bourgoin</p>
+        {edit ? (
+          <TextField
+            id="standard-basic"
+            type="text"
+            label="Username"
+            variant="standard"
+            defaultValue={user?.name}
+          />
+        ) : (
+          <h3>{user?.name}</h3>
+        )}
+      </Box>
 
-          <TextField id="standard-basic" label="Username" className="hidden" variant="standard" />
-        </Box>
+      <Box
+        id="mailBox"
+        className="labelInfo"
+        display="flex"
+        flexDirection="row"
+        gap="10px"
+        alignItems="center"
+      >
+        <h3>E-mail :</h3>
 
-        <Box id="mailLabel" className="labelInfo">
-          Email Address :
-        </Box>
+        {edit ? (
+          <TextField
+            id="standard-basic"
+            type="email"
+            label="E-mail"
+            variant="standard"
+            defaultValue={user?.mail}
+          />
+        ) : (
+          <h3>{user?.mail}</h3>
+        )}
+      </Box>
 
-        <Box id="mail" className="userInfo">
-          <p>Arnaudbrg@gmail.com</p>
+      <Box
+        id="birhtBox"
+        className="labelInfo"
+        display="flex"
+        flexDirection="row"
+        gap="10px"
+        alignItems="center"
+      >
+        <h3>Birth date :</h3>
 
-          <TextField id="standard-basic" label="Mail" className="hidden" variant="standard" />
-        </Box>
+        {edit ? (
+          <TextField
+            id="standard-basic"
+            type="date"
+            variant="standard"
+            defaultValue={user?.birth_date}
+          />
+        ) : (
+          <h3>{user?.birth_date}</h3>
+        )}
+      </Box>
 
-        <Box id="birthLabel" className="labelInfo">
-          Birth Date :
-        </Box>
+      <Box
+        className="buttonDiv"
+        display="flex"
+        flexDirection="column"
+        gap="20px"
+        marginTop="20px"
+      >
+        <Button
+          id="edit"
+          onClick={() => {
+            setEdit(!edit);
+          }}
+        >
+          Edit my profile
+        </Button>
 
-        <Box id="birth" className="userInfo">
-          <p>2000-03-10</p>
-
-          <TextField id="standard-basic" label="A CHANGER" className="hidden" variant="standard" />
-        </Box>
-
-        <Box id="edit" className="buttonDiv">
-          <Button>Edit my profile</Button>
-        </Box>
-
-        <Box id="delete" className="buttonDiv">
-          <Button>Delete my profile</Button>
-        </Box>
+        <Button id="delete">Delete my profile</Button>
       </Box>
     </Box>
   );

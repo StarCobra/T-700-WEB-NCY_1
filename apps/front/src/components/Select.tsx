@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, MenuItem, TextField } from "@mui/material";
 
-// eslint-disable-next-line prettier/prettier
 export default function Select(props: any) {
   const {
     name = "Select",

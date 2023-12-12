@@ -1,10 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   return (
     <Box className="differentMenus">
-      <Box className="Menu">
+      <Link to="/" className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +13,8 @@ export default function Menu() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="menuIcon">
+            className="menuIcon"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -22,9 +24,9 @@ export default function Menu() {
         </Box>
 
         <Box className="menuLabel">Home</Box>
-      </Box>
+      </Link>
 
-      <Box className="Menu">
+      <Link to={"/"} className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +34,8 @@ export default function Menu() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="menuIcon">
+            className="menuIcon"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -41,10 +44,10 @@ export default function Menu() {
           </svg>
         </Box>
 
-        <Box className="menuLabel">Profil</Box>
-      </Box>
+        <Box className="menuLabel">Settings</Box>
+      </Link>
 
-      <Box className="Menu">
+      <Link to={"/articles"} className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +55,8 @@ export default function Menu() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="menuIcon">
+            className="menuIcon"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -62,9 +66,9 @@ export default function Menu() {
         </Box>
 
         <Box className="menuLabel">Articles</Box>
-      </Box>
+      </Link>
 
-      <Box className="Menu">
+      <Link to="/logout" className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +76,8 @@ export default function Menu() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="menuIcon">
+            className="menuIcon"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -82,7 +87,7 @@ export default function Menu() {
         </Box>
 
         <Box className="menuLabel">Logout</Box>
-      </Box>
+      </Link>
     </Box>
   );
 }
