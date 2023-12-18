@@ -13,8 +13,8 @@ export default function User(props: any) {
       </Box>
 
       <Box className="usernameContainer">
-        <h3 className="userName">{user?.name}</h3>
-        <h3 className="userMail">{user?.mail}</h3>
+        <Box className="userName">{user?.name}</Box>
+        <Box className="userMail">{user?.mail}</Box>
       </Box>
     </Link>
   );
