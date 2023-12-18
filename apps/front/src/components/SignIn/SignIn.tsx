@@ -1,6 +1,6 @@
 import { Sheet } from "@mui/joy";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import GoogleButton from 'react-google-button'
 import React from "react";
 import '../../style/default.scss'
@@ -32,6 +32,7 @@ export default function SignIn() {
               }}
               variant="outlined"
             >
+              <h3>Name</h3>
               <TextField
                 style={{backgroundColor: "white"}}
                 name="name"
@@ -39,7 +40,16 @@ export default function SignIn() {
                 placeholder="Name"
                 label="Name"
               />
-              {/* <DatePicker/>   */}
+              <h3>Birthdate</h3>
+              <TextField
+                style={{backgroundColor: "white"}}
+                id= "birthdate"
+                name= "birthdate"
+                label= "Birthdate"
+                type= "date"
+                variant="outlined"
+                />  
+                <h3>Email</h3>
               <TextField
                 style={{backgroundColor: "white"}}
                 name="email"
@@ -47,6 +57,7 @@ export default function SignIn() {
                 placeholder="E-mail"
                 label="E-mail"
               />
+              <h3>Password</h3>
               <TextField
                 style={{backgroundColor: "white"}}
                 name="password"
