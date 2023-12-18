@@ -1,15 +1,19 @@
 import * as React from "react";
 import "../../style/admin.scss";
-import { Box, MenuItem, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
 import NewRssModal from "./FormModals/NewRssModal";
 import NewCryptoModal from "./FormModals/NewCryptoModal";
 import Select from "../Select";
 
 export default function Form() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [crypto, setCrypto] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [article, setArticle] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [rssFlux, setRSSFlux] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [removeCrypto, setRemoveCrypto] = useState([]);
 
   // TODO : remplacer par valeur de l'API

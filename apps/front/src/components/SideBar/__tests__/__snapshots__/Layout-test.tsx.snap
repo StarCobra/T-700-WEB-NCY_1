@@ -4,14 +4,16 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
 <div
   className="sideBarContainer MuiBox-root css-0"
 >
-  <div
-    className="logoLocation MuiBox-root css-0"
+  <a
+    className="logoLocation"
+    href="/"
+    onClick={[Function]}
   >
     <img
       alt=""
       src="default"
     />
-  </div>
+  </a>
   <a
     className="userLocation"
     href="/profile"
@@ -28,12 +30,16 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     <div
       className="usernameContainer MuiBox-root css-0"
     >
-      <h3
-        className="userName"
-      />
-      <h3
-        className="userMail"
-      />
+      <div
+        className="userName MuiBox-root css-0"
+      >
+        ArnaudBrg
+      </div>
+      <div
+        className="userMail MuiBox-root css-0"
+      >
+        ArnaudBrg@gmail.com
+      </div>
     </div>
   </a>
   <div
@@ -42,23 +48,29 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     <a
       className="Menu"
       href="/"
+      id="menu1"
       onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
       >
+        <style
+          dangerouslySetInnerHTML={
+            {
+              "__html": ".css-i4bv87-MuiSvgIcon-root{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}",
+            }
+          }
+          data-emotion="css i4bv87-MuiSvgIcon-root"
+        />
         <svg
-          className="menuIcon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="HomeOutlinedIcon"
+          focusable="false"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="m12 5.69 5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
           />
         </svg>
       </div>
@@ -70,24 +82,22 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     </a>
     <a
       className="Menu"
-      href="/"
+      href="/settings"
+      id="menu2"
       onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
       >
         <svg
-          className="menuIcon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="SettingsOutlinedIcon"
+          focusable="false"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
           />
         </svg>
       </div>
@@ -100,23 +110,21 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     <a
       className="Menu"
       href="/articles"
+      id="menu3"
       onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
       >
         <svg
-          className="menuIcon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="DescriptionOutlinedIcon"
+          focusable="false"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"
           />
         </svg>
       </div>
@@ -129,23 +137,21 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     <a
       className="Menu"
       href="/logout"
+      id="menu4"
       onClick={[Function]}
     >
       <div
         className="menuIcon MuiBox-root css-0"
       >
         <svg
-          className="menuIcon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="LogoutOutlinedIcon"
+          focusable="false"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="m17 8-1.41 1.41L17.17 11H9v2h8.17l-1.58 1.58L17 16l4-4-4-4zM5 5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2H5V5z"
           />
         </svg>
       </div>
