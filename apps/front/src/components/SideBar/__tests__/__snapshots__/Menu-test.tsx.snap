@@ -35,7 +35,7 @@ exports[`Components > SideBar > Menu should render the component generic 1`] = `
   </a>
   <a
     className="Menu"
-    href="/"
+    href="/settings"
     onClick={[Function]}
   >
     <div

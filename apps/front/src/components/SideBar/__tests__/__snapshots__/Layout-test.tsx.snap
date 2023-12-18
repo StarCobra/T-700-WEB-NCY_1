@@ -4,14 +4,16 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
 <div
   className="sideBarContainer MuiBox-root css-0"
 >
-  <div
-    className="logoLocation MuiBox-root css-0"
+  <a
+    className="logoLocation"
+    href="/"
+    onClick={[Function]}
   >
     <img
       alt=""
       src="default"
     />
-  </div>
+  </a>
   <a
     className="userLocation"
     href="/profile"
@@ -70,7 +72,7 @@ exports[`Components > SideBar > Layout should render the component generic 1`] =
     </a>
     <a
       className="Menu"
-      href="/"
+      href="/settings"
       onClick={[Function]}
     >
       <div
