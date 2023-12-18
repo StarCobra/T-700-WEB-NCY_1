@@ -26,7 +26,7 @@ export default function Menu() {
         <Box className="menuLabel">Home</Box>
       </Link>
 
-      <Link to={"/"} className="Menu">
+      <Link to={"/settings"} className="Menu">
         <Box className="menuIcon">
           <svg
             xmlns="http://www.w3.org/2000/svg"

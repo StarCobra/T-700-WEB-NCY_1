@@ -5,13 +5,14 @@ import "../../style/default.scss";
 import "../../style/sidebar.scss";
 import { Box } from "@mui/material";
 import Logo from "../../assets/sideBar/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Layout() {
   return (
     <Box className="sideBarContainer">
-      <Box className="logoLocation">
+      <Link to="/" className="logoLocation">
         <img src={Logo} alt="" />
-      </Box>
+      </Link>
 
       <User />
 
