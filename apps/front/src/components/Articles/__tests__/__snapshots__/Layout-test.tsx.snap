@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Articles > Layout should render the component generic 1`] = `
+<div
+  className="articleMasterContainer MuiBox-root css-0"
+>
+  <div
+    className="articleSample MuiBox-root css-0"
+  >
+    <div
+      className="articleThumbnail MuiBox-root css-0"
+    >
+      <img
+        alt=""
+        src="default"
+      />
+    </div>
+    <div
+      className="articleSampleContent MuiBox-root css-0"
+    >
+      <div
+        className="articleTitle MuiBox-root css-0"
+      >
+        <h3>
+          Bitcoin Collapse
+        </h3>
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <p>
+          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+        </p>
+      </div>
+      <div
+        className="articleDateSample MuiBox-root css-0"
+      >
+        <h4>
+          November 13, 2023
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    className="articleSample MuiBox-root css-0"
+  >
+    <div
+      className="articleThumbnail MuiBox-root css-0"
+    >
+      <img
+        alt=""
+        src="default"
+      />
+    </div>
+    <div
+      className="articleSampleContent MuiBox-root css-0"
+    >
+      <div
+        className="articleTitle MuiBox-root css-0"
+      >
+        <h3>
+          Bitcoin Collapse
+        </h3>
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <p>
+          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+        </p>
+      </div>
+      <div
+        className="articleDateSample MuiBox-root css-0"
+      >
+        <h4>
+          November 13, 2023
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    className="articleSample MuiBox-root css-0"
+  >
+    <div
+      className="articleThumbnail MuiBox-root css-0"
+    >
+      <img
+        alt=""
+        src="default"
+      />
+    </div>
+    <div
+      className="articleSampleContent MuiBox-root css-0"
+    >
+      <div
+        className="articleTitle MuiBox-root css-0"
+      >
+        <h3>
+          Bitcoin Collapse
+        </h3>
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <p>
+          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+        </p>
+      </div>
+      <div
+        className="articleDateSample MuiBox-root css-0"
+      >
+        <h4>
+          November 13, 2023
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    className="articleSample MuiBox-root css-0"
+  >
+    <div
+      className="articleThumbnail MuiBox-root css-0"
+    >
+      <img
+        alt=""
+        src="default"
+      />
+    </div>
+    <div
+      className="articleSampleContent MuiBox-root css-0"
+    >
+      <div
+        className="articleTitle MuiBox-root css-0"
+      >
+        <h3>
+          Bitcoin Collapse
+        </h3>
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <p>
+          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+        </p>
+      </div>
+      <div
+        className="articleDateSample MuiBox-root css-0"
+      >
+        <h4>
+          November 13, 2023
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;
