@@ -11,6 +11,8 @@ router.get("/", async (req, res) => {
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmids}`
     );
     const json = await response.json();
+
+    console.log(json)
     const transformedData = await transformJSON(json);
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
@@ -88,6 +90,11 @@ router.get("/:cmid", verifyToken, async (req, res) => {
 });
 
 function transformJSON(json) {
+  
+  if (!Array.isArray(json)) {
+    return [];
+  }
+
   const transformedData = json.map((crypto) => ({
     id: crypto.id,
     name: crypto.name,
