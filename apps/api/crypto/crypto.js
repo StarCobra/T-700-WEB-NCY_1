@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     const json = await response.json();
     const transformedData = await transformJSON(json);
 
-    res.status(200).send({ data: transformedData });
+    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   } else {
     res.status(500).send({ message: "Error parameters" });
   }
