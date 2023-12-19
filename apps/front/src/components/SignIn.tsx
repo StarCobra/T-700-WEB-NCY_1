@@ -2,7 +2,7 @@ import { Sheet } from "@mui/joy";
 import { Box, Button, TextField } from "@mui/material";
 import GoogleButton from 'react-google-button'
 import React from "react";
-import '../../style/default.scss'
+import '../style/Default/default.scss'
 
 export default function SignIn() {
 
@@ -44,7 +44,6 @@ export default function SignIn() {
                 style={{backgroundColor: "white"}}
                 id= "birthdate"
                 name= "birthdate"
-                label= "Birthdate"
                 type= "date"
                 variant="outlined"
                 />  

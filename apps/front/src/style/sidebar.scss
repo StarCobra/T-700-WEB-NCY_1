@@ -82,6 +82,15 @@
                 color:$borderColorLight;
                 text-decoration: underline;
             }
+
+            .login{
+                grid-area: userMail;
+                font-size: 16px;
+                font-style: oblique;
+                color:$borderColorLight;
+                text-decoration: underline;
+                font-weight: bold;
+            }
         }
 
         &:hover{
