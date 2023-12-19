@@ -6,17 +6,13 @@ import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function Layout() {
-  const [valueCrypto, setValueCrypto] = React.useState("");
+  const [valueCrypto, setValueCrypto] = React.useState("bitcoin");
 
   // TODO : remplacer par valeur de l'API
   const options = [
-    { value: "BTC", label: "BTC" },
-    { value: "ETH", label: "ETH" },
-    { value: "SOL", label: "SOL" },
-    { value: "ADA", label: "ADA" },
-    { value: "DOT", label: "DOT" },
-    { value: "LUNA", label: "LUNA" },
-    { value: "LINK", label: "LINK" },
+    { value: "bitcoin", label: "BTC" },
+    { value: "ethereum", label: "ETH" },
+    { value: "solana", label: "SOL" },
   ];
 
   // TODO : remplacer par valeur de l'API
@@ -130,41 +126,12 @@ export default function Layout() {
       highest_price_day: 6630,
       lowest_price_day: 6550,
     },
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
   ];
 
   return (
     <Box className="ArrayDisplay">
       <Box>
         <Select
-          name="Select"
           label="Select a crypto(s):"
           options={options}
           handleChange={(e: any) => setValueCrypto(e.target.value)}

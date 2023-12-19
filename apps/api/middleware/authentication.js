@@ -1,21 +1,28 @@
 import jwt from "jsonwebtoken";
 
 export function verifyToken(req, res, next) {
-  const token =
-    req.headers.authorization && req.headers.authorization.split(" ")[1];
+  const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
+  const queryParams = req.query.params;
 
-  if (!token) {
+  if (!token && !req.originalUrl.startsWith('/articles')) {
     return res.status(401).json({ message: "Token non fourni" });
   }
 
+  if(!token && req.originalUrl.startsWith('/articles')) {
+    req.user = null;
+    req.params = null;
+    return next();
+  }
+
   jwt.verify(token, process.env.SECRET_KEY_JWT, (err, user) => {
+
     if (err) {
       if (err.name === "TokenExpiredError") {
         const refreshToken = jwt.sign(req.user, process.env.SECRET_KEY_JWT, {
           expiresIn: "1h",
         });
 
-        if (!refreshToken) {
+        if (!refreshToken && !req.originalUrl.startsWith('/articles')) {
           return res.status(401).json({ message: "RefreshToken expiré" });
         }
 
@@ -38,6 +45,9 @@ export function verifyToken(req, res, next) {
             res.setHeader("Authorization", `Bearer ${newToken}`);
 
             req.user = refreshedUser;
+            req.params = queryParams;
+            
+            
             next();
           }
         );
@@ -49,15 +59,16 @@ export function verifyToken(req, res, next) {
         });
       }
     } else {
-      req.user = user;
-      next();
+        req.user = user;
+        req.params = queryParams;
+        next();
+     
     }
   });
 }
 
 export function isAdmin(req, res, next) {
   const user = req.user;
-  console.log(user);
   if (user.roles === "ADMIN") {
     next();
   } else {
