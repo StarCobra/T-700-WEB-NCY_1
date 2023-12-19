@@ -90,7 +90,6 @@ router.get("/login-failed", (req, res) => {
 });
 
 router.get("/profile", verifyToken, (req, res) => {
-  console.log(req.user);
   res.status(200).json({ user: req.user });
 });
 

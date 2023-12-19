@@ -91,9 +91,11 @@ function transformJSON(json) {
   const transformedData = json.map((crypto) => ({
     id: crypto.id,
     name: crypto.name,
+    change_price_day: crypto.price_change_24h,
     current_price: crypto.current_price,
     highest_price_day: crypto.high_24h,
     lowest_price_day: crypto.low_24h,
+    updated_at: crypto.last_updated,
     image: crypto.image,
   }));
 
