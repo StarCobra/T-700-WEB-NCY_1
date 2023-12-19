@@ -2,7 +2,7 @@ import { Sheet } from "@mui/joy";
 import { Box, Button, TextField } from "@mui/material";
 import GoogleButton from 'react-google-button'
 import React from "react";
-import '../../style/default.scss'
+import '../style/Default/default.scss'
 
 export default function LogIn() {
 
