@@ -3,7 +3,7 @@
 .dataContainer{
     max-height: 95.25%;
     margin:5px;
-    overflow-y: auto;
+    // overflow-y: auto;
 }
 
 .keywordFilterContainer{
@@ -64,37 +64,15 @@
       }    
 
 .articleMasterContainer{
-    max-height:90%;
     overflow-y: auto;
-}
-.articleSampleContainer{
     display: inline-block;
-    padding:5px;
-    border:solid $borderColor 2px;
-    background-color: $bg-color;
-    border-radius: $borderRadius;
-    margin-bottom: 5px;
+}
     .articleSample{
-        display: flex;
-        flex-grow: 1;
-
-        .articleThumbnail{
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 300px;
-            flex-grow: 2;
-            margin-right: 5px;
-            img{
-            max-width: 300px;
-            border-radius: $borderRadius;
-            }
-        }
-        .articleSampleContent{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        display: grid;
+        gap:5px;
+        padding:5px;
+        grid-template-areas: "thumbnail content content";
+        border-bottom: 1px solid $borderColor;
             .articleTitle{
                 flex-grow: 10;
                 display: flex;
@@ -104,6 +82,7 @@
             }
             .articleSampleContent{
                 text-justify: auto;
+                display:grid;
                 a{
                     color: $borderColor;
                     &:hover{
@@ -117,8 +96,6 @@
             }
 
         }
-    }
-}
 
 .fullArticleDisplay{
     display: flex;
@@ -170,5 +147,39 @@
         p{
             text-align: justify;
         }
+    }
+}
+
+.articleDisplayContainer{
+    display:flex;
+    flex-direction: column;
+    overflow-y:unset;
+    .searchBarContainer{
+        flex-grow: 1;
+        display: grid;
+        justify-content: center;
+        position: sticky;
+        top:0;
+        background-color: $bg-color-semilight;
+        border:solid 2px $borderColor;
+        border-radius: $borderRadius;
+        padding:15px;
+        p{
+            display:none;
+        }
+        .textSearch{
+            grid-area: textSearch;
+            padding:5px;
+        }
+        .selectSearchContainer{
+            grid-area: selectContainer;
+            padding:5px;
+            .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+                width:180px;
+            }
+        }
+    }
+    .articleMasterContainer{
+        flex-grow: 11;
     }
 }
