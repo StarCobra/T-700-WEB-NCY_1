@@ -1,6 +1,7 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
 import OneArticle from "../OneArticle";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Components > Articles > OneArticle", () => {
   const tests = [
@@ -13,7 +14,11 @@ describe("Components > Articles > OneArticle", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<OneArticle {...test.props} />);
+        root = create(
+          <MemoryRouter>
+            <OneArticle {...test.props} />
+          </MemoryRouter>,
+        );
       });
       expect(root).toMatchSnapshot();
     });

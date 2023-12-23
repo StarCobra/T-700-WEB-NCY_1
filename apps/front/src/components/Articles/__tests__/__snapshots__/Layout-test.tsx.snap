@@ -2,153 +2,237 @@
 
 exports[`Components > Articles > Layout should render the component generic 1`] = `
 <div
-  className="articleMasterContainer MuiBox-root css-0"
+  className="articleDisplayContainer MuiBox-root css-0"
 >
-  <div
-    className="articleSample MuiBox-root css-0"
+  <form
+    className="searchBarContainer"
   >
     <div
-      className="articleThumbnail MuiBox-root css-0"
-    >
-      <img
-        alt=""
-        src="default"
-      />
-    </div>
-    <div
-      className="articleSampleContent MuiBox-root css-0"
+      className="selectSearchContainer MuiBox-root css-0"
     >
       <div
-        className="articleTitle MuiBox-root css-0"
+        className="selectSearch MuiBox-root css-0"
       >
-        <h3>
-          Bitcoin Collapse
-        </h3>
+        <select
+          onChange={[Function]}
+        >
+          <option
+            value={1}
+          >
+            Income
+          </option>
+          <option
+            value={2}
+          >
+            BTC
+          </option>
+          <option
+            value={3}
+          >
+            Bankrupt
+          </option>
+          <option
+            value={4}
+          >
+            ETH
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <div
+    className="articleMasterContainer MuiBox-root css-0"
+  >
+    <div
+      className="articleSample MuiBox-root css-0"
+    >
+      <div
+        className="articleThumbnail MuiBox-root css-0"
+      >
+        <img
+          src="default"
+        />
       </div>
       <div
         className="articleSampleContent MuiBox-root css-0"
       >
-        <p>
-          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
-        </p>
-      </div>
-      <div
-        className="articleDateSample MuiBox-root css-0"
-      >
-        <h4>
-          November 13, 2023
-        </h4>
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    className="articleSample MuiBox-root css-0"
-  >
     <div
-      className="articleThumbnail MuiBox-root css-0"
-    >
-      <img
-        alt=""
-        src="default"
-      />
-    </div>
-    <div
-      className="articleSampleContent MuiBox-root css-0"
+      className="articleSample MuiBox-root css-0"
     >
       <div
-        className="articleTitle MuiBox-root css-0"
+        className="articleThumbnail MuiBox-root css-0"
       >
-        <h3>
-          Bitcoin Collapse
-        </h3>
+        <img
+          src="default"
+        />
       </div>
       <div
         className="articleSampleContent MuiBox-root css-0"
       >
-        <p>
-          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
-        </p>
-      </div>
-      <div
-        className="articleDateSample MuiBox-root css-0"
-      >
-        <h4>
-          November 13, 2023
-        </h4>
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    className="articleSample MuiBox-root css-0"
-  >
     <div
-      className="articleThumbnail MuiBox-root css-0"
-    >
-      <img
-        alt=""
-        src="default"
-      />
-    </div>
-    <div
-      className="articleSampleContent MuiBox-root css-0"
+      className="articleSample MuiBox-root css-0"
     >
       <div
-        className="articleTitle MuiBox-root css-0"
+        className="articleThumbnail MuiBox-root css-0"
       >
-        <h3>
-          Bitcoin Collapse
-        </h3>
+        <img
+          src="default"
+        />
       </div>
       <div
         className="articleSampleContent MuiBox-root css-0"
       >
-        <p>
-          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
-        </p>
-      </div>
-      <div
-        className="articleDateSample MuiBox-root css-0"
-      >
-        <h4>
-          November 13, 2023
-        </h4>
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    className="articleSample MuiBox-root css-0"
-  >
     <div
-      className="articleThumbnail MuiBox-root css-0"
-    >
-      <img
-        alt=""
-        src="default"
-      />
-    </div>
-    <div
-      className="articleSampleContent MuiBox-root css-0"
+      className="articleSample MuiBox-root css-0"
     >
       <div
-        className="articleTitle MuiBox-root css-0"
+        className="articleThumbnail MuiBox-root css-0"
       >
-        <h3>
-          Bitcoin Collapse
-        </h3>
+        <img
+          src="default"
+        />
       </div>
       <div
         className="articleSampleContent MuiBox-root css-0"
       >
-        <p>
-          In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
-        </p>
-      </div>
-      <div
-        className="articleDateSample MuiBox-root css-0"
-      >
-        <h4>
-          November 13, 2023
-        </h4>
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
       </div>
     </div>
   </div>
