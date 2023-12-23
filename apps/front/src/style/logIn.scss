@@ -1,0 +1,54 @@
+@import "Config/config";
+.centering{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .loginContainer{
+        width:30%;
+        height:50%;
+        gap:10px;
+        display: grid;
+        grid-template-areas: "mail"
+        "pwd"
+        "linkContainer"
+        "googleButton";
+        .mailInput{
+            grid-area: mail;
+        }
+        .pwdInput{
+            grid-area: pwd;
+        }
+        .linkContainer{
+            grid-area: linkContainer;
+            display:flex;
+            .signIn{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: transparent !important;
+                border-radius: $borderRadius;
+                color: $borderColor !important;
+                margin-right:5px;
+                &:hover{
+                    border:solid 1px $borderColor !important;
+                    background-color: $buttonHoverBg !important;
+                    color:white !important;
+                }
+            }
+            .login{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left:5px;
+            }
+        }
+        .googleButton{
+            grid-area: googleButton;
+            display: flex !important;
+            justify-content: center!important;
+            align-items: center!important;
+        }
+    }
+}
