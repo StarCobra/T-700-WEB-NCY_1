@@ -2,12 +2,13 @@ import React from "react";
 import "../../style/article.scss";
 import articleExample from "../../assets/articles/articleExample.jpg";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function OneArticle() {
   return (
     <Box className="articleSample">
       <Box className="articleThumbnail">
-        <img src={articleExample} alt=""></img>
+        <img src={articleExample} />
       </Box>
 
       <Box className="articleSampleContent">
@@ -27,6 +28,10 @@ export default function OneArticle() {
 
         <Box className="articleDateSample">
           <h4>November 13, 2023</h4>
+        </Box>
+
+        <Box className="seeMore">
+          <Link to="/articles/1" className="Menu" id="menu1">Click here to see more ...</Link>
         </Box>
       </Box>
     </Box>
