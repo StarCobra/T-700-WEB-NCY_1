@@ -11,15 +11,15 @@ export default function LogIn() {
         <TextField
           name="email"
           type="email"
-          placeholder="E-mail"
+          placeholder="Your E-mail"
           label="E-mail"
           className="mailInput"
         />
         <TextField
           name="password"
           type="password"
-          placeholder="Votre mot de passe"
-          label="Mot de passe"
+          placeholder="Your password"
+          label="Password"
           className="pwdInput"
         />
 

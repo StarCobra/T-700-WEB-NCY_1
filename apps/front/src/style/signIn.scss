@@ -1,0 +1,101 @@
+@import "Config/config";
+.centering{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .signInContainer{
+        display:grid;
+        gap:10px;
+        grid-template-areas: "nameContainer"
+        "birth"
+        "mail"
+        "pwd"
+        "link"
+        "google";
+        .nameContainer{
+            grid-area: nameContainer;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+        .birthDateContainer{
+            grid-area: birth;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+        .mailContainer{
+            grid-area: mail;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+        .pwdContainer{
+            grid-area: pwd;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+        .linkContainer{
+            grid-area: link;
+            display:flex;
+            .signIn{
+                flex-grow: 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .login{
+                flex-grow: 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent !important;
+                border-radius: $borderRadius;
+                color: $borderColor !important;
+                margin-right:5px;
+                &:hover{
+                    border:solid 1px $borderColor !important;
+                    background-color: $buttonHoverBg !important;
+                    color:white !important;
+                }
+            }
+        }
+        .googleContainer{
+            grid-area: google;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+    }
+}
