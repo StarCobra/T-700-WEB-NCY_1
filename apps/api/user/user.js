@@ -25,14 +25,14 @@ router.post("/register", async (req, res) => {
     const connection = await pool.getConnection();
     if(user.roles === "ADMIN") {
       await connection.query(
-        "INSERT INTO user (name, password, birth_date, roles) VALUES (?, ?, ?, ?)",
-        [user.username, hash, user.birth_date, "ADMIN"]
+        "INSERT INTO user (email, last_name, first_name, password, birth_date, roles) VALUES (?, ?, ?, ?, ?, ?)",
+        [user.email, user.last_name, user.first_name, hash, user.birth_date, "ADMIN"]
       );
     }
     else {
       await connection.query(
-        "INSERT INTO user (name, password, birth_date) VALUES (?, ?, ?)",
-        [user.username, hash, user.birth_date]
+        "INSERT INTO user (email, last_name, first_name, password, birth_date) VALUES (?, ?, ?, ?, ?)",
+        [user.email, user.last_name, user.first_name, hash, user.birth_date]
       );
     }
 
