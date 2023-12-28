@@ -8,11 +8,10 @@ router.get("/", async (req, res) => {
 
   if (cmids) {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmids}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmids}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
     );
     const json = await response.json();
-
-    console.log(json)
+    
     const transformedData = await transformJSON(json);
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
@@ -31,8 +30,7 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
       await connection.query("DELETE FROM crypto WHERE id = ?", [cmid]);
-
-      res.status(201).send("The crypto has been deleted");
+      res.status(201).send(`The crypto : ${cmid} has been deleted`);
     }
     else {
       res.status(400).send("Error parameters")
@@ -73,11 +71,12 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
 });
 
 router.get("/:cmid", verifyToken, async (req, res) => {
+
   const cmid = req.params.cmid;
 
   if (cmid) {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmid}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmid}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
     );
     const json = await response.json();
 
@@ -87,12 +86,15 @@ router.get("/:cmid", verifyToken, async (req, res) => {
   } else {
     res.status(500).send({ message: "Error parameters" });
   }
+  
 });
 
 function transformJSON(json) {
-  
+
   if (!Array.isArray(json)) {
-    return [];
+    return {
+      error: "API error"
+    };
   }
 
   const transformedData = json.map((crypto) => ({
