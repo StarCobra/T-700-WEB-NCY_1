@@ -7,19 +7,21 @@ import { createDatabase } from "../database/create.js";
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "username",
+      usernameField: "email",
       passwordField: "password",
       passReqToCallback: true,
       session: false, // Désactive la gestion de session
     },
-    async (req, username, password, done) => {
-      // Find the user with the given username
-      const query = `SELECT * FROM user WHERE name = ?;`;
-      const values = [username];
+    async (req, email, password, done) => {
+      
 
       try {
         const pool = await createDatabase();
         const connection = await pool.getConnection();
+        
+          // Find the user with the given username
+        const query = `SELECT id, email, first_name, last_name, password, birth_date, image, roles FROM user WHERE email = ?;`;
+        const values = [email];
         const results = await connection.query(query, values);
 
         if (results.length > 0) {
@@ -31,10 +33,23 @@ passport.use(
 
           if (isMatch) {
             // Mot de passe correct, authentification réussie
+
+            const query2 = `SELECT keyword.id, keyword FROM keyword INNER JOIN favorite_keywords ON favorite_keywords.keyword_id = keyword.id
+            INNER JOIN user ON user.id = favorite_keywords.user_id WHERE favorite_keywords.user_id = ?`;
+            const value = [user.id];
+            const results2 = await connection.query(query2, value);
+
+            if(results2.length > 0) {
+              user.favorite_keywords = results2.map(item => ({id: item.id, keyword: item.keyword}));
+            }
             delete user.password;
             const token = jwt.sign(user, process.env.SECRET_KEY_JWT, {
               expiresIn: "1h",
             });
+
+            const query3 = `UPDATE user SET token = ? WHERE id = ?`;
+            const values3 = [token, user.id];
+            await connection.query(query3, values3);
             return done(null, token);
           } else {
             // Mot de passe incorrect
