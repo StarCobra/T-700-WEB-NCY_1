@@ -76,7 +76,8 @@ CREATE TABLE `user` (
     `provider_id` int(11) DEFAULT NULL,
     `provider_name` varchar(50) DEFAULT NULL,
     `roles` varchar(10) DEFAULT 'USER',
-    `image` text DEFAULT NULL
+    `image` text DEFAULT NULL,
+    `token` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

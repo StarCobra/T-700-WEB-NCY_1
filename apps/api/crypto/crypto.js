@@ -60,8 +60,8 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
     const pool = await createDatabase();
     const connection = await pool.getConnection();
     await connection.query(
-      "INSERT INTO crypto (id, name, image) VALUES (?, ?, ?)",
-      [crypto.id, crypto.name, crypto.image]
+      "INSERT INTO crypto (id, name, short_name, image) VALUES (?, ?, ?, ?)",
+      [crypto.id, crypto.name, crypto.symbol, crypto.image]
     );
 
     res.status(201).send("The crypto has been added");
@@ -100,6 +100,7 @@ function transformJSON(json) {
   const transformedData = json.map((crypto) => ({
     id: crypto.id,
     name: crypto.name,
+    short_name: crypto.symbol,
     change_price_day: crypto.price_change_24h,
     current_price: crypto.current_price,
     highest_price_day: crypto.high_24h,
