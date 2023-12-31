@@ -77,7 +77,10 @@ export function verifyToken(req, res, next) {
       }
     } else {
         req.user = user;
-        req.params = queryParams;
+        if(req.originalUrl.startsWith('/articles')) {
+          req.params = queryParams;
+        }
+        
         next();
      
     }

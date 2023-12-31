@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import "./auth-basic.js";
 import { createDatabase } from "../database/create.js";
 import dotenv from "dotenv";
-import { verifyToken } from "../middleware/authentication.js";
+import { verifyToken, isAdmin } from "../middleware/authentication.js";
 
 const router = express.Router();
 
@@ -88,6 +88,28 @@ router.post("/logout", verifyToken, (req, res) => {
 router.get("/login-failed", (req, res) => {
   res.redirect("/users/login?error=auth_failed");
 });
+
+router.patch("/keywords/:keyword_id/restore", verifyToken, isAdmin, async(req,res) => {
+  const keyword_id = req.params.keyword_id
+
+  if(keyword_id) {
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+      const query = "UPDATE keyword SET deleted_at = ? WHERE id = ?";
+      const params = [null, keyword_id]
+      await connection.query(query,params)
+
+      res.status(201).send(`The keyword is restored`);
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
+    }
+    
+  }
+})
+
+
 
 router.delete("/keywords", verifyToken, async(req,res) => {
   const user_id = req.user.id;
