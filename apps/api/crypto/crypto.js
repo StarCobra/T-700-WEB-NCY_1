@@ -43,7 +43,7 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
       res.status(201).send(`The crypto : ${cmid} has been deleted`);
     }
     else {
-      res.status(400).send("Error parameters")
+      res.status(400).send({message: "Error parameters"})
     }
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
