@@ -1,7 +1,11 @@
 import express from "express";
 import { verifyToken, isAdmin } from "../middleware/authentication.js";
 import { createDatabase } from "../database/create.js";
+import dotenv from "dotenv";
+
 const router = express.Router();
+
+dotenv.config();
 
 router.get("/", async (req, res) => {
   const cmids = req.query.cmids;
@@ -29,7 +33,13 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
     if(cmid) {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
-      await connection.query("DELETE FROM crypto WHERE id = ?", [cmid]);
+
+      const currentDate = new Date();
+
+      // Format de date pour MySQL
+      const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+
+      await connection.query("UPDATE crypto SET deleted_at = ? WHERE id = ?", [formattedDate,cmid]);
       res.status(201).send(`The crypto : ${cmid} has been deleted`);
     }
     else {
@@ -55,19 +65,35 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
   // User MUST be logged in as well as the ADMINISTRATOR. Add a cryptocurrency to your plat-form.
   // A form must be attached to the request and contain at least the cryptocurrency code,
   // their full name and a URL for the image to which it represents
-  try {
     const crypto = req.body.crypto;
-    const pool = await createDatabase();
-    const connection = await pool.getConnection();
-    await connection.query(
-      "INSERT INTO crypto (id, name, short_name, image) VALUES (?, ?, ?, ?)",
-      [crypto.id, crypto.name, crypto.symbol, crypto.image]
-    );
 
-    res.status(201).send("The crypto has been added");
-  } catch (error) {
-    res.status(500).send({ message: error + "Internal server error" });
-  }
+    try {
+
+      const response = await fetch(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.id}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+      );
+
+      if(response.ok) {
+        const pool = await createDatabase();
+        const connection = await pool.getConnection();
+        await connection.query(
+          "INSERT INTO crypto (id, name, short_name, image) VALUES (?, ?, ?, ?)",
+          [crypto.id, crypto.name, crypto.short_name, crypto.image]
+        );
+
+        res.status(201).send(`The crypto : ${crypto.name} has been added`);
+      }
+      
+    } catch (error) {
+
+      res.status(500).send({ message: error + "Internal server error" });
+
+    }
+    
+
+   
+
+
 });
 
 router.get("/:cmid", verifyToken, async (req, res) => {
@@ -84,7 +110,7 @@ router.get("/:cmid", verifyToken, async (req, res) => {
 
     res.status(200).send({ data: transformedData });
   } else {
-    res.status(500).send({ message: "Error parameters" });
+    res.status(500).send({ error: "Error parameters" });
   }
   
 });
