@@ -61,6 +61,24 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
 
 })
 
+router.patch("/:crypto_id/restore", verifyToken, isAdmin, async (req,res) => {
+  const crypto_id = req.params.crypto_id
+
+  if(crypto_id) {
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+      const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
+      const params = [null, crypto_id]
+      await connection.query(query,params)
+
+      res.status(201).send(`The crypto is restored`);
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
+    }
+  }
+})
+
 router.post("/", verifyToken, isAdmin, async (req, res) => {
   // User MUST be logged in as well as the ADMINISTRATOR. Add a cryptocurrency to your plat-form.
   // A form must be attached to the request and contain at least the cryptocurrency code,
