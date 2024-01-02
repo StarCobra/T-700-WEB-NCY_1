@@ -17,7 +17,7 @@ const api = {
       throw error;
     }
   },
-  // Ajoutez d'autres méthodes pour chaque route de votre API
+
   getArticles: async (params: string): Promise<any> => {
     try {
       const fields = params !== "" ? `?params=${params}` : "";
@@ -28,12 +28,29 @@ const api = {
       throw error;
     }
   },
+
   getArticle: async (id: string): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/articles/${id}`);
       return handleErrors(response);
     } catch (error) {
       console.error("Error fetching article:", error);
+      throw error;
+    }
+  },
+
+  createUser: async (userData: any): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error saving cryptos:", error);
       throw error;
     }
   },
