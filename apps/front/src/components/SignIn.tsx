@@ -1,53 +1,61 @@
 import { Box, Button, TextField } from "@mui/material";
 import GoogleButton from "react-google-button";
 import React from "react";
-import "../style/Default/default.scss";
+import "../style/signIn.scss";
 import { Link } from "react-router-dom";
 
 export default function SignIn() {
   return (
-    <Box>
-      <Box>
-        <h3>Name</h3>
-        <TextField name="name" type="name" placeholder="Name" label="Name" />
-      </Box>
+    <Box className="centering">
+      <Box className="signInContainer">
+        <Box className="nameContainer">
+          <p className="label">Name</p>
+          <TextField className="inputField" name="name" type="name" placeholder="Name" label="Name" />
+        </Box>
 
-      <Box>
-        <h3>Birthdate</h3>
-        <TextField
-          id="birthdate"
-          name="birthdate"
-          type="date"
-          variant="outlined"
-        />
-      </Box>
+        <Box className="birthDateContainer">
+          <p className="label">Birthdate</p>
+          <TextField
+            className="inputField"
+            id="birthdate"
+            name="birthdate"
+            type="date"
+            variant="outlined"
+          />
+        </Box>
 
-      <Box>
-        <h3>Email</h3>
-        <TextField
-          name="email"
-          type="email"
-          placeholder="E-mail"
-          label="E-mail"
-        />
-      </Box>
+        <Box className="mailContainer">
+          <p className="label">Email</p>
+          <TextField
+            className="inputField"
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            label="E-mail"
+          />
+        </Box>
 
-      <Box>
-        <h3>Password</h3>
-        <TextField
-          name="password"
-          type="password"
-          placeholder="Votre mot de passe"
-          label="Mot de passe"
-        />
-      </Box>
+        <Box className="pwdContainer">
+          <p className="label">Password</p>
+          <TextField
+            className="inputField"
+            name="password"
+            type="password"
+            placeholder="Password"
+            label="Password"
+          />
+        </Box>
 
-      <Box>
-        <Link to="/login">Back</Link>
+        <Box className="linkContainer">
+          <Link className="login" to="/login">Back</Link>
 
-        <Button>Sign in</Button>
+          <Button className="signIn">Sign in</Button>
+        </Box>
+        <Box className="googleContainer">
+          <GoogleButton label="Sign In with Google" type="light" />
+
+        </Box>
       </Box>
-      <GoogleButton label="Sign In with Google" type="light" />
     </Box>
   );
 }
