@@ -5,6 +5,7 @@
     align-items: center;
     .signInContainer{
         display:grid;
+        width:70%;
         gap:10px;
         grid-template-areas: "nameContainer"
         "birth"
@@ -18,10 +19,15 @@
             justify-content: center;
             align-items: center;
             .label{
+                vertical-align: center;
+                text-align: center;
+                padding:5px;
                 flex-grow: 1;
+                width:100%;
             }
             .inputField{
                 flex-grow: 1;
+                width:100%;
             }
         }
         .birthDateContainer{
@@ -30,10 +36,14 @@
             justify-content: center;
             align-items: center;
             .label{
+                text-align: center;
+                padding:5px;
                 flex-grow: 1;
+                width:100%;
             }
             .inputField{
                 flex-grow: 1;
+                width:100%;
             }
         }
         .mailContainer{
@@ -43,9 +53,13 @@
             align-items: center;
             .label{
                 flex-grow: 1;
+                text-align: center;
+                padding:5px;
+                width:100%;
             }
             .inputField{
                 flex-grow: 1;
+                width:100%;
             }
         }
         .pwdContainer{
@@ -55,9 +69,13 @@
             align-items: center;
             .label{
                 flex-grow: 1;
+                text-align: center;
+                padding:5px;
+                width:100%;
             }
             .inputField{
                 flex-grow: 1;
+                width:100%;
             }
         }
         .linkContainer{
@@ -68,6 +86,7 @@
                 display:flex;
                 justify-content: center;
                 align-items: center;
+                width:50%;
             }
             .login{
                 flex-grow: 1;
@@ -78,6 +97,7 @@
                 border-radius: $borderRadius;
                 color: $borderColor !important;
                 margin-right:5px;
+                width:50%;
                 &:hover{
                     border:solid 1px $borderColor !important;
                     background-color: $buttonHoverBg !important;
