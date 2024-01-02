@@ -5,6 +5,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { USER_ROLE_ADMIN } from "../../constants/user";
 
 export default function Menu(props: any) {
@@ -12,7 +13,18 @@ export default function Menu(props: any) {
 
   return (
     <Box className="differentMenus">
-      <Link to="/" className="Menu" id="menu1">
+
+    {user === null ? (
+      <Link to="/login" className="Menu" id="menu1">
+        <Box className="menuIcon">
+          <LoginOutlinedIcon />
+        </Box>
+
+        <Box className="menuLabel">Login / Sign in</Box>
+      </Link>
+    ) : null}
+
+      <Link to="/" className="Menu" id={user ? "menu1" : "menu2"}>
         <Box className="menuIcon">
           <HomeOutlinedIcon />
         </Box>

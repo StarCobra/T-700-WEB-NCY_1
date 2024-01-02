@@ -9,14 +9,18 @@ import { Link } from "react-router-dom";
 
 export default function Layout() {
   const user = null;
-
+  const isLogged:boolean = user !==null;
+  let userComponent;
+  if(isLogged){
+    userComponent=<User user={user} />;
+  }
   return (
     <Box className="sideBarContainer">
       <Link to="/" className="logoLocation">
         <img src={Logo} alt="" />
       </Link>
 
-      <User user={user} />
+      {userComponent}
 
       <Menu user={user} />
     </Box>
