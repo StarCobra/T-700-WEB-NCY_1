@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import Content from "../Content";
+import Component from "../Content";
 
 describe("Components > Content", () => {
   const tests = [
@@ -17,16 +17,18 @@ describe("Components > Content", () => {
       props: { content: "Content Lorem Ipsum" },
     },
     {
-      description: "with title and content",
+      description: "with all props",
       props: { title: "Beautiful title", content: "Content Lorem Ipsum" },
     },
   ];
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
       let root;
+
       await act(async () => {
-        root = create(<Content {...test.props} />);
+        root = create(<Component {...test.props} />);
       });
+
       expect(root).toMatchSnapshot();
     });
   });

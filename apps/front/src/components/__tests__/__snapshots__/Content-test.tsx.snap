@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Components > Content should render the component with all props 1`] = `
+<div
+  className="contentContainer MuiBox-root css-0"
+>
+  <h3>
+    Beautiful title
+  </h3>
+  <p>
+    Content Lorem Ipsum
+  </p>
+</div>
+`;
+
 exports[`Components > Content should render the component with content 1`] = `
 <div
   className="contentContainer MuiBox-root css-0"
@@ -17,19 +30,6 @@ exports[`Components > Content should render the component with title 1`] = `
   <h3>
     Beautiful title
   </h3>
-</div>
-`;
-
-exports[`Components > Content should render the component with title and content 1`] = `
-<div
-  className="contentContainer MuiBox-root css-0"
->
-  <h3>
-    Beautiful title
-  </h3>
-  <p>
-    Content Lorem Ipsum
-  </p>
 </div>
 `;
 

@@ -1,21 +1,21 @@
 module.exports = {
-    verbose: false,
-    notify: false,
-
-    testEnvironment: "node",
-
+    preset: 'ts-jest',
+    testEnvironment: 'jsdom',
+    testEnvironmentOptions: {
+        resources: 'usable',
+    },
     testMatch: ['**/__tests__/**/*-test.tsx'],
-    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
+    moduleFileExtensions: ['tsx', 'ts', 'jsx', 'js'],
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        '^.+\\.(ts|tsx)$': 'ts-jest',
+        '^.+\\.(js|jsx)$': 'babel-jest',
     },
     moduleNameMapper: {
-        "\\.(css|scss)$": '<rootDir>/identity-obj-proxy.js',
-        "\\.(png|jpg|jpeg|gif|svg)$": '<rootDir>/identity-obj-proxy.js',
+        '\\.(css|scss)$': '<rootDir>/identity-obj-proxy.js',
+        '\\.(png|jpg|jpeg|gif|svg)$': '<rootDir>/identity-obj-proxy.js',
     },
     testPathIgnorePatterns: [
-        '<rootDir>/.next/',
         '<rootDir>/node_modules/',
         '<rootDir>/build/',
-    ]
+    ],
 };

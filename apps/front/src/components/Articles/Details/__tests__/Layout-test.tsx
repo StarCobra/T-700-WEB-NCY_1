@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import Layout from "../Layout";
+import Component from "../Layout";
 
 describe("Components > Articles > Details > Layout", () => {
   const tests = [
@@ -13,7 +13,7 @@ describe("Components > Articles > Details > Layout", () => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(<Layout {...test.props} />);
+        root = create(<Component {...test.props} />);
       });
       expect(root).toMatchSnapshot();
     });

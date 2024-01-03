@@ -1,0 +1,436 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Preferences > Layout should render the component default props 1`] = `
+<div
+  className="preferencesLayout MuiBox-root css-0"
+>
+  <div
+    className="MuiBox-root css-0"
+  >
+    <h3>
+      Preferences page
+    </h3>
+    <p>
+      This page is used to manage your preferences. You can choose your favorite crypto.
+    </p>
+    <p>
+      The chosen crypto will be displayed on the home page and you'll receive in priority the new articles about it.
+    </p>
+  </div>
+  <div
+    className="MuiBox-root css-0"
+  >
+    <h3>
+      Table of cryptos available
+    </h3>
+    <div
+      className="cryptoTableContainer MuiBox-root css-0"
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
+      >
+        <table
+          className="MuiTable-root css-rqglhn-MuiTable-root"
+          role={null}
+        >
+          <thead
+            className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+            role={null}
+          >
+            <tr
+              className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+                scope="col"
+              >
+                Crypto name
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+                scope="col"
+              >
+                Last price
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+                scope="col"
+              >
+                24h change
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+                scope="col"
+              >
+                24h max
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+                scope="col"
+              >
+                24h min
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+            role={null}
+          >
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                BTC
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                50000
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                55000
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                45000
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                ETH
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                5000
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                5500
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                4500
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                SOL
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                500
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                550
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                450
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                ADA
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                5.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                4.5
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                DOT
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                50
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                55
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                45
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                LUNA
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                50
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                55
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                45
+              </td>
+            </tr>
+            <tr
+              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+              role={null}
+            >
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                LINK
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                50
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
+              >
+                0.5
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                55
+              </td>
+              <td
+                aria-sort={null}
+                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+              >
+                45
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root css-0"
+  >
+    <div
+      className="MuiBox-root css-0"
+    >
+      <h3>
+        Add crypto to your favorite cypto
+      </h3>
+      <div
+        className="selectCryptoContainer MuiBox-root css-0"
+      >
+        <p>
+          Favorite crypto(s) chosen:
+        </p>
+        <div
+          className="SelectCryptoBox MuiBox-root css-4stev7"
+        >
+          <div
+            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor=":r0:"
+              id=":r0:-label"
+            >
+              Favorite crypto(s) chosen:
+            </label>
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
+              onClick={[Function]}
+            >
+              <div
+                aria-controls=":r1:"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-labelledby=":r0:-label :r0:"
+                className="MuiSelect-select MuiSelect-outlined MuiSelect-multiple MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                id=":r0:"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="combobox"
+                tabIndex={0}
+              >
+                <span
+                  className="notranslate"
+                >
+                  ​
+                </span>
+              </div>
+              <input
+                aria-hidden={true}
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                disabled={false}
+                name="Select"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value=""
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+              <fieldset
+                aria-hidden={true}
+                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  className="css-yjsfm1"
+                >
+                  <span>
+                    Favorite crypto(s) chosen:
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>
+      You have chosen 
+      0
+       crypto(s) as favorite crypto :
+    </h3>
+  </div>
+</div>
+`;

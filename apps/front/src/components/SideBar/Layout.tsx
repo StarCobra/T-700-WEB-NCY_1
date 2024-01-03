@@ -8,19 +8,15 @@ import Logo from "../../assets/sideBar/logo.png";
 import { Link } from "react-router-dom";
 
 export default function Layout() {
-  const user = null//{name:"test", mail:"test@gmail.com", roles:"ADMIN"};
-  const isLogged:boolean = user !==null;
-  let userComponent;
-  if(isLogged){
-    userComponent=<User user={user} />;
-  }
+  const user = false;
+
   return (
     <Box className="sideBarContainer">
       <Link to="/" className="logoLocation">
         <img src={Logo} alt="" />
       </Link>
 
-      {userComponent}
+      {user && <User user={user} />}
 
       <Menu user={user} />
     </Box>
