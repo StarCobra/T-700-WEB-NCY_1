@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   }
-  
+
 });
 
 router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
