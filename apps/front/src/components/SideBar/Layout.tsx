@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 export default function Layout() {
   const user = null;
-  const isLogged:boolean = user !==null;
+  const isLogged: boolean = user !== null;
   let userComponent;
-  if(isLogged){
-    userComponent=<User user={user} />;
+  if (isLogged) {
+    userComponent = <User user={user} />;
   }
   return (
     <Box className="sideBarContainer">

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Content should render the component with type multiple 1`] = `
+<div
+  className="contentContainer MuiBox-root css-0"
+/>
+`;
+
+exports[`Components > Content should render the component with type unique 1`] = `
+<div
+  className="contentContainer MuiBox-root css-0"
+/>
+`;
+
+exports[`Components > Content should render the component without props 1`] = `
+<div
+  className="contentContainer MuiBox-root css-0"
+/>
+`;

@@ -9,10 +9,10 @@ export default function SearchBar() {
 
   // TODO : remplacer par valeur de l'API
   const options = [
-    { value: 1, label: "Income" },
-    { value: 2, label: "BTC" },
-    { value: 3, label: "Bankrupt" },
-    { value: 4, label: "ETH" },
+    { value: "Income", label: "Income" },
+    { value: "BTC", label: "BTC" },
+    { value: "Bankrupt", label: "Bankrupt" },
+    { value: "ETH", label: "ETH" },
   ];
 
   return (

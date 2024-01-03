@@ -1,12 +1,11 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import { MemoryRouter } from "react-router-dom";
-import User from "../User";
+import Component from "../Layout";
 
-describe("Components > SideBar > User", () => {
+describe("Components > Preferences > Layout", () => {
   const tests = [
     {
-      description: "generic",
+      description: "default props",
       props: {},
     },
   ];
@@ -15,11 +14,7 @@ describe("Components > SideBar > User", () => {
       let root;
 
       await act(async () => {
-        root = create(
-          <MemoryRouter>
-            <User {...test.props} />
-          </MemoryRouter>,
-        );
+        root = create(<Component {...test.props} />);
       });
 
       expect(root).toMatchSnapshot();

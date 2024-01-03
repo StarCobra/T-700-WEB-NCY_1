@@ -33,7 +33,7 @@ export default function Chart(props: any) {
     },
   };
 
-  const data = resource.map((item: any, index: number) => ({
+  const data = resource?.map((item: any, index: number) => ({
     x: new Date(1538785000000 + index * 86400000),
     y: [
       item?.change_price_day, // Open price
