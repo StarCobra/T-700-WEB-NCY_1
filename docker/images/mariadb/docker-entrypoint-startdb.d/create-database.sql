@@ -13,11 +13,11 @@ SET time_zone = "+00:00";
 
 -- Create the tables
 
--- Name: chosen_cryptos
+-- Name: favorite_cryptos
 -- Columns: id, user_id
 -- Primary key: id
 -- Foreign key: user_id
-CREATE TABLE `chosen_cryptos` (
+CREATE TABLE `favorite_cryptos` (
     `id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL,
     `crypto_id` int(11) NOT NULL
@@ -27,7 +27,7 @@ CREATE TABLE `chosen_cryptos` (
 -- Columns: id, name
 -- Primary key: id
 CREATE TABLE `crypto` (
-    `id` varchar(50) NOT NULL,
+    `id` int(11) NOT NULL,
     `name` varchar(50) NOT NULL,
     `short_name` varchar(50) NOT NULL,
     `image` text NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `user` (
 --
 
 -- Index pour la table `chosen_cryptos`
-ALTER TABLE `chosen_cryptos`
+ALTER TABLE `favorite_cryptos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `crypto_id` (`crypto_id`);
@@ -117,7 +117,7 @@ ALTER TABLE `user`
 --
 
 -- AUTO_INCREMENT pour la table `chosen_cryptos`
-ALTER TABLE `chosen_cryptos`
+ALTER TABLE `favorite_cryptos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 -- AUTO_INCREMENT pour la table `favorite_keywords`
@@ -126,6 +126,10 @@ ALTER TABLE `favorite_keywords`
 
 -- AUTO_INCREMENT pour la table `keyword`
 ALTER TABLE `keyword`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+-- AUTO_INCREMENT pour la table `crypto`
+ALTER TABLE `crypto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 -- AUTO_INCREMENT pour la table `rss_flux`
@@ -141,9 +145,9 @@ ALTER TABLE `user`
 --
 
 -- Contraintes pour la table `chosen_cryptos`
-ALTER TABLE `chosen_cryptos`
-  ADD CONSTRAINT `chosen_cryptos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `chosen_cryptos_ibfk_2` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `favorite_cryptos`
+  ADD CONSTRAINT `favorite_cryptos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `favorite_cryptos_ibfk_2` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Contraintes pour la table `favorite_keywords`
 ALTER TABLE `favorite_keywords`
