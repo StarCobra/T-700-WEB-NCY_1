@@ -9,27 +9,46 @@ export default function Chart(props: any) {
   const options = {
     chart: {
       type: "candlestick",
-      height: 350,
-      background: "#b7b7b7", // Couleur de fond blanche
+      height: 250,
+      background: "#414040", // Couleur de fond blanche
+      color:"#F4733A"
     },
     title: {
       text: title,
       align: "left",
+      style: {
+        color:"white"
+      }
     },
     xaxis: {
       type: "datetime",
+      labels: {
+        style: {
+          colors: "#F4733A",
+        },
+      },
     },
     yaxis: {
       tooltip: {
         enabled: true,
         style: {
           fontSize: "14px",
-          color: "#000000",
+        },
+      },
+      labels: {
+        style: {
+          colors: "#F4733A",
         },
       },
     },
+    grid:{
+      borderColor:"#F4733A"
+    },
     legend: {
       show: false,
+    },
+    theme: {
+      mode: 'dark' // Activer le thème sombre
     },
   };
 
@@ -44,7 +63,7 @@ export default function Chart(props: any) {
   }));
 
   return (
-    <Box width="600px" style={{ color: "#000000" }}>
+    <Box width="800px" style={{ color: "#000000" }}>
       <ReactApexChart
         // eslint-disable-next-line
         // @ts-ignore

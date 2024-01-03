@@ -2,12 +2,14 @@ import React from "react";
 import CryptoArray from "../Crypto/Array";
 import CryptoChart from "../Crypto/Chart";
 import Select from "../Select";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import "../../style/cryptoDisplay.scss";
 
 export default function Layout() {
   const [valueCrypto, setValueCrypto] = React.useState("bitcoin");
-
+  // TODO : remplacer par le user connecté ou non
+  const user = null;
   // TODO : remplacer par valeur de l'API
   const options = [
     { value: "bitcoin", label: "BTC" },
@@ -129,29 +131,30 @@ export default function Layout() {
   ];
 
   return (
-    <Box className="ArrayDisplay">
-      <Box>
+    <Box className="homeDisplay">
+      <Box className="selectCryptoContainer">
         <Select
           label="Select a crypto(s):"
           options={options}
           handleChange={(e: any) => setValueCrypto(e.target.value)}
         />
 
-        <Button>
-          <Link to={"/preferences"}>Update preferences</Link>
-        </Button>
+        {user ? <Link to={"/preferences"}>Update preferences</Link> : ""}
+        
+      </Box>
+      <Box className="chartContainer">
+        <CryptoChart
+          resource={test}
+          height="500"
+          title={
+            valueCrypto !== ""
+              ? `CandleStick of ${valueCrypto}`
+              : "Select a crypto"
+          }
+        />
       </Box>
 
-      <CryptoChart
-        resource={test}
-        title={
-          valueCrypto !== ""
-            ? `CandleStick of ${valueCrypto}`
-            : "Select a crypto"
-        }
-      />
-
-      <Box>
+      <Box className="arrayContainer">
         <h3>Table of your preferences crypto</h3>
         <CryptoArray resource={resource} />
       </Box>
