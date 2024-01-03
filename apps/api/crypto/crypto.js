@@ -20,8 +20,17 @@ router.get("/", async (req, res) => {
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   } else {
-    res.status(500).send({ message: "Error parameters" });
+
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+    );
+    const json = await response.json();
+    
+    const transformedData = await transformJSON(json);
+
+    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   }
+
 });
 
 router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
@@ -95,8 +104,8 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
         const pool = await createDatabase();
         const connection = await pool.getConnection();
         await connection.query(
-          "INSERT INTO crypto (id, name, short_name, image) VALUES (?, ?, ?, ?)",
-          [crypto.id, crypto.name, crypto.short_name, crypto.image]
+          "INSERT INTO crypto (name, short_name, image) VALUES (?, ?, ?)",
+          [crypto.name, crypto.short_name, crypto.image]
         );
 
         res.status(201).send(`The crypto : ${crypto.name} has been added`);
@@ -107,10 +116,6 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
       res.status(500).send({ message: error + "Internal server error" });
 
     }
-    
-
-   
-
 
 });
 
