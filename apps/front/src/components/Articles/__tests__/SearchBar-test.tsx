@@ -1,24 +1,19 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import OneArticle from "../OneArticle";
-import { MemoryRouter } from "react-router-dom";
+import SearchBar from "../SearchBar";
 
-describe("Components > Articles > OneArticle", () => {
+describe("Components > Articles > SearchBar", () => {
   const tests = [
     {
-      description: "generic",
+      description: "without props",
       props: {},
-    },
+    }
   ];
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
       let root;
       await act(async () => {
-        root = create(
-          <MemoryRouter>
-            <OneArticle {...test.props} />
-          </MemoryRouter>,
-        );
+        root = create(<SearchBar {...test.props} />);
       });
       expect(root).toMatchSnapshot();
     });
