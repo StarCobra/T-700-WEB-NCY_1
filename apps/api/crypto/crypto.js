@@ -29,8 +29,8 @@ router.get("/", async (req, res) => {
     const transformedData = await transformJSON(json);
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
-    // res.status(500).send({ message: "Error parameters" });
   }
+  
 });
 
 router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
