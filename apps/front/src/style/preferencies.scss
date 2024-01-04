@@ -1,0 +1,20 @@
+@import 'Config/config';
+
+h3{
+    color: $borderColor;
+}
+
+.headerContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.addPrefContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
