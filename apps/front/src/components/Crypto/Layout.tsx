@@ -142,9 +142,13 @@ export default function Layout() {
           handleChange={(e: any) => setValueCrypto(e.target.value)}
         />
 
-        {user ? <Link to={"/preferences"}>Update preferences</Link> : ""}
         
       </Box>
+      {user ? 
+        <Box className="prefContainer">
+          <Link className="updatePreferencies" to={"/preferences"}>Click here to update preferencies</Link> 
+        </Box>
+      : ""}
       <Box className="chartContainer">
         <CryptoChart
           resource={test}

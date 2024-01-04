@@ -18,6 +18,27 @@
     background-color: $borderColor !important;
 }
 
+.prefContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        color:$borderColor;
+        padding:10px;
+        text-decoration: none;
+        &:hover{
+            color:white;
+            background-color: $borderColor;
+            padding:10px;
+            border-radius: $borderRadius;
+        }
+        &:active{
+            background-color: $borderColorClick;
+        }
+    }
+}
+
 .selectCryptoContainer{
     display: flex;
     justify-content: center;

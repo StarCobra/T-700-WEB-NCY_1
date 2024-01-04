@@ -8,7 +8,7 @@ import Logo from "../../assets/sideBar/logo.png";
 import { Link } from "react-router-dom";
 
 export default function Layout() {
-  const user = null;
+  const user = {name:"kilian", mail:"soudierkilian@gmail.com", roles:"ADMIN"};
   const isLogged:boolean = user !==null;
   let userComponent;
   if(isLogged){
