@@ -12,8 +12,7 @@ passport.use(
       passReqToCallback: true,
       session: false, // Désactive la gestion de session
     },
-    async (req, email, password, done) => {
-      
+    async (req, email, password, done) => {   
 
       try {
         const pool = await createDatabase();
