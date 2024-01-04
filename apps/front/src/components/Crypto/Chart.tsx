@@ -48,7 +48,7 @@ export default function Chart(props: any) {
       show: false,
     },
     theme: {
-      mode: 'dark' // Activer le thème sombre
+      mode: 'dark'
     },
   };
 
