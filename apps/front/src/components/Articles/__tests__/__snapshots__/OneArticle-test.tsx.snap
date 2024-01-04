@@ -8,7 +8,6 @@ exports[`Components > Articles > OneArticle should render the component generic 
     className="articleThumbnail MuiBox-root css-0"
   >
     <img
-      alt=""
       src="default"
     />
   </div>
@@ -35,6 +34,18 @@ exports[`Components > Articles > OneArticle should render the component generic 
       <h4>
         November 13, 2023
       </h4>
+    </div>
+    <div
+      className="seeMore MuiBox-root css-0"
+    >
+      <a
+        className="Menu"
+        href="/articles/1"
+        id="menu1"
+        onClick={[Function]}
+      >
+        Click here to see more ...
+      </a>
     </div>
   </div>
 </div>

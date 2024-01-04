@@ -1,0 +1,121 @@
+@import "Config/config";
+.centering{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .signInContainer{
+        display:grid;
+        width:70%;
+        gap:10px;
+        grid-template-areas: "nameContainer"
+        "birth"
+        "mail"
+        "pwd"
+        "link"
+        "google";
+        .nameContainer{
+            grid-area: nameContainer;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                vertical-align: center;
+                text-align: center;
+                padding:5px;
+                flex-grow: 1;
+                width:100%;
+            }
+            .inputField{
+                flex-grow: 1;
+                width:100%;
+            }
+        }
+        .birthDateContainer{
+            grid-area: birth;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                text-align: center;
+                padding:5px;
+                flex-grow: 1;
+                width:100%;
+            }
+            .inputField{
+                flex-grow: 1;
+                width:100%;
+            }
+        }
+        .mailContainer{
+            grid-area: mail;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+                text-align: center;
+                padding:5px;
+                width:100%;
+            }
+            .inputField{
+                flex-grow: 1;
+                width:100%;
+            }
+        }
+        .pwdContainer{
+            grid-area: pwd;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+                text-align: center;
+                padding:5px;
+                width:100%;
+            }
+            .inputField{
+                flex-grow: 1;
+                width:100%;
+            }
+        }
+        .linkContainer{
+            grid-area: link;
+            display:flex;
+            .signIn{
+                flex-grow: 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                width:50%;
+            }
+            .login{
+                flex-grow: 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent !important;
+                border-radius: $borderRadius;
+                color: $borderColor !important;
+                margin-right:5px;
+                width:50%;
+                &:hover{
+                    border:solid 1px $borderColor !important;
+                    background-color: $buttonHoverBg !important;
+                    color:white !important;
+                }
+            }
+        }
+        .googleContainer{
+            grid-area: google;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .label{
+                flex-grow: 1;
+            }
+            .inputField{
+                flex-grow: 1;
+            }
+        }
+    }
+}

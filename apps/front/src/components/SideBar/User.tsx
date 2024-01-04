@@ -8,14 +8,14 @@ export default function User(props: any) {
 
   return (
     <Link to="/profile" className="userLocation">
-      <Box className="userProfilePicture">
-        <img src={profilePic} alt="" />
-      </Box>
+          <Box className="userProfilePicture">
+            <img src={profilePic} alt="" />
+          </Box>
 
-      <Box className="usernameContainer">
-        <Box className="userName">{user?.name}</Box>
-        <Box className="userMail">{user?.mail}</Box>
-      </Box>
+          <Box className="usernameContainer">
+            <Box className="userName">{user?.name}</Box>
+            <Box className="userMail">{user?.mail}</Box>;
+          </Box>
     </Link>
   );
 }
