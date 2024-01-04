@@ -5,6 +5,7 @@ import "./auth-basic.js";
 import { createDatabase } from "../database/create.js";
 import dotenv from "dotenv";
 import { verifyToken, isAdmin } from "../middleware/authentication.js";
+import { getRefreshToken } from "../utils/getRefreshToken.js";
 
 const router = express.Router();
 
@@ -103,8 +104,7 @@ router.get(
 );
 
 router.post("/logout", verifyToken, (req, res) => {
-  // Renvoyez une réponse indiquant que la déconnexion est réussie
-  res.status(200).json({ message: "Logout successful", redirectUrl: "/" });
+  res.status(200).json({ message: "Logout successful" });
 });
 
 // Route pour gérer l'échec d'authentification côté serveur
@@ -154,17 +154,52 @@ router.delete("/keywords", verifyToken, async (req, res) => {
         });
       }
 
-      const keywordsString = favorite_keywords
+      const keyword_string = favorite_keywords
         .map((keyword) => keyword.keyword)
         .join(",");
 
       res
         .status(201)
         .send(
-          `Keywords : ${keywordsString} have been deleted of your favorites`,
+          `Keywords : ${keyword_string} have been deleted of your favorites`,
         );
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
+    }
+  }
+});
+
+router.post("/crypto/favorite", verifyToken, async (req, res) => {
+  const user_id = req.user.id;
+
+  if (user_id) {
+    const favorite_cryptos = req.body.favorite_cryptos;
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+
+      if (favorite_cryptos) {
+        favorite_cryptos.forEach(async (crypto) => {
+          const query =
+            "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
+          const params = [user_id, crypto.id];
+          await connection.query(query, params);
+        });
+      }
+
+      const data = await getRefreshToken(req.token);
+
+      const crypto_string = favorite_cryptos
+        .map((crypto) => crypto.name)
+        .join(",");
+
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(`Cryptos : ${crypto_string} have been added in your favorite`);
+    } catch (error) {
+      res.status(500).send({ message: error + " Internal server error" });
     }
   }
 });
