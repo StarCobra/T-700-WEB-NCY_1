@@ -1,5 +1,43 @@
 @import 'Config/config';
 
+.homeDisplay{
+    display:flex;
+    flex-direction: column;
+}
+
+.switchDisplay{
+    display: flex;
+    justify-content: center;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
+    color:$borderColor !important;
+}
+
+.css-1yjjitx-MuiSwitch-track{
+    background-color: $borderColor !important;
+}
+
+.prefContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        color:$borderColor;
+        padding:10px;
+        text-decoration: none;
+        &:hover{
+            color:white;
+            background-color: $borderColor;
+            padding:10px;
+            border-radius: $borderRadius;
+        }
+        &:active{
+            background-color: $borderColorClick;
+        }
+    }
+}
 
 .selectCryptoContainer{
     display: flex;
@@ -11,53 +49,20 @@
         width:300px;
         color:white;
     }
-    .MuiOutlinedInput-notchedOutline {
-        border-width: 1px !important;
-        border-color: $borderColor !important;
-        color: $borderColor !important;
-      }
-      
-      .Mui-focused .MuiOutlinedInput-notchedOutline {
-        border-color: $borderColor !important;
-      }
-
-      .MuiInputLabel-animated{
-        color:$borderColor !important;
-      }
-
-      .MuiOutlinedInput-input{
-        color:$borderColor !important;
-      }
-
-      .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
-        color: $borderColor !important;
-      }
-
-    }
-    
-    .MuiTableContainer-root{
-      max-height: 200px !important;
-    }
-    .MuiMenu-paper{
-      background-color: $bg-color-semilight !important;
-      color:$borderColor;
-    }
-    .MuiMenuItem-gutters{
-        color:$borderColor !important;
-    }
-    .css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
-        color:$borderColor !important;
-    }
-    .css-rqglhn-MuiTable-root{
-        max-height: 200px;
-    }    
-
-.cryptoTableContainer{
-    display: flex;
+}
+.chartContainer{
+    display:flex;
     justify-content: center;
     align-items: center;
-    .cryptoArray{
+}
+
+
+    .arrayContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 5px;
+        flex-direction: column;
         table{
             background-color: $bg-color;
             border:solid $borderColor 2px;
@@ -90,4 +95,7 @@
     .negativePercentage{
         color:#FF9393 !important;
     }
-}
+    .zeroPercentage{
+        color:white !important;
+    }
+// }
