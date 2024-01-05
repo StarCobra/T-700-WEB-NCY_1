@@ -18,6 +18,27 @@ const api = {
     }
   },
   // Ajoutez d'autres méthodes pour chaque route de votre API
+  getArticles: async (params: string): Promise<any> => {
+    try {
+      console.log("params", params);
+      const fields = !params ? `/params=${params}}` : "";
+      console.log("fields", fields);
+      const response = await fetch(`${apiUrl}/articles${fields}`);
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+      throw error;
+    }
+  },
+  getArticle: async (id: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/articles/${id}`);
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching article:", error);
+      throw error;
+    }
+  },
 };
 
 export default api;
