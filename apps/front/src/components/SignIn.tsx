@@ -3,6 +3,8 @@ import GoogleButton from "react-google-button";
 import React from "react";
 import "../style/signIn.scss";
 import { Link } from "react-router-dom";
+import api from "../services/api";
+import Loader from "./Loader";
 
 export default function SignIn() {
   return (
