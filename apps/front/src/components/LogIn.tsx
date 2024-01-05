@@ -2,33 +2,29 @@ import { Box, Button, TextField } from "@mui/material";
 import GoogleButton from "react-google-button";
 import React, { useState } from "react";
 import "../style/logIn.scss";
-import { Link } from "react-router-dom";
-import api from "../services/api";
+import { Link, Router } from "react-router-dom";
 import Loader from "./Loader";
+import useAuth from './AuthContext';
 
 export default function LogIn() {
  
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  
+  const { logIn } = useAuth();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [connected, setConnected] = useState(false);
-  
-  const submit = async () => {
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
     try {
-      const loggedInUser = await api.logIn(user);
-
-      setConnected(true);
-      console.log('Utilisateur connecté :', loggedInUser);
-
+      await logIn({ email, password });
+      setLoggedIn(true);
     } catch (error) {
       console.error('Erreur de connexion :', error);
     }
     setLoading(false);
-  }
+  };
 
   return (
     <Box className="centering">
@@ -39,8 +35,8 @@ export default function LogIn() {
           placeholder="Your E-mail"
           label="E-mail"
           className="mailInput"
-          value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           name="password"
@@ -48,8 +44,8 @@ export default function LogIn() {
           placeholder="Your password"
           label="Password"
           className="pwdInput"
-          value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <Box className="linkContainer">
