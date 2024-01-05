@@ -135,7 +135,7 @@ router.patch(
   },
 );
 
-router.delete("/keywords", verifyToken, async (req, res) => {
+router.delete("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
   if (user_id) {
@@ -169,7 +169,42 @@ router.delete("/keywords", verifyToken, async (req, res) => {
   }
 });
 
-router.post("/crypto/favorite", verifyToken, async (req, res) => {
+router.delete("/cryptos/favorite", verifyToken, async (req, res) => {
+  const user_id = req.user.id;
+
+  if (user_id) {
+    const favorite_cryptos = req.body.favorite_cryptos;
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+
+      if (favorite_cryptos) {
+        favorite_cryptos.forEach(async (crypto) => {
+          const query =
+            "DELETE FROM favorite_cryptos WHERE user_id = ? AND crypto_id = ?";
+          const params = [user_id, crypto.id];
+          await connection.query(query, params);
+        });
+      }
+
+      const crypto_string = favorite_cryptos
+        .map((crypto) => crypto.name)
+        .join(",");
+
+      const data = await getRefreshToken(req.token);
+
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(`Cryptos : ${crypto_string} have been deleted in your favorite`);
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
+    }
+  }
+});
+
+router.post("/cryptos/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
   if (user_id) {
@@ -204,7 +239,7 @@ router.post("/crypto/favorite", verifyToken, async (req, res) => {
   }
 });
 
-router.post("/keywords", verifyToken, async (req, res) => {
+router.post("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
   if (user_id) {
