@@ -10,6 +10,12 @@ const router = express.Router();
 
 dotenv.config();
 
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 router.post("/register", async (req, res) => {
   try {
     // Get user data

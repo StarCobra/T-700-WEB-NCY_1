@@ -39,9 +39,25 @@ const api = {
     }
   },
 
+  logIn: async (user: any): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Wrong email or password:", error);
+      throw error;
+    }
+  },
+
   createUser: async (userData: any): Promise<any> => {
     try {
-      const response = await fetch(`${apiUrl}/register`, {
+      const response = await fetch(`${apiUrl}/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +66,7 @@ const api = {
       });
       return handleErrors(response);
     } catch (error) {
-      console.error("Error saving cryptos:", error);
+      console.error("Invalid data:", error);
       throw error;
     }
   },
