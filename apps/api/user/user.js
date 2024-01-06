@@ -11,6 +11,23 @@ const router = express.Router();
 
 dotenv.config();
 
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept",
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS",
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization",
+  );
+  next();
+});
+
 router.post("/register", async (req, res) => {
   try {
 
@@ -22,16 +39,22 @@ router.post("/register", async (req, res) => {
 
     const pool = await createDatabase();
     const connection = await pool.getConnection();
-    if(user.roles === "ADMIN") {
+    if (user.roles === "ADMIN") {
       await connection.query(
         "INSERT INTO user (email, last_name, first_name, password, birth_date, roles) VALUES (?, ?, ?, ?, ?, ?)",
-        [user.email, user.last_name, user.first_name, hash, user.birth_date, "ADMIN"]
+        [
+          user.email,
+          user.last_name,
+          user.first_name,
+          hash,
+          user.birth_date,
+          "ADMIN",
+        ],
       );
-    }
-    else {
+    } else {
       await connection.query(
         "INSERT INTO user (email, last_name, first_name, password, birth_date) VALUES (?, ?, ?, ?, ?)",
-        [user.email, user.last_name, user.first_name, hash, user.birth_date]
+        [user.email, user.last_name, user.first_name, hash, user.birth_date],
       );
     }
 
@@ -51,9 +74,9 @@ router.post(
   (req, res) => {
     res.status(200).json({
       message: "Successful authentication",
-      token: `Bearer ${req.user}`,
+      token: req.user,
     });
-  }
+  },
 );
 
 router.get(
@@ -65,7 +88,7 @@ router.get(
       "openid",
       "https://www.googleapis.com/auth/user.birthday.read",
     ],
-  })
+  }),
 );
 
 router.get(
@@ -74,7 +97,7 @@ router.get(
   function (req, res) {
     res.status(200).send({ data: req.user });
     // res.redirect("/");
-  }
+  },
 );
 
 router.post("/logout", verifyToken, (req, res) => {
@@ -87,23 +110,26 @@ router.get("/login-failed", (req, res) => {
   res.redirect("/users/login?error=auth_failed");
 });
 
-router.patch("/keywords/:keyword_id/restore", verifyToken, isAdmin, async(req,res) => {
-  const keyword_id = req.params.keyword_id
+router.patch(
+  "/keywords/:keyword_id/restore",
+  verifyToken,
+  isAdmin,
+  async (req, res) => {
+    const keyword_id = req.params.keyword_id;
 
-  if(keyword_id) {
+    if (keyword_id) {
+      try {
+        const pool = await createDatabase();
+        const connection = await pool.getConnection();
+        const query = "UPDATE keyword SET deleted_at = ? WHERE id = ?";
+        const params = [null, keyword_id];
+        await connection.query(query, params);
 
-    try {
-      const pool = await createDatabase();
-      const connection = await pool.getConnection();
-      const query = "UPDATE keyword SET deleted_at = ? WHERE id = ?";
-      const params = [null, keyword_id]
-      await connection.query(query,params)
-
-      res.status(201).send(`The keyword is restored`);
-    } catch (error) {
-      res.status(500).send({ message: error + "Internal server error" });
+        res.status(201).send(`The keyword is restored`);
+      } catch (error) {
+        res.status(500).send({ message: error + "Internal server error" });
+      }
     }
-    
   }
 })
 
@@ -130,23 +156,19 @@ router.patch("/cryptos/:crypto_id/restore", verifyToken, isAdmin, async(req,res)
 router.delete("/keywords/favorite", verifyToken, async(req,res) => {
   const user_id = req.user.id;
 
-  if(user_id) {
-
+  if (user_id) {
     const favorite_keywords = req.body.favorite_keywords;
 
     try {
-
       const pool = await createDatabase();
       const connection = await pool.getConnection();
 
-      if(favorite_keywords) {
-
+      if (favorite_keywords) {
         favorite_keywords.forEach(async (keyword) => {
-
-          const query = "DELETE FROM favorite_keywords WHERE user_id = ? AND keyword_id = ?";
-          const params = [user_id, keyword.id]
-          await connection.query(query,params)
-
+          const query =
+            "DELETE FROM favorite_keywords WHERE user_id = ? AND keyword_id = ?";
+          const params = [user_id, keyword.id];
+          await connection.query(query, params);
         });
       }
 
@@ -155,16 +177,12 @@ router.delete("/keywords/favorite", verifyToken, async(req,res) => {
       const data = await getRefreshToken(req.token)
 
       res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keyword_string} have been deleted of your favorites`);
-      
-      
-    } catch (error) {
-
+     
+          } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
-
     }
-
   }
-})
+});
 
 router.delete("/cryptos/favorite", verifyToken, async(req,res) => {
   const user_id = req.user.id
@@ -202,7 +220,10 @@ router.delete("/cryptos/favorite", verifyToken, async(req,res) => {
 })
 
 router.post("/cryptos/favorite", verifyToken, async (req, res) => {
-  const user_id = req.user.id;
+  const 
+  
+  
+  _id = req.user.id;
 
   if(user_id) {
     const favorite_cryptos = req.body.favorite_cryptos;
@@ -236,40 +257,35 @@ router.post("/cryptos/favorite", verifyToken, async (req, res) => {
 router.post("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
-  if(user_id) {
-
+  if (user_id) {
     const favorite_keywords = req.body.favorite_keywords;
 
     try {
-
       const pool = await createDatabase();
       const connection = await pool.getConnection();
 
-      if(favorite_keywords) {
+      if (favorite_keywords) {
         favorite_keywords.forEach(async (keyword) => {
-
-          const query = "INSERT INTO favorite_keywords (user_id, keyword_id) VALUES (?,?)";
-          const params = [user_id, keyword.id]
-          await connection.query(query,params)
-      
+          const query =
+            "INSERT INTO favorite_keywords (user_id, keyword_id) VALUES (?,?)";
+          const params = [user_id, keyword.id];
+          await connection.query(query, params);
         });
       }
 
-      const keywordsString = favorite_keywords.map(keyword => keyword.keyword).join(',');
+      const keywordsString = favorite_keywords
+        .map((keyword) => keyword.keyword)
+        .join(",");
 
       const data = await getRefreshToken(req.token)
 
       res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keywordsString} have been added in your favorite`);
       
-      
     } catch (error) {
-
       res.status(500).send({ message: error + "Internal server error" });
-
     }
-
   }
-})
+});
 
 router.get("/profile", verifyToken, (req, res) => {
   res.status(200).json({ user: req.user });
@@ -312,8 +328,7 @@ router.put("/profile", verifyToken, async (req, res) => {
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
-    
-  }
+      }
 
   
 });
