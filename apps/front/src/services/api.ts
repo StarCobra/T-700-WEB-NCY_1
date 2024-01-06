@@ -55,7 +55,22 @@ const api = {
     }
   },
 
-  createUser: async (user: any): Promise<any> => {
+  getProfile: async (userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/users/profile`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      throw error;
+    }
+  },
+
+  register: async (user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/register`, {
         method: "POST",
