@@ -12,21 +12,20 @@ const api = {
     try {
       const response = await fetch(`${apiUrl}/cryptos?cmids=${cmids}`);
       return handleErrors(response);
-    } catch (error) { 
+    } catch (error) {
       console.error("Error fetching cryptos:", error);
       throw error;
     }
   },
-  // Ajoutez d'autres méthodes pour chaque route de votre API
 
-  logIn: async (user: any): Promise <any> => {
+  logIn: async (user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/login`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
       });
       return handleErrors(response);
     } catch (error) {
@@ -35,23 +34,36 @@ const api = {
     }
   },
 
-  createUser: async (userData: any, user: any): Promise<any> => {
+  getProfile: async (userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/users/profile`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      throw error;
+    }
+  },
+
+  register: async (userData: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/register`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'User-Info': JSON.stringify(user)
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
       });
       return handleErrors(response);
     } catch (error) {
       console.error("Invalid data:", error);
       throw error;
     }
-  }
-  
+  },
 };
 
 export default api;
