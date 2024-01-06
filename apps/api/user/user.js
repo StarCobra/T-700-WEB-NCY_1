@@ -5,6 +5,7 @@ import "./auth-basic.js";
 import { createDatabase } from "../database/create.js";
 import dotenv from "dotenv";
 import { verifyToken, isAdmin } from "../middleware/authentication.js";
+import { getRefreshToken } from "../utils/getRefreshToken.js";
 
 const router = express.Router();
 
@@ -22,22 +23,20 @@ router.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, User-Info",
+    "Content-Type, Authorization",
   );
   next();
 });
 
 router.post("/register", async (req, res) => {
   try {
-    // Get user data
+
     let user = req.body.user;
 
-    // Hash password
     const salt_rounds = 10;
     const salt = await bcrypt.genSaltSync(salt_rounds);
     const hash = await bcrypt.hashSync(user.password, salt);
 
-    // Save user in database
     const pool = await createDatabase();
     const connection = await pool.getConnection();
     if (user.roles === "ADMIN") {
@@ -59,8 +58,8 @@ router.post("/register", async (req, res) => {
       );
     }
 
-    // Send response successful
     res.status(201).send("The user has been registered");
+
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }
@@ -69,13 +68,12 @@ router.post("/register", async (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    // failureRedirect: "/login-failed",
+    failureRedirect: "/login-failed",
     session: false,
   }),
   (req, res) => {
     res.status(200).json({
       message: "Successful authentication",
-      redirectUrl: "/",
       token: req.user,
     });
   },
@@ -103,11 +101,11 @@ router.get(
 );
 
 router.post("/logout", verifyToken, (req, res) => {
-  // Renvoyez une réponse indiquant que la déconnexion est réussie
-  res.status(200).json({ message: "Logout successful", redirectUrl: "/" });
+
+  res.status(200).json({ message: "Logout successful" });
+
 });
 
-// Route pour gérer l'échec d'authentification côté serveur
 router.get("/login-failed", (req, res) => {
   res.redirect("/users/login?error=auth_failed");
 });
@@ -132,10 +130,30 @@ router.patch(
         res.status(500).send({ message: error + "Internal server error" });
       }
     }
-  },
-);
+  }
+})
 
-router.delete("/keywords", verifyToken, async (req, res) => {
+router.patch("/cryptos/:crypto_id/restore", verifyToken, isAdmin, async(req,res) => {
+  const crypto_id = req.params.crypto_id
+
+  if(crypto_id) {
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+      const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
+      const params = [null, crypto_id]
+      await connection.query(query,params)
+
+      res.status(201).send(`The crypto is restored`);
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
+    }
+    
+  }
+})
+
+router.delete("/keywords/favorite", verifyToken, async(req,res) => {
   const user_id = req.user.id;
 
   if (user_id) {
@@ -154,22 +172,89 @@ router.delete("/keywords", verifyToken, async (req, res) => {
         });
       }
 
-      const keywordsString = favorite_keywords
-        .map((keyword) => keyword.keyword)
-        .join(",");
+      const keyword_string = favorite_keywords.map(keyword => keyword.keyword).join(',');
 
-      res
-        .status(201)
-        .send(
-          `Keywords : ${keywordsString} have been deleted of your favorites`,
-        );
-    } catch (error) {
+      const data = await getRefreshToken(req.token)
+
+      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keyword_string} have been deleted of your favorites`);
+     
+          } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
   }
 });
 
-router.post("/keywords", verifyToken, async (req, res) => {
+router.delete("/cryptos/favorite", verifyToken, async(req,res) => {
+  const user_id = req.user.id
+
+  if(user_id) {
+    const favorite_cryptos = req.body.favorite_cryptos;
+
+    try {
+
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+
+      if(favorite_cryptos) {
+
+        favorite_cryptos.forEach(async (crypto) => {
+
+          const query = "DELETE FROM favorite_cryptos WHERE user_id = ? AND crypto_id = ?";
+          const params = [user_id, crypto.id]
+          await connection.query(query,params)
+
+        });
+      }
+
+      const crypto_string = favorite_cryptos.map(crypto => crypto.name).join(',');
+
+      const data = await getRefreshToken(req.token)
+
+      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Cryptos : ${crypto_string} have been deleted in your favorite`);
+
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
+    }
+
+  }
+})
+
+router.post("/cryptos/favorite", verifyToken, async (req, res) => {
+  const 
+  
+  
+  _id = req.user.id;
+
+  if(user_id) {
+    const favorite_cryptos = req.body.favorite_cryptos;
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+
+      if(favorite_cryptos) {
+        favorite_cryptos.forEach(async (crypto) => {
+
+          const query = "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
+          const params = [user_id, crypto.id]
+          await connection.query(query,params)
+      
+        });
+      }
+
+      const crypto_string = favorite_cryptos.map(crypto => crypto.name).join(',');
+
+      const data = await getRefreshToken(req.token)
+
+      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Cryptos : ${crypto_string} have been added in your favorite`);
+
+    } catch (error) {
+      res.status(500).send({ message: error + " Internal server error" });
+    }
+  }
+})
+
+router.post("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
   if (user_id) {
@@ -192,9 +277,10 @@ router.post("/keywords", verifyToken, async (req, res) => {
         .map((keyword) => keyword.keyword)
         .join(",");
 
-      res
-        .status(201)
-        .send(`Keywords : ${keywordsString} have been added in your favorite`);
+      const data = await getRefreshToken(req.token)
+
+      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keywordsString} have been added in your favorite`);
+      
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
@@ -205,81 +291,46 @@ router.get("/profile", verifyToken, (req, res) => {
   res.status(200).json({ user: req.user });
 });
 
-router.put("/profile", verifyToken, function (req, res) {
-  let user_edit_informations = req.body; // list cryptos, list keywords
+router.put("/profile", verifyToken, async (req, res) => {
 
-  if (user_edit_informations.list_crypto.is_change) {
-    user_edit_informations.list_crypto.forEach((crypto) => {
-      if (crypto.is_add) {
-        const query = `INSERT INTO chosen_crypto (crypto_id, user_id) VALUES (?,?);`;
-        db.query(query, [crypto.id, req.user.id], (err, insertResult) => {
-          if (err) {
-            res.status(500).send({ message: "Error database" });
-          }
-        });
-      }
-      if (crypto.is_delete) {
-        const query = `DELETE FROM chosen_crypto WHERE crypto_id = ? AND user_id = ?`;
-        db.query(query, [crypto.id, req.user.id], (err, insertResult) => {
-          if (err) {
-            res.status(500).send({ message: "Error database" });
-          }
-        });
-      }
-    });
-  }
+  const user_edit_informations = req.body;
 
-  if (user_edit_informations.list_keywords.is_change) {
-    user_edit_informations.list_keywords.forEach((keyword) => {
-      if (keyword.is_add) {
-        const query = `INSERT INTO favorite_keywords (keyword_id, user_id) VALUES (?,?);`;
-        db.query(query, [keyword.id, req.user.id], (err, insertResult) => {
-          if (err) {
-            res.status(500).send({ message: "Error database" });
-          }
-        });
+  if (user_edit_informations.is_change) {
+
+    try {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+
+      const user_infos = user_edit_informations.user;
+
+      let query_user = "";
+      let query_params = [];
+
+      for (const key in user_infos) {
+        if (Object.hasOwnProperty.call(user_infos, key)) {
+
+          query_user += key + " = " + "?,"
+          query_params.push(user_infos[key])
+          
+        }
       }
 
-      if (keyword.is_delete) {
-        const query = `DELETE FROM favorite_keywords WHERE keyword_id = ? AND user_id = ?`;
-        db.query(query, [keyword.id, req.user.id], (err, insertResult) => {
-          if (err) {
-            res.status(500).send({ message: "Error database" });
-          }
-        });
-      }
-    });
-  }
+      query_user = query_user.slice(0, -1);
+      query_params.push(req.user.id)
 
-  if (user_edit_informations.user.is_change) {
-    const user_infos = user_edit_informations.user;
+      const query = "UPDATE user SET " + query_user + " WHERE id = ?";
+      await connection.query(query,query_params)
 
-    let query_user = "";
-    let query_params = [];
+      const data = await getRefreshToken(req.token)
 
-    // Construire la query et le tableau de paramètres pour la query
-    for (const key in user_infos) {
-      if (Object.hasOwnProperty.call(user_infos, key)) {
-        query_user += key + " = " + " ?,";
-        query_params.push(user_infos[key]);
-      }
+      res.status(200).setHeader("Authorization", `Bearer ${data.refreshToken}`).send("Your profile has been modified");
+
+    } catch (error) {
+      res.status(500).send({ message: error + "Internal server error" });
     }
-
-    // Enlever la dernière virgule
-    query_user = query_user.slice(0, -1);
-
-    // Ajouter l'id du user en dernier paramètre
-    query_params.push(req.user.id);
-
-    const query = "UPDATE user SET " + query_user + " WHERE id = ?";
-    db.query(query, query_params, (err, insertResult) => {
-      if (err) {
-        res.status(500).send({ message: "Error database" });
       }
-    });
-  }
 
-  res.status(200).json();
+  
 });
 
 export default router;
