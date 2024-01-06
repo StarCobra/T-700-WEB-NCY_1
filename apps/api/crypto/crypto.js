@@ -34,8 +34,7 @@ router.get("/", async (req, res) => {
 });
 
 router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
-  // cmid: cryptocurrency Id. User MUST be logged in as well as the ADMINISTRATOR. Deletes
-  // a cryptocurrency (meaning that your platform does not know this currency anymore.)
+
   try {
     const cmid = req.params.cmid;
 
@@ -45,7 +44,6 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
 
       const currentDate = new Date();
 
-      // Format de date pour MySQL
       const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
       await connection.query("UPDATE crypto SET deleted_at = ? WHERE id = ?", [formattedDate,cmid]);
@@ -89,9 +87,7 @@ router.patch("/:crypto_id/restore", verifyToken, isAdmin, async (req,res) => {
 })
 
 router.post("/", verifyToken, isAdmin, async (req, res) => {
-  // User MUST be logged in as well as the ADMINISTRATOR. Add a cryptocurrency to your plat-form.
-  // A form must be attached to the request and contain at least the cryptocurrency code,
-  // their full name and a URL for the image to which it represents
+
     const crypto = req.body.crypto;
 
     try {
