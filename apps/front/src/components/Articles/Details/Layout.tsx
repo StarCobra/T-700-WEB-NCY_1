@@ -1,29 +1,36 @@
 import React from "react";
 import "../../../style/article.scss";
 import ArticleContent from "./ArticleContent";
-import { Box } from "@mui/material";
-import articleExample from "../../../assets/articles/articleExample.jpg";
+import { Box, Button } from "@mui/material";
+import { useArticle } from "../../../Context/ArticleProvider";
+import { Link } from "react-router-dom";
 
 export default function Layout() {
+  const { currentArticle } = useArticle();
+  console.log("currentArticle", currentArticle);
   return (
     <Box className="fullArticleDisplay">
       <Box className="articleHeader">
         <Box className="articleThumbnail">
-          <img src={articleExample} alt="" />
+          <img src={currentArticle?.enclosure?.[0]?.$?.url} alt="" />
         </Box>
 
         <Box className="articleTitleContainer">
           <Box className="title">
-            <h3>Bitcoin Collapse</h3>
+            <h3>{currentArticle?.title}</h3>
           </Box>
 
           <Box className="dateAndSource">
-            <h4>From ChatGPT the 2023-11-13</h4>
+            <h4>{currentArticle?.["dc:creator"]}</h4>
           </Box>
         </Box>
       </Box>
 
-      <ArticleContent />
+      <ArticleContent article={currentArticle} />
+
+      <Link to={"/articles"}>
+        <Button>Back</Button>
+      </Link>
     </Box>
   );
 }

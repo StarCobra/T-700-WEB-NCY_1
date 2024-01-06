@@ -20,9 +20,7 @@ const api = {
   // Ajoutez d'autres méthodes pour chaque route de votre API
   getArticles: async (params: string): Promise<any> => {
     try {
-      console.log("params", params);
-      const fields = !params ? `/params=${params}}` : "";
-      console.log("fields", fields);
+      const fields = params !== "" ? `?params=${params}` : "";
       const response = await fetch(`${apiUrl}/articles${fields}`);
       return handleErrors(response);
     } catch (error) {
