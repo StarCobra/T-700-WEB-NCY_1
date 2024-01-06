@@ -35,12 +35,13 @@ const api = {
     }
   },
 
-  createUser: async (userData: any): Promise<any> => {
+  createUser: async (userData: any, user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/register`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'User-Info': JSON.stringify(user)
         },
         body: JSON.stringify(userData)
       });
