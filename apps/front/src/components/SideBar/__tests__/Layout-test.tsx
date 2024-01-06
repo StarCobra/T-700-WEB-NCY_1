@@ -13,6 +13,7 @@ describe("Components > SideBar > Layout", () => {
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
       let root;
+
       await act(async () => {
         root = create(
           <MemoryRouter>
@@ -20,6 +21,7 @@ describe("Components > SideBar > Layout", () => {
           </MemoryRouter>,
         );
       });
+
       expect(root).toMatchSnapshot();
     });
   });

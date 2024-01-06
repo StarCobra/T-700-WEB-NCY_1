@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import Information from "../Information";
+import Component from "../Information";
 
 describe("Components > Profile > Information", () => {
   const tests = [
@@ -14,10 +14,13 @@ describe("Components > Profile > Information", () => {
 
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
+      let root;
+
       await act(async () => {
-        const root = create(<Information {...test.props} />);
-        expect(root).toMatchSnapshot();
+        root = create(<Component {...test.props} />);
       });
+
+      expect(root).toMatchSnapshot();
     });
   });
 });

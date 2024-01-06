@@ -1,9 +1,9 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
-import User from "../User";
+import Layout from "../MobileSideBar";
 
-describe("Components > SideBar > User", () => {
+describe("Components > SideBar > mobile > MobileSideBar", () => {
   const tests = [
     {
       description: "generic",
@@ -17,7 +17,7 @@ describe("Components > SideBar > User", () => {
       await act(async () => {
         root = create(
           <MemoryRouter>
-            <User {...test.props} />
+            <Layout {...test.props} />
           </MemoryRouter>,
         );
       });

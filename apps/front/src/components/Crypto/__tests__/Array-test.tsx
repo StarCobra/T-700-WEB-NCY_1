@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import Array from "../Array";
+import Component from "../Array";
 
 describe("Components > Crypto > Array", () => {
   const tests = [
@@ -12,9 +12,11 @@ describe("Components > Crypto > Array", () => {
   tests.forEach((test) => {
     it(`should render the component ${test.description}`, async () => {
       let root;
+
       await act(async () => {
-        root = create(<Array {...test.props} />);
+        root = create(<Component {...test.props} />);
       });
+
       expect(root).toMatchSnapshot();
     });
   });

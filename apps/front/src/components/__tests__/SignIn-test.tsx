@@ -1,12 +1,12 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
+import Component from "../SignIn";
 import { MemoryRouter } from "react-router-dom";
-import User from "../User";
 
-describe("Components > SideBar > User", () => {
+describe("Components > SingIn", () => {
   const tests = [
     {
-      description: "generic",
+      description: "default props",
       props: {},
     },
   ];
@@ -17,7 +17,7 @@ describe("Components > SideBar > User", () => {
       await act(async () => {
         root = create(
           <MemoryRouter>
-            <User {...test.props} />
+            <Component {...test.props} />
           </MemoryRouter>,
         );
       });
