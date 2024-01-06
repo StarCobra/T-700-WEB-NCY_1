@@ -6,21 +6,18 @@ import "../../style/sidebar.scss";
 import { Box } from "@mui/material";
 import Logo from "../../assets/sideBar/logo.png";
 import { Link } from "react-router-dom";
+import useAuth from "../../Context/UserProvider";
 
 export default function Layout() {
-  const user = null;
-  const isLogged: boolean = user !== null;
-  let userComponent;
-  if (isLogged) {
-    userComponent = <User user={user} />;
-  }
+  const { user } = useAuth();
+  
   return (
     <Box className="sideBarContainer">
       <Link to="/" className="logoLocation">
         <img src={Logo} alt="" />
       </Link>
 
-      {userComponent}
+      {user && <User user={user} />}
 
       <Menu user={user} />
     </Box>

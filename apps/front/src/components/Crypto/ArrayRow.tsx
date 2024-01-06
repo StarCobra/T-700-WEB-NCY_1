@@ -9,7 +9,7 @@ export default function ArrayRow(props: any) {
     <TableRow>
       <TableCell>{crypto?.id}</TableCell>
       <TableCell>{crypto?.current_price}</TableCell>
-      <TableCell className="negativePercentage">
+      <TableCell  className={crypto?.percent_price_day && crypto.percent_price_day > 0 ? "positivePercentage" : crypto.percent_price_day < 0 ?"negativePercentage" : "zeroPercentage"}>
         {crypto?.percent_price_day}
       </TableCell>
       <TableCell>{crypto?.highest_price_day}</TableCell>

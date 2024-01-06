@@ -20,13 +20,21 @@ router.get("/", async (req, res) => {
 
     res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   } else {
-    res.status(500).send({ message: "Error parameters" });
+
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+    );
+    const json = await response.json();
+    
+    const transformedData = await transformJSON(json);
+
+    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
   }
+
 });
 
 router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
-  // cmid: cryptocurrency Id. User MUST be logged in as well as the ADMINISTRATOR. Deletes
-  // a cryptocurrency (meaning that your platform does not know this currency anymore.)
+
   try {
     const cmid = req.params.cmid;
 
@@ -36,7 +44,6 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
 
       const currentDate = new Date();
 
-      // Format de date pour MySQL
       const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
       await connection.query("UPDATE crypto SET deleted_at = ? WHERE id = ?", [formattedDate,cmid]);
@@ -51,13 +58,51 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
 })
 
 router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
-  // cmid: cryptocurrency Id. period: daily, hourly or minute. User MUST be logged in. Provides
-  // the price history of a cryptocurrency. For each period:
-  // – opening, highest, lowest and closing exchange rates
-  // Depending on the periods, the history is shorter or longer:
-  // – daily: Last 60 days, so 60 periods a day ;
-  // – hourly: 48 last hours, so 48 periods of one hour ;
-  // – minute: last 2 hours, so 60 periods of one minute.
+
+  try {
+    let limit;
+
+    const cmid = req.params.cmid;
+    let period = req.params.period
+
+    // Déterminez la limite en fonction de la période
+    switch (period) {
+      case 'daily':
+        period = "day"
+        limit = 60;
+        break;
+      case 'hourly':
+        period = "hour"
+        limit = 48;
+        break;
+      case 'minute':
+        limit = 60;
+        break;
+      default:
+        console.error('Période non reconnue');
+        return;
+    }
+
+    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`
+
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Erreur de requête: ${response.statusText}`);
+    }
+
+    const priceHistory = await response.json();
+    const priceHistoryData = priceHistory.Data.Data
+
+
+    const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
+
+    res.status(200).send({ data: priceHistoryFormatted })
+
+  } catch (error) {
+    res.status(500).send({ message: error + "Internal server error" });
+  }
 
 })
 
@@ -80,9 +125,7 @@ router.patch("/:crypto_id/restore", verifyToken, isAdmin, async (req,res) => {
 })
 
 router.post("/", verifyToken, isAdmin, async (req, res) => {
-  // User MUST be logged in as well as the ADMINISTRATOR. Add a cryptocurrency to your plat-form.
-  // A form must be attached to the request and contain at least the cryptocurrency code,
-  // their full name and a URL for the image to which it represents
+
     const crypto = req.body.crypto;
 
     try {
@@ -95,8 +138,8 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
         const pool = await createDatabase();
         const connection = await pool.getConnection();
         await connection.query(
-          "INSERT INTO crypto (id, name, short_name, image) VALUES (?, ?, ?, ?)",
-          [crypto.id, crypto.name, crypto.short_name, crypto.image]
+          "INSERT INTO crypto (name, short_name, image) VALUES (?, ?, ?)",
+          [crypto.name, crypto.short_name, crypto.image]
         );
 
         res.status(201).send(`The crypto : ${crypto.name} has been added`);
@@ -107,10 +150,6 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
       res.status(500).send({ message: error + "Internal server error" });
 
     }
-    
-
-   
-
 
 });
 
@@ -132,6 +171,26 @@ router.get("/:cmid", verifyToken, async (req, res) => {
   }
   
 });
+
+function formatHistoryPrice(prices) {
+  
+  if (!Array.isArray(prices)) {
+    return {
+      error: "API error"
+    };
+  }
+
+  const priceHistoryFormatted = prices.map((price) => ({
+    opening: price.open,
+    highest: price.high,
+    lowest: price.low,
+    close: price.close
+  }));
+
+  return priceHistoryFormatted
+
+
+}
 
 function transformJSON(json) {
 

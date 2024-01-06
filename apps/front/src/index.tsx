@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { AuthProvider } from "./Context/UserProvider";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const rootElement = document.getElementById("root");
 
@@ -10,7 +12,11 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <App />
+      <Router>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </Router>
     </React.StrictMode>,
   );
 }
