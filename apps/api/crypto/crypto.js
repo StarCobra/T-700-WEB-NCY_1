@@ -58,13 +58,51 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
 })
 
 router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
-  // cmid: cryptocurrency Id. period: daily, hourly or minute. User MUST be logged in. Provides
-  // the price history of a cryptocurrency. For each period:
-  // – opening, highest, lowest and closing exchange rates
-  // Depending on the periods, the history is shorter or longer:
-  // – daily: Last 60 days, so 60 periods a day ;
-  // – hourly: 48 last hours, so 48 periods of one hour ;
-  // – minute: last 2 hours, so 60 periods of one minute.
+
+  try {
+    let limit;
+
+    const cmid = req.params.cmid;
+    let period = req.params.period
+
+    // Déterminez la limite en fonction de la période
+    switch (period) {
+      case 'daily':
+        period = "day"
+        limit = 60;
+        break;
+      case 'hourly':
+        period = "hour"
+        limit = 48;
+        break;
+      case 'minute':
+        limit = 60;
+        break;
+      default:
+        console.error('Période non reconnue');
+        return;
+    }
+
+    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`
+
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Erreur de requête: ${response.statusText}`);
+    }
+
+    const priceHistory = await response.json();
+    const priceHistoryData = priceHistory.Data.Data
+
+
+    const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
+
+    res.status(200).send({ data: priceHistoryFormatted })
+
+  } catch (error) {
+    res.status(500).send({ message: error + "Internal server error" });
+  }
 
 })
 
@@ -133,6 +171,26 @@ router.get("/:cmid", verifyToken, async (req, res) => {
   }
   
 });
+
+function formatHistoryPrice(prices) {
+  
+  if (!Array.isArray(prices)) {
+    return {
+      error: "API error"
+    };
+  }
+
+  const priceHistoryFormatted = prices.map((price) => ({
+    opening: price.open,
+    highest: price.high,
+    lowest: price.low,
+    close: price.close
+  }));
+
+  return priceHistoryFormatted
+
+
+}
 
 function transformJSON(json) {
 
