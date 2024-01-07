@@ -75,6 +75,7 @@ export default function LogIn() {
             />
           </Box>
         </form>
+
         {loading && <Loader />}
       </Box>
   );

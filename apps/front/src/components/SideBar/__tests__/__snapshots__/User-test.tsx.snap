@@ -19,11 +19,12 @@ exports[`Components > SideBar > User should render the component generic 1`] = `
   >
     <div
       className="userName MuiBox-root css-0"
-    />
+    >
+      undefined undefined
+    </div>
     <div
       className="userMail MuiBox-root css-0"
     />
-    ;
   </div>
 </a>
 `;

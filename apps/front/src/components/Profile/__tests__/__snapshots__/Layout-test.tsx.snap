@@ -22,16 +22,19 @@ exports[`Components > Profile > Layout should render the component generic 1`] =
       <h3>
         Username :
       </h3>
-      <h3 />
+      <h3>
+        test
+      </h3>
     </div>
     <div
       className="labelInfo MuiBox-root css-ks2x85"
-      id="mailBox"
     >
       <h3>
         E-mail :
       </h3>
-      <h3 />
+      <h3>
+        test@gmail.com
+      </h3>
     </div>
     <div
       className="labelInfo MuiBox-root css-ks2x85"
@@ -40,7 +43,9 @@ exports[`Components > Profile > Layout should render the component generic 1`] =
       <h3>
         Birth date :
       </h3>
-      <h3 />
+      <h3>
+        2000-01-01
+      </h3>
     </div>
     <div
       className="buttonDiv MuiBox-root css-i6jodw"

@@ -19,6 +19,7 @@ type UserProfile = {
   last_name: string;
   email: string;
   birth_date: string;
+  favorite_cryptos: [];
   roles: string;
 };
 
