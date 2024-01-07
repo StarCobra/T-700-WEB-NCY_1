@@ -7,18 +7,18 @@ const router = express.Router();
 
 dotenv.config();
 
-router.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, Content-Type, Accept, Content-Type, Authorization",
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE"
-  );
-  next();
-});
+// router.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, Content-Type, Accept, Content-Type, Authorization",
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PATCH, DELETE"
+//   );
+//   next();
+// });
 
 router.get("/", async (req, res) => {
   const cmids = req.query.cmids;
