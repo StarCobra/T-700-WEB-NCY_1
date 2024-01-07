@@ -93,9 +93,7 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
 
     const priceHistory = await response.json();
 
-    console.log(priceHistory.Data.Data)
     const priceHistoryData = priceHistory.Data.Data
-
 
     const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
 
