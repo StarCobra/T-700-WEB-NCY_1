@@ -15,15 +15,11 @@ router.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
+    "Origin, Content-Type, Accept, Authorization",
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS",
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, User-Info",
+    "GET, POST, PUT, DELETE, PATCH",
   );
   next();
 });
@@ -248,11 +244,6 @@ router.post("/cryptos/favorite", verifyToken, async (req, res) => {
         .join(",");
 
       const data = await getRefreshToken(req.token);
-
-      res
-        .status(201)
-        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
-        .send(`Cryptos : ${crypto_string} have been added in your favorite`);
 
       res
         .status(201)
