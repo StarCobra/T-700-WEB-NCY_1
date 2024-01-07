@@ -4,73 +4,31 @@ import CryptoArray from "../Crypto/Array";
 import Select from "../Select";
 import "../../style/preferencies.scss";
 import "../../style/cryptoDisplay.scss";
+import api from "../../services/api";
+import Loader from "../Loader";
 
 export default function Layout() {
   const [favoriteCrypto, setFavoriteCrypto] = React.useState([]);
 
-  // TODO : remplacer par valeur de l'API
-  const options = [
-    { value: "BTC", label: "BTC" },
-    { value: "ETH", label: "ETH" },
-    { value: "SOL", label: "SOL" },
-    { value: "ADA", label: "ADA" },
-    { value: "DOT", label: "DOT" },
-    { value: "LUNA", label: "LUNA" },
-    { value: "LINK", label: "LINK" },
-  ];
+  const [responseAllCrypto, setResponseAllCrypto] = React.useState([] as any);
+  const [loadingAllCrypto, setLoadingAllCrypto] = React.useState(true);
 
-  // TODO : remplacer par valeur de l'API
-  const resource = [
-    {
-      id: "BTC",
-      current_price: 50000,
-      percent_price_day: 0.5,
-      highest_price_day: 55000,
-      lowest_price_day: 45000,
-    },
-    {
-      id: "ETH",
-      current_price: 5000,
-      percent_price_day: 0.5,
-      highest_price_day: 5500,
-      lowest_price_day: 4500,
-    },
-    {
-      id: "SOL",
-      current_price: 500,
-      percent_price_day: 0.5,
-      highest_price_day: 550,
-      lowest_price_day: 450,
-    },
-    {
-      id: "ADA",
-      current_price: 5,
-      percent_price_day: 0.5,
-      highest_price_day: 5.5,
-      lowest_price_day: 4.5,
-    },
-    {
-      id: "DOT",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-    {
-      id: "LUNA",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-    {
-      id: "LINK",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-  ];
+  // Requete pour récupérer toutes les cryptos
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoadingAllCrypto(true);
+        const data = await api.getAllCryptos();
+        setResponseAllCrypto(data);
+      } catch (error) {
+        console.error("Error fetching cryptos:", error);
+      } finally {
+        setLoadingAllCrypto(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box className="preferencesLayout">
@@ -86,23 +44,35 @@ export default function Layout() {
         </small>
       </Box>
       <Box className="arrayContainer">
-        <h3>Table of cryptos available</h3>
-        <CryptoArray resource={resource} />
+        {loadingAllCrypto ? (
+          <Loader />
+        ) : (
+          <>
+            <h3>Table of cryptos available</h3>
+            <CryptoArray resource={responseAllCrypto.data} />
+          </>
+        )}
       </Box>
       <Box className="addPrefContainer">
         <Box className="selectContainer">
           <h3>Add crypto to your favorite cypto</h3>
           <Select
             name="Select"
-            label="Favorite crypto(s) chosen:"
+            label={
+              loadingAllCrypto
+                ? "Loading crypto..."
+                : "Favorite crypto(s) chosen:"
+            }
             type="multiple"
-            options={options}
+            options={responseAllCrypto.data}
+            forCrypto={true}
             handleChange={(e: any) => setFavoriteCrypto(e.target.value)}
           />
         </Box>
         <Box className="cryptoDisplayContainer">
           <h3>
-            You have chosen {favoriteCrypto.length} crypto(s) as favorite crypto :
+            You have chosen {favoriteCrypto.length} crypto(s) as favorite crypto
+            :
           </h3>
           {favoriteCrypto.length > 0 && (
             <ul>

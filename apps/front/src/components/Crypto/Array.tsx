@@ -16,7 +16,7 @@ export default function Array(props: any) {
   const { resource = [] } = props;
 
   return (
-    <Box className="cryptoTableContainer">
+    <Box className="arrayContainer">
       {resource.length === 0 ? (
         <h1>No data</h1>
       ) : (

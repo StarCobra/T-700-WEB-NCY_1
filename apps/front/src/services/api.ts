@@ -8,12 +8,42 @@ const handleErrors = (response: Response) => {
 };
 
 const api = {
-  getCryptos: async (cmids: string): Promise<any> => {
+  getAllCryptos: async (): Promise<any> => {
     try {
-      const response = await fetch(`${apiUrl}/cryptos?cmids=${cmids}`);
+      const response = await fetch(`${apiUrl}/cryptos`, {
+        method: "GET",
+      });
       return handleErrors(response);
     } catch (error) {
       console.error("Error fetching cryptos:", error);
+      throw error;
+    }
+  },
+  getCryptos: async (cmids: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/cryptos?cmids=${cmids}`, {
+        method: "GET",
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching cryptos:", error);
+      throw error;
+    }
+  },
+  getCandleStick: async (crypto: string): Promise<any> => {
+    try {
+      const response = await fetch(
+        `${apiUrl}/cryptos/${crypto}/history/daily`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching crypto:", error);
       throw error;
     }
   },
