@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../style/article.scss";
 import { Box } from "@mui/material";
+import { Button } from "@mui/base";
 
 export default function ArticleContent(props: any) {
   const { article } = props;
@@ -18,8 +19,8 @@ export default function ArticleContent(props: any) {
 
   return (
     <Box className="fullArticleContent">
-      <Box className="contentContainer">
-        <h3>Concerns:</h3>
+      <Box className="keywordsContainer">
+        <h3>Keywords related:</h3>
 
         <ul>
           {article?.category?.map((concern: any, index: number) => (
@@ -28,15 +29,17 @@ export default function ArticleContent(props: any) {
         </ul>
       </Box>
 
-      <Box>
+      <Box className="descriptionContainer">
         <h3>Description:</h3>
 
         <p>{descriptionText}</p>
       </Box>
 
-      <a href={article?.link} target="_blank" rel="noreferrer">
-        Source
-      </a>
+      <Button className="sourceContainer">
+        <a href={article?.link} target="_blank" rel="noreferrer">
+          Read the full article
+        </a>
+      </Button>
     </Box>
   );
 }

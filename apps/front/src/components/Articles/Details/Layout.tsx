@@ -28,7 +28,7 @@ export default function Layout() {
 
       <ArticleContent article={currentArticle} />
 
-      <Link to={"/articles"}>
+      <Link className="backButton" to={"/articles"}>
         <Button>Back</Button>
       </Link>
     </Box>
