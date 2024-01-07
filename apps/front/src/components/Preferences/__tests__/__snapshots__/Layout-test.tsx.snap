@@ -5,338 +5,37 @@ exports[`Components > Preferences > Layout should render the component default p
   className="preferencesLayout MuiBox-root css-0"
 >
   <div
-    className="MuiBox-root css-0"
+    className="headerContainer MuiBox-root css-0"
   >
     <h3>
       Preferences page
     </h3>
-    <p>
+    <small>
       This page is used to manage your preferences. You can choose your favorite crypto.
-    </p>
-    <p>
+    </small>
+    <small>
       The chosen crypto will be displayed on the home page and you'll receive in priority the new articles about it.
-    </p>
+    </small>
   </div>
   <div
-    className="MuiBox-root css-0"
+    className="arrayContainer MuiBox-root css-0"
   >
     <h3>
       Table of cryptos available
     </h3>
     <div
-      className="cryptoTableContainer MuiBox-root css-0"
+      className="arrayContainer MuiBox-root css-0"
     >
-      <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
-      >
-        <table
-          className="MuiTable-root css-rqglhn-MuiTable-root"
-          role={null}
-        >
-          <thead
-            className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
-            role={null}
-          >
-            <tr
-              className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
-                scope="col"
-              >
-                Crypto name
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
-                scope="col"
-              >
-                Last price
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
-                scope="col"
-              >
-                24h change
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
-                scope="col"
-              >
-                24h max
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
-                scope="col"
-              >
-                24h min
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
-            role={null}
-          >
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                BTC
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                50000
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                55000
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                45000
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                ETH
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                5000
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                5500
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                4500
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                SOL
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                500
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                550
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                450
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                ADA
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                5.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                4.5
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                DOT
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                50
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                55
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                45
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                LUNA
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                50
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                55
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                45
-              </td>
-            </tr>
-            <tr
-              className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
-              role={null}
-            >
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                LINK
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                50
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium negativePercentage css-1ex1afd-MuiTableCell-root"
-              >
-                0.5
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                55
-              </td>
-              <td
-                aria-sort={null}
-                className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
-              >
-                45
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <h1>
+        No data
+      </h1>
     </div>
   </div>
   <div
-    className="MuiBox-root css-0"
+    className="addPrefContainer MuiBox-root css-0"
   >
     <div
-      className="MuiBox-root css-0"
+      className="selectContainer MuiBox-root css-0"
     >
       <h3>
         Add crypto to your favorite cypto
@@ -426,11 +125,15 @@ exports[`Components > Preferences > Layout should render the component default p
         </div>
       </div>
     </div>
-    <h3>
-      You have chosen 
-      0
-       crypto(s) as favorite crypto :
-    </h3>
+    <div
+      className="cryptoDisplayContainer MuiBox-root css-0"
+    >
+      <h3>
+        You have chosen 
+        0
+         crypto(s) as favorite crypto :
+      </h3>
+    </div>
   </div>
 </div>
 `;

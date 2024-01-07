@@ -15,7 +15,6 @@ exports[`Components > Profile > Information should render the component generic 
   </div>
   <div
     className="labelInfo MuiBox-root css-ks2x85"
-    id="mailBox"
   >
     <h3>
       E-mail :

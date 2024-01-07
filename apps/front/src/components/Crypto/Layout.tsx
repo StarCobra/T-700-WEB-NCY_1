@@ -2,170 +2,158 @@ import React from "react";
 import CryptoArray from "../Crypto/Array";
 import CryptoChart from "../Crypto/Chart";
 import Select from "../Select";
-import { Box, FormControl, FormControlLabel, Switch } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  SnackbarContent,
+  Switch,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import "../../style/cryptoDisplay.scss";
+import api from "../../services/api";
+import Loader from "../Loader";
 import useAuth from "../../Context/UserProvider";
 
 export default function Layout() {
-  const [valueCrypto, setValueCrypto] = React.useState("bitcoin");
-  // TODO : remplacer par le user connecté ou non
-  const {user}  = useAuth();
-  // TODO : remplacer par valeur de l'API
-  const options = [
-    { value: "bitcoin", label: "BTC" },
-    { value: "ethereum", label: "ETH" },
-    { value: "solana", label: "SOL" },
-  ];
+  const { user } = useAuth();
 
-  // TODO : remplacer par valeur de l'API
-  const resource = [
-    {
-      id: "BTC",
-      current_price: 50000,
-      percent_price_day: 0.5,
-      highest_price_day: 55000,
-      lowest_price_day: 45000,
-    },
-    {
-      id: "ETH",
-      current_price: 5000,
-      percent_price_day: 0.5,
-      highest_price_day: 5500,
-      lowest_price_day: 4500,
-    },
-    {
-      id: "SOL",
-      current_price: 500,
-      percent_price_day: 0.5,
-      highest_price_day: 550,
-      lowest_price_day: 450,
-    },
-    {
-      id: "ADA",
-      current_price: 5,
-      percent_price_day: 0.5,
-      highest_price_day: 5.5,
-      lowest_price_day: 4.5,
-    },
-    {
-      id: "DOT",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-    {
-      id: "LUNA",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-    {
-      id: "LINK",
-      current_price: 50,
-      percent_price_day: 0.5,
-      highest_price_day: 55,
-      lowest_price_day: 45,
-    },
-  ];
+  const [valueCrypto, setValueCrypto] = React.useState("btc");
 
-  // TODO : remplacer par valeur de l'API
-  const test = [
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6629.81,
-      current_price: 6650.5,
-      highest_price_day: 6623.04,
-      lowest_price_day: 6633.33,
-    },
-    {
-      id: "BTC",
-      change_price_day: 6610,
-      current_price: 6600,
-      highest_price_day: 6630,
-      lowest_price_day: 6550,
-    },
-  ];
+  // responses API
+  const [responseAllCrypto, setResponseAllCrypto] = React.useState([] as any);
+  const [responseCandleStick, setResponseCandleStick] = React.useState(
+    [] as any,
+  );
+  const [responseFavoriteCrypto, setResponseFavoriteCrypto] = React.useState(
+    [] as any,
+  );
+
+  // loading
+  const [loadingAllCrypto, setLoadingAllCrypto] = React.useState(true);
+  const [loadingCandleStick, setLoadingCandleStick] = React.useState(true);
+  const [loadingFavoriteCrypto, setLoadingFavoriteCrypto] =
+    React.useState(true);
+
+  // Requete pour récupérer toutes les cryptos
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoadingAllCrypto(true);
+        const data = await api.getAllCryptos();
+        setResponseAllCrypto(data);
+      } catch (error) {
+        console.error("Error fetching cryptos:", error);
+      } finally {
+        setLoadingAllCrypto(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Requete pour récupérer les données pour le candlestick
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoadingCandleStick(true);
+        const data = await api.getCandleStick(valueCrypto);
+        setResponseCandleStick(data);
+      } catch (error) {
+        console.error("Error fetching cryptos:", error);
+      } finally {
+        setLoadingCandleStick(false);
+      }
+    };
+
+    fetchData();
+  }, [valueCrypto]);
+
+  // Requete pour récupérer les données des cryptos favorites
+  React.useEffect(() => {
+    let favoriteCrypto = "";
+    user?.favorite_cryptos?.map((item: any) => {
+      favoriteCrypto += item.crypto + ",";
+    });
+    const fetchData = async () => {
+      try {
+        setLoadingFavoriteCrypto(true);
+        const data = await api.getCryptos(favoriteCrypto);
+        setResponseFavoriteCrypto(data);
+      } catch (error) {
+        console.error("Error fetching cryptos:", error);
+      } finally {
+        setLoadingFavoriteCrypto(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box className="homeDisplay">
       <FormControl>
-        <FormControlLabel className="switchDisplay" control={<Switch defaultChecked />} label="Multi crypto table" />
+        <FormControlLabel
+          className="switchDisplay"
+          control={<Switch defaultChecked />}
+          label="Multi crypto table"
+        />
       </FormControl>
+
       <Box className="selectCryptoContainer">
         <Select
-          label="Select a crypto(s):"
-          options={options}
+          label={loadingAllCrypto ? "Loading crypto..." : "Select a crypto(s):"}
+          options={responseAllCrypto.data}
+          forCrypto={true}
           handleChange={(e: any) => setValueCrypto(e.target.value)}
         />
-        {user ? 
+
+        {user && (
           <Box className="prefContainer">
-            <Link className="updatePreferencies" to={"/preferences"}>Click here to update preferencies</Link> 
+            <Link className="updatePreferencies" to={"/preferences"}>
+              Click here to update preferencies
+            </Link>
           </Box>
-        : ""}
-
-        
+        )}
       </Box>
+
       <Box className="chartContainer">
-        <CryptoChart
-          resource={test}
-          height="500"
-          title={
-            valueCrypto !== ""
-              ? `CandleStick of ${valueCrypto}`
-              : "Select a crypto"
-          }
-        />
+        {loadingCandleStick ? (
+          <Loader />
+        ) : responseCandleStick?.data?.length > 0 ? (
+          <CryptoChart
+            resource={responseCandleStick?.data}
+            title={
+              valueCrypto !== ""
+                ? `CandleStick of ${valueCrypto}`
+                : "Select a crypto"
+            }
+          />
+        ) : (
+          <SnackbarContent message="No data for this crypto" />
+        )}
       </Box>
 
-      <Box className="arrayContainer">
-        <h3>Table of your preferences crypto</h3>
-        <CryptoArray resource={resource} />
-      </Box>
+      {user ? (
+        <Box>
+          {loadingFavoriteCrypto ? (
+            <Loader />
+          ) : (
+            responseFavoriteCrypto?.data?.length > 0 && (
+              <>
+                <h3>Table of your preferences crypto</h3>
+                <CryptoArray resource={responseFavoriteCrypto?.data} />
+              </>
+            )
+          )}
+        </Box>
+      ) : (
+        <Box>
+          <h3>
+            Log in to benefit from a personalized view of your favorite cryptos
+          </h3>
+        </Box>
+      )}
     </Box>
   );
 }

@@ -27,7 +27,6 @@ router.use((req, res, next) => {
 router.post("/register", async (req, res) => {
   
   try {
-
     let user = req.body.user;
 
     const salt_rounds = 10;
@@ -56,7 +55,6 @@ router.post("/register", async (req, res) => {
     }
 
     res.status(201).send("The user has been registered");
-
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }
@@ -98,9 +96,7 @@ router.get(
 );
 
 router.post("/logout", verifyToken, (req, res) => {
-
   res.status(200).json({ message: "Logout successful" });
-
 });
 
 router.get("/login-failed", (req, res) => {
@@ -127,30 +123,33 @@ router.patch(
         res.status(500).send({ message: error + "Internal server error" });
       }
     }
-  }
-)
+  },
+);
 
-router.patch("/cryptos/:crypto_id/restore", verifyToken, isAdmin, async(req,res) => {
-  const crypto_id = req.params.crypto_id
+router.patch(
+  "/cryptos/:crypto_id/restore",
+  verifyToken,
+  isAdmin,
+  async (req, res) => {
+    const crypto_id = req.params.crypto_id;
 
-  if(crypto_id) {
+    if (crypto_id) {
+      try {
+        const pool = await createDatabase();
+        const connection = await pool.getConnection();
+        const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
+        const params = [null, crypto_id];
+        await connection.query(query, params);
 
-    try {
-      const pool = await createDatabase();
-      const connection = await pool.getConnection();
-      const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
-      const params = [null, crypto_id]
-      await connection.query(query,params)
-
-      res.status(201).send(`The crypto is restored`);
-    } catch (error) {
-      res.status(500).send({ message: error + "Internal server error" });
+        res.status(201).send(`The crypto is restored`);
+      } catch (error) {
+        res.status(500).send({ message: error + "Internal server error" });
+      }
     }
-    
-  }
-})
+  },
+);
 
-router.delete("/keywords/favorite", verifyToken, async(req,res) => {
+router.delete("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
   if (user_id) {
@@ -169,84 +168,93 @@ router.delete("/keywords/favorite", verifyToken, async(req,res) => {
         });
       }
 
-      const keyword_string = favorite_keywords.map(keyword => keyword.keyword).join(',');
+      const keyword_string = favorite_keywords
+        .map((keyword) => keyword.keyword)
+        .join(",");
 
-      const data = await getRefreshToken(req.token)
+      const data = await getRefreshToken(req.token);
 
-      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keyword_string} have been deleted of your favorites`);
-     
-          } catch (error) {
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(
+          `Keywords : ${keyword_string} have been deleted of your favorites`,
+        );
+    } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
   }
 });
 
-router.delete("/cryptos/favorite", verifyToken, async(req,res) => {
-  const user_id = req.user.id
+router.delete("/cryptos/favorite", verifyToken, async (req, res) => {
+  const user_id = req.user.id;
 
-  if(user_id) {
+  if (user_id) {
     const favorite_cryptos = req.body.favorite_cryptos;
 
     try {
-
       const pool = await createDatabase();
       const connection = await pool.getConnection();
 
-      if(favorite_cryptos) {
-
+      if (favorite_cryptos) {
         favorite_cryptos.forEach(async (crypto) => {
-
-          const query = "DELETE FROM favorite_cryptos WHERE user_id = ? AND crypto_id = ?";
-          const params = [user_id, crypto.id]
-          await connection.query(query,params)
-
+          const query =
+            "DELETE FROM favorite_cryptos WHERE user_id = ? AND crypto_id = ?";
+          const params = [user_id, crypto.id];
+          await connection.query(query, params);
         });
       }
 
-      const crypto_string = favorite_cryptos.map(crypto => crypto.name).join(',');
+      const crypto_string = favorite_cryptos
+        .map((crypto) => crypto.name)
+        .join(",");
 
-      const data = await getRefreshToken(req.token)
+      const data = await getRefreshToken(req.token);
 
-      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Cryptos : ${crypto_string} have been deleted in your favorite`);
-
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(`Cryptos : ${crypto_string} have been deleted in your favorite`);
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
-
   }
-})
+});
 
 router.post("/cryptos/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
-  if(user_id) {
+  if (user_id) {
     const favorite_cryptos = req.body.favorite_cryptos;
 
     try {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
 
-      if(favorite_cryptos) {
+      if (favorite_cryptos) {
         favorite_cryptos.forEach(async (crypto) => {
-
-          const query = "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
-          const params = [user_id, crypto.id]
-          await connection.query(query,params)
-      
+          const query =
+            "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
+          const params = [user_id, crypto.id];
+          await connection.query(query, params);
         });
       }
 
-      const crypto_string = favorite_cryptos.map(crypto => crypto.name).join(',');
+      const crypto_string = favorite_cryptos
+        .map((crypto) => crypto.name)
+        .join(",");
 
-      const data = await getRefreshToken(req.token)
+      const data = await getRefreshToken(req.token);
 
-      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Cryptos : ${crypto_string} have been added in your favorite`);
-
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(`Cryptos : ${crypto_string} have been added in your favorite`);
     } catch (error) {
       res.status(500).send({ message: error + " Internal server error" });
     }
   }
-})
+});
 
 router.post("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
@@ -271,10 +279,12 @@ router.post("/keywords/favorite", verifyToken, async (req, res) => {
         .map((keyword) => keyword.keyword)
         .join(",");
 
-      const data = await getRefreshToken(req.token)
+      const data = await getRefreshToken(req.token);
 
-      res.status(201).setHeader("Authorization", `Bearer ${data.refreshToken}`).send(`Keywords : ${keywordsString} have been added in your favorite`);
-      
+      res
+        .status(201)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send(`Keywords : ${keywordsString} have been added in your favorite`);
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
@@ -286,11 +296,9 @@ router.get("/profile", verifyToken, (req, res) => {
 });
 
 router.put("/profile", verifyToken, async (req, res) => {
-
   const user_edit_informations = req.body;
 
   if (user_edit_informations.is_change) {
-
     try {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
@@ -302,29 +310,27 @@ router.put("/profile", verifyToken, async (req, res) => {
 
       for (const key in user_infos) {
         if (Object.hasOwnProperty.call(user_infos, key)) {
-
-          query_user += key + " = " + "?,"
-          query_params.push(user_infos[key])
-          
+          query_user += key + " = " + "?,";
+          query_params.push(user_infos[key]);
         }
       }
 
       query_user = query_user.slice(0, -1);
-      query_params.push(req.user.id)
+      query_params.push(req.user.id);
 
       const query = "UPDATE user SET " + query_user + " WHERE id = ?";
-      await connection.query(query,query_params)
+      await connection.query(query, query_params);
 
-      const data = await getRefreshToken(req.token)
+      const data = await getRefreshToken(req.token);
 
-      res.status(200).setHeader("Authorization", `Bearer ${data.refreshToken}`).send("Your profile has been modified");
-
+      res
+        .status(200)
+        .setHeader("Authorization", `Bearer ${data.refreshToken}`)
+        .send("Your profile has been modified");
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
-      }
-
-  
+  }
 });
 
 export default router;

@@ -8,6 +8,7 @@ export default function Select(props: any) {
     type = "unique",
     handleChange = null,
     options = [],
+    forCrypto = false,
   } = props;
 
   const [selected, setSelected] = React.useState([] as string[]);
@@ -33,8 +34,11 @@ export default function Select(props: any) {
           }}
         >
           {options.map((option: any) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
+            <MenuItem
+              key={option.id}
+              value={forCrypto ? option.short_name : option.id}
+            >
+              {option.name}
             </MenuItem>
           ))}
         </TextField>

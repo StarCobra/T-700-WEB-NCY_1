@@ -11,14 +11,14 @@ export default function Chart(props: any) {
       type: "candlestick",
       height: 250,
       background: "#414040", // Couleur de fond blanche
-      color:"#F4733A"
+      color: "#F4733A",
     },
     title: {
       text: title,
       align: "left",
       style: {
-        color:"white"
-      }
+        color: "white",
+      },
     },
     xaxis: {
       type: "datetime",
@@ -41,29 +41,33 @@ export default function Chart(props: any) {
         },
       },
     },
-    grid:{
-      borderColor:"#F4733A"
+    grid: {
+      borderColor: "#F4733A",
     },
     legend: {
       show: false,
     },
     theme: {
-      mode: 'dark'
+      mode: "dark",
     },
   };
 
-  const data = resource?.map((item: any, index: number) => ({
-    x: new Date(1538785000000 + index * 86400000),
+  const data = resource?.map((item: any) => ({
+    x: item?.time,
     y: [
-      item?.change_price_day, // Open price
-      item?.current_price, // Close price
-      item?.highest_price_day, // Highest price
-      item?.lowest_price_day, // Lowest price
+      item?.opening, // Open price
+      item?.highest, // Highest price
+      item?.lowest, // Lowest price
+      item?.close, // Close price
     ],
   }));
 
   return (
-    <Box className="cryptoChartContainer" width="800px" style={{ color: "#000000" }}>
+    <Box
+      className="cryptoChartContainer"
+      width="800px"
+      style={{ color: "#000000" }}
+    >
       <ReactApexChart
         // eslint-disable-next-line
         // @ts-ignore

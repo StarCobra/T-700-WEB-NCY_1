@@ -34,407 +34,403 @@ exports[`Components > GlobalSetting > Layout should render the component default
     className="formContainer"
   >
     <div
-      className="MuiBox-root css-92xd9l"
+      className="selectCryptoContainer MuiBox-root css-0"
     >
+      <p>
+        Default crypto
+      </p>
       <div
-        className="selectCryptoContainer MuiBox-root css-0"
+        className="SelectCryptoBox MuiBox-root css-4stev7"
       >
-        <p>
-          Choose different crypto :
-        </p>
         <div
-          className="SelectCryptoBox MuiBox-root css-4stev7"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
         >
-          <div
-            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor=":r0:"
+            id=":r0:-label"
           >
-            <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink={false}
-              htmlFor=":r0:"
-              id=":r0:-label"
-            >
-              Choose different crypto :
-            </label>
-            <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
-              onClick={[Function]}
-            >
-              <div
-                aria-controls=":r1:"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby=":r0:-label :r0:"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-                id=":r0:"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                role="combobox"
-                tabIndex={0}
-              >
-                <span
-                  className="notranslate"
-                >
-                  ​
-                </span>
-              </div>
-              <input
-                aria-hidden={true}
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                disabled={false}
-                name="Select"
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value=""
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-                data-testid="ArrowDropDownIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="css-yjsfm1"
-                >
-                  <span>
-                    Choose different crypto :
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="selectCryptoContainer MuiBox-root css-0"
-      >
-        <p>
-          Choose default article keyword :
-        </p>
-        <div
-          className="SelectCryptoBox MuiBox-root css-4stev7"
-        >
+            Default crypto
+          </label>
           <div
-            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
-          >
-            <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink={false}
-              htmlFor=":r2:"
-              id=":r2:-label"
-            >
-              Choose default article keyword :
-            </label>
-            <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
-              onClick={[Function]}
-            >
-              <div
-                aria-controls=":r3:"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby=":r2:-label :r2:"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-                id=":r2:"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                role="combobox"
-                tabIndex={0}
-              >
-                <span
-                  className="notranslate"
-                >
-                  ​
-                </span>
-              </div>
-              <input
-                aria-hidden={true}
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                disabled={false}
-                name="Select"
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value=""
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-                data-testid="ArrowDropDownIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="css-yjsfm1"
-                >
-                  <span>
-                    Choose default article keyword :
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="chooseRss MuiBox-root css-0"
-      >
-        <label>
-          Add RSS flux :
-        </label>
-        <span>
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
-            disabled={false}
-            onBlur={[Function]}
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
-            onContextMenu={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
           >
-            Add new RSS flux
-            <span
-              className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-        </span>
-      </div>
-      <div
-        className="selectCryptoContainer MuiBox-root css-0"
-      >
-        <p>
-          Select a RSS flux
-        </p>
-        <div
-          className="SelectCryptoBox MuiBox-root css-4stev7"
-        >
-          <div
-            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
-          >
-            <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink={false}
-              htmlFor=":r4:"
-              id=":r4:-label"
-            >
-              Select a RSS flux
-            </label>
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
-              onClick={[Function]}
+              aria-controls=":r1:"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r0:-label :r0:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r0:"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="combobox"
+              tabIndex={0}
             >
-              <div
-                aria-controls=":r5:"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby=":r4:-label :r4:"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-                id=":r4:"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                role="combobox"
-                tabIndex={0}
+              <span
+                className="notranslate"
               >
-                <span
-                  className="notranslate"
-                >
-                  ​
-                </span>
-              </div>
-              <input
-                aria-hidden={true}
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                disabled={false}
-                name="Select"
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value=""
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-                data-testid="ArrowDropDownIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="css-yjsfm1"
-                >
-                  <span>
-                    Select a RSS flux
-                  </span>
-                </legend>
-              </fieldset>
+                ​
+              </span>
             </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              name="Select"
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-yjsfm1"
+              >
+                <span>
+                  Default crypto
+                </span>
+              </legend>
+            </fieldset>
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="selectCryptoContainer MuiBox-root css-0"
+    >
+      <p>
+        Default article keyword
+      </p>
       <div
-        className="addCrypto MuiBox-root css-0"
+        className="SelectCryptoBox MuiBox-root css-4stev7"
       >
-        <label>
-          Add new crypto :
-        </label>
-        <span>
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            Add a new Crypto
-            <span
-              className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-        </span>
-      </div>
-      <div
-        className="selectCryptoContainer MuiBox-root css-0"
-      >
-        <p>
-          Select a crypto
-        </p>
         <div
-          className="SelectCryptoBox MuiBox-root css-4stev7"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
         >
-          <div
-            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor=":r2:"
+            id=":r2:-label"
           >
-            <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink={false}
-              htmlFor=":r6:"
-              id=":r6:-label"
-            >
-              Select a crypto
-            </label>
+            Default article keyword
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
+            onClick={[Function]}
+          >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
-              onClick={[Function]}
+              aria-controls=":r3:"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r2:-label :r2:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r2:"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="combobox"
+              tabIndex={0}
             >
-              <div
-                aria-controls=":r7:"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby=":r6:-label :r6:"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-                id=":r6:"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                role="combobox"
-                tabIndex={0}
+              <span
+                className="notranslate"
               >
-                <span
-                  className="notranslate"
-                >
-                  ​
-                </span>
-              </div>
-              <input
-                aria-hidden={true}
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                disabled={false}
-                name="Select"
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value=""
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-                data-testid="ArrowDropDownIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="css-yjsfm1"
-                >
-                  <span>
-                    Select a crypto
-                  </span>
-                </legend>
-              </fieldset>
+                ​
+              </span>
             </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              name="Select"
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-yjsfm1"
+              >
+                <span>
+                  Default article keyword
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="modalContainer MuiBox-root css-0"
+    >
+      <label>
+        Add RSS flux :
+      </label>
+      <span>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          Add new RSS flux
+          <span
+            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </span>
+    </div>
+    <div
+      className="selectCryptoContainer MuiBox-root css-0"
+    >
+      <p>
+        Default RSS flux
+      </p>
+      <div
+        className="SelectCryptoBox MuiBox-root css-4stev7"
+      >
+        <div
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor=":r4:"
+            id=":r4:-label"
+          >
+            Default RSS flux
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
+            onClick={[Function]}
+          >
+            <div
+              aria-controls=":r5:"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r4:-label :r4:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r4:"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="combobox"
+              tabIndex={0}
+            >
+              <span
+                className="notranslate"
+              >
+                ​
+              </span>
+            </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              name="Select"
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-yjsfm1"
+              >
+                <span>
+                  Default RSS flux
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="modalContainer MuiBox-root css-0"
+    >
+      <label>
+        Add new crypto
+      </label>
+      <span>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          Add a new Crypto
+          <span
+            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </span>
+    </div>
+    <div
+      className="selectCryptoContainer MuiBox-root css-0"
+    >
+      <p>
+        Remove crypto
+      </p>
+      <div
+        className="SelectCryptoBox MuiBox-root css-4stev7"
+      >
+        <div
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor=":r6:"
+            id=":r6:-label"
+          >
+            Remove crypto
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
+            onClick={[Function]}
+          >
+            <div
+              aria-controls=":r7:"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r6:-label :r6:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r6:"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="combobox"
+              tabIndex={0}
+            >
+              <span
+                className="notranslate"
+              >
+                ​
+              </span>
+            </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              name="Select"
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-yjsfm1"
+              >
+                <span>
+                  Remove crypto
+                </span>
+              </legend>
+            </fieldset>
           </div>
         </div>
       </div>

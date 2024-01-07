@@ -13,10 +13,7 @@ router.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, Content-Type, Accept, Content-Type, Authorization",
   );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE"
-  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });
 
@@ -25,70 +22,77 @@ router.get("/", async (req, res) => {
 
   if (cmids) {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmids}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmids}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
     );
     const json = await response.json();
-    
+
     const transformedData = await transformJSON(json);
 
-    res.status(200).send({ data: transformedData });
+    res
+      .status(200)
+      .header("Access-Control-Allow-Origin", "*")
+      .send({ data: transformedData });
   } else {
-
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
     );
     const json = await response.json();
-    
+
     const transformedData = await transformJSON(json);
 
-    res.status(200).send({ data: transformedData });
+    res
+      .status(200)
+      .header("Access-Control-Allow-Origin", "*")
+      .send({ data: transformedData });
   }
-
 });
 
-router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
-
+router.delete("/:cmid", verifyToken, isAdmin, async (req, res) => {
   try {
     const cmid = req.params.cmid;
 
-    if(cmid) {
+    if (cmid) {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
 
       const currentDate = new Date();
 
-      const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+      const formattedDate = currentDate
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ");
 
-      await connection.query("UPDATE crypto SET deleted_at = ? WHERE id = ?", [formattedDate,cmid]);
+      await connection.query("UPDATE crypto SET deleted_at = ? WHERE id = ?", [
+        formattedDate,
+        cmid,
+      ]);
       res.status(201).send(`The crypto : ${cmid} has been deleted`);
-    }
-    else {
-      res.status(400).send({message: "Error parameters"})
+    } else {
+      res.status(400).send({ message: "Error parameters" });
     }
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }
-})
+});
 
-router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
-
+router.get("/:cmid/history/:period", async (req, res) => {
   try {
 
     let limit;
 
     const cmid = req.params.cmid;
-    let period = req.params.period
+    let period = req.params.period;
 
     switch (period) {
-      case 'daily':
-        period = "day"
+      case "daily":
+        period = "day";
         limit = 60;
         break;
-      case 'hourly':
-        period = "hour"
+      case "hourly":
+        period = "hour";
         limit = 48;
         break;
-      case 'minute':
+      case "minute":
         limit = 60;
         break;
       default:
@@ -107,71 +111,62 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
     const priceHistory = await response.json();
 
     const priceHistoryData = priceHistory.Data.Data;
+    
+    const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData);
 
-    const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
-
-    res.status(200).send({ data: priceHistoryFormatted })
-
+    res.status(200).send({ data: priceHistoryFormatted });
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }
+});
 
-})
+router.patch("/:crypto_id/restore", verifyToken, isAdmin, async (req, res) => {
+  const crypto_id = req.params.crypto_id;
 
-router.patch("/:crypto_id/restore", verifyToken, isAdmin, async (req,res) => {
-  const crypto_id = req.params.crypto_id
-
-  if(crypto_id) {
+  if (crypto_id) {
     try {
       const pool = await createDatabase();
       const connection = await pool.getConnection();
       const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
-      const params = [null, crypto_id]
-      await connection.query(query,params)
+      const params = [null, crypto_id];
+      await connection.query(query, params);
 
       res.status(201).send(`The crypto is restored`);
     } catch (error) {
       res.status(500).send({ message: error + "Internal server error" });
     }
   }
-})
+});
 
 router.post("/", verifyToken, isAdmin, async (req, res) => {
+  const crypto = req.body.crypto;
 
-    const crypto = req.body.crypto;
+  try {
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.id}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
+    );
 
-    try {
-
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.id}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+    if (response.ok) {
+      const pool = await createDatabase();
+      const connection = await pool.getConnection();
+      await connection.query(
+        "INSERT INTO crypto (name, short_name, image) VALUES (?, ?, ?)",
+        [crypto.name, crypto.short_name, crypto.image],
       );
 
-      if(response.ok) {
-        const pool = await createDatabase();
-        const connection = await pool.getConnection();
-        await connection.query(
-          "INSERT INTO crypto (name, short_name, image) VALUES (?, ?, ?)",
-          [crypto.name, crypto.short_name, crypto.image]
-        );
-
-        res.status(201).send(`The crypto : ${crypto.name} has been added`);
-      }
-      
-    } catch (error) {
-
-      res.status(500).send({ message: error + "Internal server error" });
-
+      res.status(201).send(`The crypto : ${crypto.name} has been added`);
     }
-
+  } catch (error) {
+    res.status(500).send({ message: error + "Internal server error" });
+  }
 });
 
 router.get("/:cmid", verifyToken, async (req, res) => {
-
   const cmid = req.params.cmid;
 
   if (cmid) {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmid}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${cmid}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
     );
     const json = await response.json();
 
@@ -181,14 +176,12 @@ router.get("/:cmid", verifyToken, async (req, res) => {
   } else {
     res.status(500).send({ error: "Error parameters" });
   }
-  
 });
 
 function formatHistoryPrice(prices) {
-  
   if (!Array.isArray(prices)) {
     return {
-      error: "API error"
+      error: "API error",
     };
   }
 
@@ -197,19 +190,16 @@ function formatHistoryPrice(prices) {
     opening: price.open,
     highest: price.high,
     lowest: price.low,
-    close: price.close
+    close: price.close,
   }));
 
-  return priceHistoryFormatted
-
-
+  return priceHistoryFormatted;
 }
 
 function transformJSON(json) {
-
   if (!Array.isArray(json)) {
     return {
-      error: "API error"
+      error: "API error",
     };
   }
 

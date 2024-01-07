@@ -10,7 +10,7 @@ import useAuth from "../../Context/UserProvider";
 
 export default function Layout() {
   const { user } = useAuth();
-  
+
   return (
     <Box className="sideBarContainer">
       <Link to="/" className="logoLocation">
