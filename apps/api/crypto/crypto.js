@@ -28,9 +28,7 @@ router.get("/", async (req, res) => {
 
     const transformedData = await transformJSON(json);
 
-    res
-      .status(200)
-      .send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   } else {
     const response = await fetch(
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
@@ -39,32 +37,36 @@ router.get("/", async (req, res) => {
 
     const transformedData = await transformJSON(json);
 
-    res
-      .status(200)
-      .send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   }
 });
 
-router.get("/internal", verifyToken, async (req,res) => {
+router.get("/internal", verifyToken, async (req, res) => {
+  const only_trashed = req.query.only_trashed;
   try {
     const pool = await createDatabase();
     const connection = await pool.getConnection();
 
-    const query = `SELECT id, name, short_name, image FROM crypto WHERE deleted_at IS NULL;`;
+    let query;
+    if (only_trashed === "true") {
+      query = `SELECT id, name, short_name, image, deleted_at FROM crypto WHERE deleted_at IS NOT NULL;`;
+    } else {
+      query = `SELECT id, name, short_name, image, deleted_at FROM crypto WHERE deleted_at IS NULL;`;
+    }
+
     const results = await connection.query(query);
 
-    let cryptos = []
+    let cryptos = [];
 
-    if(results.length > 0) {
+    if (results.length > 0) {
       cryptos = results;
     }
 
-    res.status(200).send({ data: cryptos })
+    res.status(200).send({ data: cryptos });
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }
-})
-
+});
 
 router.delete("/:cmid", verifyToken, isAdmin, async (req, res) => {
   try {
@@ -96,7 +98,6 @@ router.delete("/:cmid", verifyToken, isAdmin, async (req, res) => {
 
 router.get("/:cmid/history/:period", async (req, res) => {
   try {
-
     let limit;
 
     const cmid = req.params.cmid;
@@ -115,11 +116,11 @@ router.get("/:cmid/history/:period", async (req, res) => {
         limit = 60;
         break;
       default:
-        console.error('Unrecognized period');
+        console.error("Unrecognized period");
         return;
     }
 
-    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`
+    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`;
 
     const response = await fetch(url);
 
@@ -130,7 +131,7 @@ router.get("/:cmid/history/:period", async (req, res) => {
     const priceHistory = await response.json();
 
     const priceHistoryData = priceHistory.Data.Data;
-    
+
     const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData);
 
     res.status(200).send({ data: priceHistoryFormatted });
@@ -162,7 +163,7 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.id}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.name}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
     );
 
     if (response.ok) {

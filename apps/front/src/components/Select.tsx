@@ -9,6 +9,7 @@ export default function Select(props: any) {
     handleChange = null,
     options = [],
     forCrypto = false,
+    ...other
   } = props;
 
   const [selected, setSelected] = React.useState([] as string[]);
@@ -32,6 +33,7 @@ export default function Select(props: any) {
             setSelected(typeof value === "string" ? value.split(",") : value);
             handleChange(event);
           }}
+          {...other}
         >
           {options.map((option: any) => (
             <MenuItem
