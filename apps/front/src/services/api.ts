@@ -107,7 +107,7 @@ const api = {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),v
+        body: JSON.stringify(user),
       });
       return handleErrors(response);
     } catch (error) {
