@@ -42,6 +42,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/internal", verifyToken, async (req, res) => {
+  try {
+    const pool = await createDatabase();
+    const connection = await pool.getConnection();
+
+    const query = `SELECT id, name, short_name, image FROM crypto WHERE deleted_at IS NULL;`;
+    const results = await connection.query(query);
+
+    let cryptos = [];
+
+    if (results.length > 0) {
+      cryptos = results;
+    }
+
+    res.status(200).send({ data: cryptos });
+  } catch (error) {
+    res.status(500).send({ message: error + "Internal server error" });
+  }
+});
+
 router.delete("/:cmid", verifyToken, isAdmin, async (req, res) => {
   try {
     const cmid = req.params.cmid;

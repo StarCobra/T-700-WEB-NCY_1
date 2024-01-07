@@ -10,7 +10,7 @@ passport.use(
       usernameField: "email",
       passwordField: "password",
       passReqToCallback: true,
-      session: false, // Désactive la gestion de session
+      session: false,
     },
     async (req, email, password, done) => {   
 
@@ -60,11 +60,11 @@ passport.use(
             await connection.query(query4, values4);
             return done(null, token);
           } else {
-            // Mot de passe incorrect
+
             return done(null, false, { message: "Authentication failed" });
           }
         } else {
-          // Aucun utilisateur trouvé avec ce nom d'utilisateur
+ 
           return done(null, false, { message: "Authentication failed" });
         }
       } catch (error) {
