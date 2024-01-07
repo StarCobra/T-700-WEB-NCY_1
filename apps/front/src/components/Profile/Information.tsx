@@ -31,14 +31,79 @@ export default function Information(props: any) {
 
   return (
     <Box className="profileInfoContainer">
-      <form onSubmit={handleSubmit}>
-        <Box
-          id="usernameBox"
-          className="labelInfo"
-          display="flex"
-          flexDirection="row"
-          gap="10px"
-          alignItems="center"
+      <Box
+        id="usernameBox"
+        className="labelInfo"
+        display="flex"
+        flexDirection="row"
+        gap="10px"
+        alignItems="center"
+      >
+        <h3 className="labelH3">Username :</h3>
+
+        {edit ? (
+          <TextField className="valueH3"
+            type="text"
+            label="Username"
+            id="outlined-basic"
+            variant="outlined"
+            defaultValue={user?.name}
+          />
+        ) : (
+          <h3 className="valueH3">{user?.name}</h3>
+        )}
+      </Box>
+
+      <Box
+        className="labelInfo"
+        display="flex"
+        flexDirection="row"
+        gap="10px"
+        alignItems="center"
+      >
+        <h3 className="labelH3">E-mail :</h3>
+
+        {edit ? (
+          <TextField className="valueH3"
+            type="email"
+            label="E-mail"
+            id="outlined-basic"
+            variant="outlined"
+            defaultValue={user?.mail}
+          />
+        ) : (
+          <h3 className="valueH3">{user?.mail}</h3>
+        )}
+      </Box>
+
+      <Box
+        id="birhtBox"
+        className="labelInfo"
+      >
+        <h3 className="labelH3">Birth date :</h3>
+
+        {edit ? (
+          <TextField className="valueH3"
+            type="date"
+            id="outlined-basic"
+            variant="outlined"
+            defaultValue={user?.birth_date}
+          />
+        ) : (
+          <h3 className="valueH3">{user?.birth_date}</h3>
+        )}
+      </Box>
+
+      <Box
+        className="buttonDiv"
+        gap="20px"
+        marginTop="20px"
+      >
+        <Button
+          id="edit"
+          onClick={() => {
+            setEdit(!edit);
+          }}
         >
           <h3 className="label">First name:</h3>
           {edit ? (

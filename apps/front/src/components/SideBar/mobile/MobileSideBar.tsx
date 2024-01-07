@@ -6,6 +6,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import { Link } from "react-router-dom";
 import { USER_ROLE_ADMIN } from "../../../constants/user";
 import useAuth from "../../../Context/UserProvider";
@@ -20,12 +21,20 @@ export default function MobileSideBar() {
   return (
     <Box className="mobileSideBarContainer">
       <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
-        {!user && 
+        {!user ?
           <Link to="/login">
               <BottomNavigationAction
                 label="Login"
                 value="login"
                 icon={<LoginOutlinedIcon />}
+            />
+          </Link>
+          :
+          <Link to="/profile">
+              <BottomNavigationAction
+                label="Profile"
+                value="profile"
+                icon={<Person2OutlinedIcon />}
             />
           </Link>
         }

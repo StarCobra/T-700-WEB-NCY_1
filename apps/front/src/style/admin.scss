@@ -10,7 +10,6 @@
   "formContainer"
   "commentContainer";
 }
-
 .titleContainer{
   grid-area: titleContainer;
   display:grid;
@@ -32,7 +31,6 @@
     }
   }
 }
-
 .formContainer{
   display:flex;
   margin:auto;
@@ -101,7 +99,6 @@
     }
   }
 }
-
 .SelectCryptoBox{
   width:206px;
   margin: 10px;
