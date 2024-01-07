@@ -65,7 +65,6 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
     const cmid = req.params.cmid;
     let period = req.params.period
 
-    // Déterminez la limite en fonction de la période
     switch (period) {
       case 'daily':
         period = "day"
@@ -93,12 +92,14 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
     }
 
     const priceHistory = await response.json();
+
+    console.log(priceHistory.Data.Data)
     const priceHistoryData = priceHistory.Data.Data
 
 
     const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
 
-    res.status(200).send({ data: priceHistoryFormatted })
+    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: priceHistoryFormatted })
 
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
@@ -181,6 +182,7 @@ function formatHistoryPrice(prices) {
   }
 
   const priceHistoryFormatted = prices.map((price) => ({
+    time: price.time,
     opening: price.open,
     highest: price.high,
     lowest: price.low,

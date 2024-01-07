@@ -17,8 +17,8 @@ export async function getRefreshToken(token) {
             const user = results[0];
 
             const query2 = `SELECT keyword.id, keyword FROM keyword INNER JOIN favorite_keywords ON favorite_keywords.keyword_id = keyword.id
-            INNER JOIN user ON user.id = favorite_keywords.user_id WHERE favorite_keywords.user_id = ? AND keyword.deleted_at = ?`;
-            const value2 = [user.id, null];
+            INNER JOIN user ON user.id = favorite_keywords.user_id WHERE favorite_keywords.user_id = ? AND keyword.deleted_at IS NULL;`;
+            const value2 = [user.id];
             const keywords = await connection.query(query2, value2);
 
 
@@ -26,9 +26,9 @@ export async function getRefreshToken(token) {
                 user.favorite_keywords = keywords.map(item => ({id: item.id, keyword: item.keyword}));
             }
 
-            const query3 = `SELECT crypto.id, crypto.name FROM crypto INNER JOIN favorite_cryptos ON favorite_cryptos.crypto_id = crypto.id 
-            WHERE favorite_cryptos.user_id = ? AND crypto.deleted_at = ?;`;
-            const value3 = [user.id, null]
+            const query3 = `SELECT crypto.id, crypto.name, crypto.short_name FROM crypto INNER JOIN favorite_cryptos ON favorite_cryptos.crypto_id = crypto.id 
+            WHERE favorite_cryptos.user_id = ? AND crypto.deleted_at IS NULL;`;
+            const value3 = [user.id]
             const cryptos = await connection.query(query3, value3);
 
             if(cryptos.length > 0) {
