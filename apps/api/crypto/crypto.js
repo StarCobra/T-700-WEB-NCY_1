@@ -77,6 +77,7 @@ router.delete("/:cmid", verifyToken, isAdmin, async (req, res) => {
 
 router.get("/:cmid/history/:period", async (req, res) => {
   try {
+
     let limit;
 
     const cmid = req.params.cmid;
@@ -95,22 +96,22 @@ router.get("/:cmid/history/:period", async (req, res) => {
         limit = 60;
         break;
       default:
-        console.error("Période non reconnue");
+        console.error('Unrecognized period');
         return;
     }
 
-    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`;
+    const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`
 
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Erreur de requête: ${response.statusText}`);
+      throw new Error(`Error request : ${response.statusText}`);
     }
 
     const priceHistory = await response.json();
 
     const priceHistoryData = priceHistory.Data.Data;
-
+    
     const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData);
 
     res.status(200).send({ data: priceHistoryFormatted });
