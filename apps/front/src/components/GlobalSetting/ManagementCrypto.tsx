@@ -67,38 +67,40 @@ export default function ManagementCrypto(props: any) {
   }, [action]);
 
   return (
-    <Box>
-      <form onSubmit={handleSubmit}>
+    <form className="formContainer" onSubmit={handleSubmit}>
+      <Box className="form">
         <Select
           name="Select"
+          className="formcontent"
           label="Select an action"
           required
           options={options}
           handleChange={(e: any) => setAction(e.target.value)}
         />
 
-        <Box className="nameContainer">
-          {action !== "create" ? (
-            <Select
-              name="Select"
-              label={loadingCrypto ? "loading..." : "Select a crypto"}
-              options={responseCrypto?.data}
-              required={action !== "create"}
-              handleChange={(e: any) => setSelectedCryptoID(e.target.value)}
-            />
-          ) : (
-            <>
+        {action !== "create" ? (
+          <Select className="formcontent"
+            name="Select"
+            label={loadingCrypto ? "loading..." : "Select a crypto"}
+            options={responseCrypto?.data}
+            required={action !== "create"}
+            handleChange={(e: any) => setSelectedCryptoID(e.target.value)}
+          />
+        ) : (
+          <>
+            <Box className="formcontent">
               <TextField
-                className="inputField"
-                name="name"
-                type="text"
-                required={action === "create"}
-                placeholder="ex: bitcoin"
-                label="New crypto name"
-                value={formData.name}
-                onChange={handleChange}
+              className="inputField"
+              name="name"
+              type="text"
+              required={action === "create"}
+              placeholder="ex: bitcoin"
+              label="New crypto name"
+              value={formData.name}
+              onChange={handleChange}
               />
-
+            </Box>
+            <Box className="formcontent">
               <TextField
                 className="inputField"
                 name="short_name"
@@ -109,12 +111,12 @@ export default function ManagementCrypto(props: any) {
                 value={formData.short_name}
                 onChange={handleChange}
               />
-            </>
-          )}
-        </Box>
+            </Box>
+          </>
+        )}
+      </Box>
 
-        <button type="submit">Soumettre</button>
-      </form>
-    </Box>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
