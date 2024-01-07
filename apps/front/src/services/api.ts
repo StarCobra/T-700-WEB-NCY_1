@@ -210,6 +210,78 @@ const api = {
       throw error;
     }
   },
+
+  postKeyword: async (keyword: any, userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/keywords`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify(keyword),
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error posting keyword:", error);
+      throw error;
+    }
+  },
+
+  getKeywords: async (
+    onlyTrashed: boolean,
+    userToken: string,
+  ): Promise<any> => {
+    const only_trashed = onlyTrashed
+      ? "?only_trashed=true"
+      : "?only_trashed=false";
+    try {
+      const response = await fetch(`${apiUrl}/keywords${only_trashed}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching keywords:", error);
+      throw error;
+    }
+  },
+
+  deleteKeyword: async (keywordId: number, userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/keywords/${keywordId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error deleting keyword:", error);
+      throw error;
+    }
+  },
+
+  restoreKeyword: async (
+    keywordId: number,
+    userToken: string,
+  ): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/keywords/${keywordId}/restore`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error restoring keyword:", error);
+      throw error;
+    }
+  },
 };
 
 export default api;

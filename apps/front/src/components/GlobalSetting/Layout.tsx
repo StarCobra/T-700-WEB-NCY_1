@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ManagementCrypto from "./ManagementCrypto";
 import useAuth from "../../Context/UserProvider";
+import ManagementKeyword from "./ManagementKeyword";
 
 export default function Layout() {
   const { userToken } = useAuth();
@@ -21,6 +22,8 @@ export default function Layout() {
 
       <Box>
         <ManagementCrypto userToken={userToken} />
+
+        <ManagementKeyword userToken={userToken} />
       </Box>
 
       <Box className="commentContainer">
