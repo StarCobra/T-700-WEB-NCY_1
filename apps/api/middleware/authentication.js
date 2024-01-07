@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { createDatabase } from "../database/create.js";
 import { getRefreshToken } from "../utils/getRefreshToken.js";
 
 export function verifyToken(req, res, next) {
@@ -42,8 +41,7 @@ export function verifyToken(req, res, next) {
 
         return res.status(403).json({
           token: token,
-          error: err,
-          message: "Token non valide",
+          error: err
         });
 
       }
