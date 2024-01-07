@@ -82,24 +82,3 @@ button{
     color:$borderColor;
 
 }
-
-@media (min-width: $sm-width) {
-    .mobileSideBarLayout{
-        display:none !important;
-    }
-}
-
-@media (max-width: $sm-width) {
-    body{
-        font-size: 13px;
-    }
-    .sideBarContainer{
-        display: none !important;
-    }
-    .layoutContainer{
-        display:grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 8fr 1fr;
-        grid-template-areas: "displayContainer";
-    }
-}

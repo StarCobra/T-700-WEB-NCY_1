@@ -10,6 +10,7 @@ import ArticleDetailsLayout from "./components/Articles/Details/Layout";
 import { ArticleProvider } from "./Context/ArticleProvider";
 
 import GlobalSettingsLayout from "./components/GlobalSetting/Layout";
+import MobileSideBarLayout from "./components/SideBar/mobile/MobileSideBar";
 import PreferencesLayout from "./components/Preferences/Layout";
 import { Route, Routes } from "react-router-dom";
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
         </Routes>
       </Box>
+      <MobileSideBarLayout />
     </Box>
   );
 }
