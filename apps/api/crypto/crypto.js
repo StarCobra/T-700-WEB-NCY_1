@@ -13,6 +13,7 @@ router.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, Content-Type, Accept, Content-Type, Authorization",
   );
+
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });
@@ -28,10 +29,7 @@ router.get("/", async (req, res) => {
 
     const transformedData = await transformJSON(json);
 
-    res
-      .status(200)
-      .header("Access-Control-Allow-Origin", "*")
-      .send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   } else {
     const response = await fetch(
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
@@ -40,10 +38,7 @@ router.get("/", async (req, res) => {
 
     const transformedData = await transformJSON(json);
 
-    res
-      .status(200)
-      .header("Access-Control-Allow-Origin", "*")
-      .send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   }
 });
 
@@ -95,7 +90,7 @@ router.get("/:cmid/history/:period", async (req, res) => {
         limit = 60;
         break;
       default:
-        console.error("Période non reconnue");
+        console.error("Unrecognized period");
         return;
     }
 
@@ -104,7 +99,7 @@ router.get("/:cmid/history/:period", async (req, res) => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Erreur de requête: ${response.statusText}`);
+      throw new Error(`Error request : ${response.statusText}`);
     }
 
     const priceHistory = await response.json();

@@ -25,6 +25,7 @@ router.use((req, res, next) => {
 });
 
 router.post("/register", async (req, res) => {
+  
   try {
     let user = req.body.user;
 
