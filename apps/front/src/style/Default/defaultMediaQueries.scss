@@ -4,8 +4,43 @@
 // $lg-width:3840px;
 
 @media (min-width: $md-width) { //laptop and bigger
-    .mobileSideBarLayout{
+    .displayContainer{
+        height:95vh;
+    }
+    .mobileSideBarContainer{
         display:none !important;
+    }
+}
+
+@media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+    .sideBarContainer{
+        height: 90vh !important;
+    }
+    .displayContainer{
+        height: 90vh;
+    }
+    .logoLocation{
+        img{
+            height:75px;
+            width:auto !important;
+        }
+    }
+    .Menu{
+        justify-content: center;
+    }
+    .usernameContainer{
+        display:flex !important;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 13px !important;
+    }
+    .userProfilePicture{
+        img{
+            width:50px !important;
+        }
+    }
+    .mobileSideBarContainer{
+        display: none;
     }
 }
 
@@ -13,14 +48,32 @@
     body{
         font-size: 13px;
     }
-    .sideBarContainer{
-        display: none !important;
-    }
     .layoutContainer{
-        display:grid;
-        display:grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 8fr 1fr;
-        grid-template-areas: "displayContainer";
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 1fr 1fr !important;
+        grid-template-areas: "displayContainer" 
+        "mobileSideBar" !important;
     }
+    .displayContainer{
+        height:80vh;
+        width: 90vw;
+    }
+    .mobileSideBarContainer{
+        display:flex;
+        grid-area: mobileSideBar;
+    }
+    .sideBarContainer{
+        display:none !important;
+    }
+
+    .css-1bped5o-MuiBottomNavigation-root{
+        background-color: $bg-color-semidark !important;
+        border:solid $borderColor 2px !important;
+        border-radius: $borderRadius!important;
+        width:100% !important;
+        box-shadow: 0 0 5px $borderColor;
+    }
+}
+.mobileSideBarContainer {
+    width: 95vw !important;
 }

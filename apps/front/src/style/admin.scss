@@ -10,7 +10,6 @@
   "formContainer"
   "commentContainer";
 }
-
 .titleContainer{
   grid-area: titleContainer;
   display:grid;
@@ -32,7 +31,6 @@
     }
   }
 }
-
 .formContainer{
   display:flex;
   margin:auto;
@@ -50,23 +48,11 @@
   div{
     display:flex;
   }
-  .modalContainer{
-    span{
-      display: flex;
-      flex-grow: 1;
-      align-items: center;
-      justify-content: center;
-    }
-    button{
-      margin-right: 5px;
-      width:150px;
-      height:56px;
-    }
-  }
-  label{
-    flex-grow: 1;
-    display: flex;
+  .formcontent{
+    display:flex;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
   }
   button{
     flex-grow: 1;
@@ -84,7 +70,21 @@
     }
   }
 }
-
+.nameContainer{
+  display: flex;
+  justify-content: center;
+}
+.form{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.selectCryptoContainer {
+  p{
+    display:none;
+  }
+}
 .commentContainer{
   background-color: $bg-color-semilight;
   grid-area: commentContainer;
@@ -103,106 +103,7 @@
     }
   }
 }
-
-.addRssModal{
-    background-color: $bg-color-semilight !important;
-    border: 2px solid $borderColor !important;
-    border-radius: $borderRadius;
-    outline: none;
-    color: white;
-
-  .titleContainer{
-    display: flex;
-    color:$borderColor;
-    justify-content: center;
-
-    .title{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .iconRss{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    color:$borderColor;
-  }
-
-  .rssAddContainer{
-    display: grid;
-    gap:10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3,1fr);
-    grid-template-areas: "addName"
-    "url"
-    "rssSubmit";
-    .rssName{
-      grid-area: addName;
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      grid-template-areas: "labelName rssName";
-      gap: 10px;
-      label{
-        grid-area: labelName;
-        display:flex;
-        justify-content: end;
-        align-items: center;
-      }
-      #outlined-basic{
-        grid-area: rssName;
-        display:flex;
-        align-items: center;
-      }
-    }
-
-    .rssUrl{
-      grid-area: url;
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      grid-template-areas: "labelUrl rssUrl";
-      gap: 10px;
-      .labelUrl{
-        grid-area: labelUrl;
-        display:flex;
-        justify-content: end;
-        align-items: center;
-      }
-      #outlined-basic{
-        grid-area: rssUrl;
-        display:flex;
-        align-items: center;
-      }
-      .picUpload{
-        grid-area: rssUrl;
-        display: flex;
-        align-items: center;
-      }
-      .css-sghohy-MuiButtonBase-root-MuiButton-root{
-        background-color: transparent;
-        border:none;
-        box-shadow: none;
-        color:$borderColor;
-        &:hover{
-          background-color: $buttonHoverBg;
-          color:white;
-          border:1px $borderColor solid;
-          border-radius: $borderRadius;
-        }
-      }
-    }
-
-    .rssSubmit{
-      grid-area: rssSubmit;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      button{
-        width:100%;
-        height:40px;
-      }
-    }
-  }
+.SelectCryptoBox{
+  width:206px;
+  margin: 10px;
 }

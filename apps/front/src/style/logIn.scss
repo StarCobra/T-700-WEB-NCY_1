@@ -52,3 +52,9 @@
         }
     }
 }
+
+@media (max-width: $sm-width) { //smartphone
+    .loginContainer{
+        width:80% !important;
+    }
+}

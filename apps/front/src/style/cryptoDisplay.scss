@@ -44,6 +44,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+    width:100%;
     .SelectCryptoLabel{
         margin:5px;
         width:300px;
@@ -105,5 +106,33 @@
         }
         .selectCryptoContainer{
             flex-direction: column;
+
+        }
+    }
+    @media (max-width: $sm-width) { //smartphone
+        .css-4stev7{
+            width:115%;
+        }
+        .modalContainer{
+            label{
+                display:none !important;
+            }
+        }
+
+        .chartContainer {
+            width:330px !important;
+        }
+        .cryptoChartContainer {
+            width:330px !important;
+        }
+        .selectCryptoContainer {
+            flex-direction: column !important;
+            width: 95% !important;
+        }
+        .SelectCryptoBox {
+            width:100% !important;
+        }
+        .arrayContainer{
+            width:330px !important;
         }
     }

@@ -197,35 +197,6 @@
     }
 }
 
-@media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
-    .sideBarContainer{
-        height: 90vh !important;
-    }
-    .displayContainer{
-        height: 90vh;
-    }
-    .logoLocation{
-        img{
-            height:75px;
-            width:auto !important;
-        }
-    }
-    .Menu{
-        justify-content: center;
-    }
-    .usernameContainer{
-        display:flex !important;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 13px !important;
-    }
-    .userProfilePicture{
-        img{
-            width:50px !important;
-        }
-    }
-}
-
 @keyframes shadowAnim {
     0% {
     box-shadow: none;
