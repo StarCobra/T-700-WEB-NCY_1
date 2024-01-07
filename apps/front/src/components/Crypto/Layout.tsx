@@ -5,11 +5,12 @@ import Select from "../Select";
 import { Box, FormControl, FormControlLabel, Switch } from "@mui/material";
 import { Link } from "react-router-dom";
 import "../../style/cryptoDisplay.scss";
+import useAuth from "../../Context/UserProvider";
 
 export default function Layout() {
   const [valueCrypto, setValueCrypto] = React.useState("bitcoin");
   // TODO : remplacer par le user connecté ou non
-  const user = null;
+  const {user}  = useAuth();
   // TODO : remplacer par valeur de l'API
   const options = [
     { value: "bitcoin", label: "BTC" },
@@ -141,14 +142,14 @@ export default function Layout() {
           options={options}
           handleChange={(e: any) => setValueCrypto(e.target.value)}
         />
+        {user ? 
+          <Box className="prefContainer">
+            <Link className="updatePreferencies" to={"/preferences"}>Click here to update preferencies</Link> 
+          </Box>
+        : ""}
 
         
       </Box>
-      {user ? 
-        <Box className="prefContainer">
-          <Link className="updatePreferencies" to={"/preferences"}>Click here to update preferencies</Link> 
-        </Box>
-      : ""}
       <Box className="chartContainer">
         <CryptoChart
           resource={test}

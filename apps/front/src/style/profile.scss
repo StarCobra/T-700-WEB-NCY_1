@@ -12,71 +12,38 @@
             border-radius: $borderRadius;
         }
     }
-    .centeringDiv{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .profileInfoContainer{
-            div{
-                display:flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #edit{
-                grid-area: edit;
-                button{
-                    width:125px;
-                }
-            }
-            #delete{
-                grid-area: delete;
-                button{
-                    width:125px;
-                }
-            }
-            #usernameLabel{
-                grid-area: usernameLabel; 
-            }
-            #mailLabel{
-                grid-area: mailLabel;
-            }
-            #birthLabel{
-                grid-area: birthLabel;
-            }
-            #username{
-                grid-area: username;
-            }
-            #mail{
-                grid-area: mail;
-            }
-            #birth{
-                grid-area: birth;
-            }
-            display:grid;
-            grid-template-columns: repeat(2,1fr);
-            grid-template-rows: repeat(5, 1fr);
-            grid-template-areas: "usernameLabel username"
-            "mailLabel mail"
-            "birthLabel birth"
-            "edit edit"
-            "delete delete";
-            width:100%;
-            margin:5px;
-            gap:5px;
-            .userInfo{
-                display: flex;
-                margin-right: auto;
-                align-items: center;
-            }
-            .labelInfo{
-                display:flex;
-                margin-left: auto;
-                margin-right: 10px;
-                align-items: center;
-                color:$borderColor;
-                grid-area: labelinfo;
-    
+    .profileInfoContainer {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        #edit{
+            button{
+                width:125px;
             }
         }
+        #delete{
+            button{
+                width:125px;
+            }
+        }
+        width:100%;
+        .userInfo{
+            display: flex;
+            align-items: center;
+        }
+        .labelInfo{
+            display:flex;
+            align-items: center;
+            color:$borderColor;
+            grid-area: labelinfo;
+
+        }
+    }
+}
+
+@media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+    .SelectCryptoBox{
+        max-width: 205px;
     }
 }

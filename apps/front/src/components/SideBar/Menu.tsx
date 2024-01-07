@@ -44,7 +44,7 @@ export default function Menu(props: any) {
         </Link>
       )}
 
-      <Link to={"/articles"} className="Menu" id="menu3">
+      <Link to={"/articles"} className="Menu" id={user?.roles === USER_ROLE_ADMIN || !user ? "menu3" : "menu2" }>
         <Box className="menuIcon">
           <DescriptionOutlinedIcon />
         </Box>
@@ -53,7 +53,7 @@ export default function Menu(props: any) {
       </Link>
 
       {user && (
-        <Link to="/logout" className="Menu" id="menu4" onClick={() => logOut()}>
+        <Link to="/logout" className="Menu" id={user?.roles === USER_ROLE_ADMIN ? "menu4" : "menu3"} onClick={() => logOut()}>
           <Box className="menuIcon">
             <LogoutOutlinedIcon />
           </Box>

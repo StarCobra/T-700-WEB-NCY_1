@@ -34,55 +34,55 @@
 }
 
 .formContainer{
-  grid-area: formContainer;
-  display:grid;
+  display:flex;
   margin:auto;
-  grid-template-areas: "chooseCrypto"
-  "chooseKeyword"
-  "chooseRss"
-  "removeRss"
-  "addCrypto"
-  "removeCrypto";
-  gap: 5px;
+  flex-direction: column;
+  width:50%;
+  p{
+    flex-grow: 1;
+  }
+  input{
+    flex-grow: 1;
+  }
   label{
-    margin-bottom: 5px;
+    flex-grow: 1;
+  }
+  div{
+    display:flex;
+  }
+  .modalContainer{
+    span{
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+    }
+    button{
+      margin-right: 5px;
+      width:150px;
+      height:56px;
+    }
+  }
+  label{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
   }
   button{
+    flex-grow: 1;
     background-color: transparent;
     color: $borderColor;
-    margin-left: 5px;
     &:hover{
       border:solid 1px $borderColor;
       background-color: $buttonHoverBg;
       color:white;
     }
+    &:active{
+      border:solid 1px $borderColor;
+      background-color: $borderColorClick;
+      color:white;
+    }
   }
-
-  .chooseCrypto{
-    grid-area: chooseCrypto;
-  }
-
-  .chooseKeyword{
-    grid-area: chooseKeyword;
-  }
-
-  .chooseRss{
-    grid-area: chooseRss;
-  }
-
-  .removeRss{
-    grid-area: removeRss;
-  }
-
-  .addCrypto{
-    grid-area: addCrypto;
-  }
-
-  .removeCrypto{
-    grid-area: removeCrypto;
-  }
-
-
 }
 
 .commentContainer{
