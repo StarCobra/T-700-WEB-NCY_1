@@ -97,8 +97,9 @@ export default function ManagementKeyword(props: any) {
             />
           )}
         </Box>
-
-        <button type="submit">Soumettre</button>
+        <Box className="nameContainer">
+          <button type="submit">Submit</button>
+        </Box>
       </form>
     </Box>
   );
