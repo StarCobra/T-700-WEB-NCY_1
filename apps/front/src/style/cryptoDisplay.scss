@@ -107,3 +107,13 @@
             flex-direction: column;
         }
     }
+    @media (max-width: $sm-width) { //smartphone
+        .css-4stev7{
+            width:115%;
+        }
+        .modalContainer{
+            label{
+                display:none !important;
+            }
+        }
+    }
