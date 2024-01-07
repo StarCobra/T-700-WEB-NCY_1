@@ -13,6 +13,7 @@ router.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, Content-Type, Accept, Content-Type, Authorization",
   );
+
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });

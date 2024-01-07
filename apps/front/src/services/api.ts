@@ -48,6 +48,27 @@ const api = {
     }
   },
 
+  getArticles: async (params: string): Promise<any> => {
+    try {
+      const fields = params !== "" ? `?params=${params}` : "";
+      const response = await fetch(`${apiUrl}/articles${fields}`);
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+      throw error;
+    }
+  },
+
+  getArticle: async (id: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/articles/${id}`);
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching article:", error);
+      throw error;
+    }
+  },
+
   logIn: async (user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/login`, {
@@ -79,14 +100,14 @@ const api = {
     }
   },
 
-  register: async (userData: any): Promise<any> => {
+  register: async (user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(user),
       });
       return handleErrors(response);
     } catch (error) {
