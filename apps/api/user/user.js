@@ -25,7 +25,6 @@ router.use((req, res, next) => {
 });
 
 router.post("/register", async (req, res) => {
-  
   try {
     let user = req.body.user;
 
@@ -103,54 +102,6 @@ router.post("/logout", verifyToken, (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
 
-
-
-router.patch(
-  "/keywords/:keyword_id/restore",
-  verifyToken,
-  isAdmin,
-  async (req, res) => {
-    const keyword_id = req.params.keyword_id;
-
-    if (keyword_id) {
-      try {
-        const pool = await createDatabase();
-        const connection = await pool.getConnection();
-        const query = "UPDATE keyword SET deleted_at = ? WHERE id = ?";
-        const params = [null, keyword_id];
-        await connection.query(query, params);
-
-        res.status(201).send(`The keyword is restored`);
-      } catch (error) {
-        res.status(500).send({ message: error + "Internal server error" });
-      }
-    }
-  },
-);
-
-router.patch(
-  "/cryptos/:crypto_id/restore",
-  verifyToken,
-  isAdmin,
-  async (req, res) => {
-    const crypto_id = req.params.crypto_id;
-
-    if (crypto_id) {
-      try {
-        const pool = await createDatabase();
-        const connection = await pool.getConnection();
-        const query = "UPDATE crypto SET deleted_at = ? WHERE id = ?";
-        const params = [null, crypto_id];
-        await connection.query(query, params);
-
-        res.status(201).send(`The crypto is restored`);
-      } catch (error) {
-        res.status(500).send({ message: error + "Internal server error" });
-      }
-    }
-  },
-);
-
 router.delete("/keywords/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
@@ -171,7 +122,7 @@ router.delete("/keywords/favorite", verifyToken, async (req, res) => {
       }
 
       const keyword_string = favorite_keywords
-        .map((keyword) => keyword.keyword)
+        .map((keyword) => keyword.name)
         .join(",");
 
       const data = await getRefreshToken(req.token);
@@ -223,7 +174,6 @@ router.delete("/cryptos/favorite", verifyToken, async (req, res) => {
   }
 });
 
-
 router.post("/cryptos/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
@@ -236,7 +186,8 @@ router.post("/cryptos/favorite", verifyToken, async (req, res) => {
 
       if (favorite_cryptos) {
         favorite_cryptos.forEach(async (crypto) => {
-          const query = "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
+          const query =
+            "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
           const params = [user_id, crypto.id];
           await connection.query(query, params);
         });
@@ -278,7 +229,7 @@ router.post("/keywords/favorite", verifyToken, async (req, res) => {
       }
 
       const keywordsString = favorite_keywords
-        .map((keyword) => keyword.keyword)
+        .map((keyword) => keyword.name)
         .join(",");
 
       const data = await getRefreshToken(req.token);
