@@ -100,6 +100,23 @@ const api = {
     }
   },
 
+  putProfile: async (user: any, userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/users/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({ is_change: true, user }),
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      throw error;
+    }
+  },
+
   register: async (user: any): Promise<any> => {
     try {
       const response = await fetch(`${apiUrl}/users/register`, {
