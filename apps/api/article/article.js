@@ -25,16 +25,12 @@ router.get("/", verifyToken, async (req, res) => {
         ),
       );
 
-      res
-        .status(200)
-        .header("Access-Control-Allow-Origin", "*")
-        .send({ data: filteredArticles });
-    } else {
-      res
-        .status(200)
-        .header("Access-Control-Allow-Origin", "*")
-        .send({ data: articles });
-    }
+            res.status(200).header('Access-Control-Allow-Origin', '*').send({data: filteredArticles});
+        }
+        else {
+            res.status(200).header('Access-Control-Allow-Origin', '*').send({data: articles});
+        }
+       
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }

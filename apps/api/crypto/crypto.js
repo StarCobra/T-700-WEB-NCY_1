@@ -43,11 +43,18 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/internal", verifyToken, async (req, res) => {
+  const only_trashed = req.query.only_trashed;
   try {
     const pool = await createDatabase();
     const connection = await pool.getConnection();
 
-    const query = `SELECT id, name, short_name, image FROM crypto WHERE deleted_at IS NULL;`;
+    let query;
+    if (only_trashed === "true") {
+      query = `SELECT id, name, short_name, image, deleted_at FROM crypto WHERE deleted_at IS NOT NULL;`;
+    } else {
+      query = `SELECT id, name, short_name, image, deleted_at FROM crypto WHERE deleted_at IS NULL;`;
+    }
+
     const results = await connection.query(query);
 
     let cryptos = [];
@@ -157,7 +164,7 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.id}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${crypto.name}&x_cg_demo_api_key=${process.env.SECRET_API_KEY}`,
     );
 
     if (response.ok) {
