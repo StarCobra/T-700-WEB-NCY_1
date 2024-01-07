@@ -20,10 +20,10 @@ export default function Information(props: any) {
 
         {edit ? (
           <TextField
-            id="standard-basic"
             type="text"
             label="Username"
-            variant="standard"
+            id="outlined-basic"
+            variant="outlined"
             defaultValue={user?.name}
           />
         ) : (
@@ -32,7 +32,6 @@ export default function Information(props: any) {
       </Box>
 
       <Box
-        id="mailBox"
         className="labelInfo"
         display="flex"
         flexDirection="row"
@@ -43,10 +42,10 @@ export default function Information(props: any) {
 
         {edit ? (
           <TextField
-            id="standard-basic"
             type="email"
             label="E-mail"
-            variant="standard"
+            id="outlined-basic"
+            variant="outlined"
             defaultValue={user?.mail}
           />
         ) : (
@@ -66,9 +65,9 @@ export default function Information(props: any) {
 
         {edit ? (
           <TextField
-            id="standard-basic"
             type="date"
-            variant="standard"
+            id="outlined-basic"
+            variant="outlined"
             defaultValue={user?.birth_date}
           />
         ) : (

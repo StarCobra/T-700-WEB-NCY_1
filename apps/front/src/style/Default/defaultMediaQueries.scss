@@ -1,12 +1,15 @@
+//Screen width for responsive design
+// $sm-width:600px; //smartphone
+// $md-width:1024px; //tablets
+// $lg-width:3840px;
 
-
-@media (min-width: $sm-width) {
+@media (min-width: $md-width) { //laptop and bigger
     .mobileSideBarLayout{
         display:none !important;
     }
 }
 
-@media (max-width: $sm-width) {
+@media (max-width: $sm-width) { //smartphone
     body{
         font-size: 13px;
     }

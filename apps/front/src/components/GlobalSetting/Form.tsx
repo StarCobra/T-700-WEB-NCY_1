@@ -29,45 +29,43 @@ export default function Form() {
 
   return (
     <form className="formContainer">
-      <Box display="flex" flexDirection="column" gap="5px" alignItems="start">
-        <Select
-          name="Select"
-          label="Choose different crypto :"
-          options={options}
-          handleChange={(e: any) => setCrypto(e.target.value)}
-        />
+      <Select
+        name="Select"
+        label="Default crypto"
+        options={options}
+        handleChange={(e: any) => setCrypto(e.target.value)}
+      />
 
-        <Select
-          name="Select"
-          label="Choose default article keyword :"
-          options={options}
-          handleChange={(e: any) => setArticle(e.target.value)}
-        />
+      <Select
+        name="Select"
+        label="Default article keyword"
+        options={options}
+        handleChange={(e: any) => setArticle(e.target.value)}
+      />
 
-        <Box className="chooseRss">
-          <label>Add RSS flux :</label>
-          <NewRssModal />
-        </Box>
-
-        <Select
-          name="Select"
-          label="Select a RSS flux"
-          options={options}
-          handleChange={(e: any) => setRSSFlux(e.target.value)}
-        />
-
-        <Box className="addCrypto">
-          <label>Add new crypto :</label>
-          <NewCryptoModal />
-        </Box>
-
-        <Select
-          name="Select"
-          label="Select a crypto"
-          options={options}
-          handleChange={(e: any) => setRemoveCrypto(e.target.value)}
-        />
+      <Box className="modalContainer">
+        <label>Add RSS flux :</label>
+        <NewRssModal />
       </Box>
+
+      <Select
+        name="Select"
+        label="Default RSS flux"
+        options={options}
+        handleChange={(e: any) => setRSSFlux(e.target.value)}
+      />
+
+      <Box className="modalContainer">
+        <label>Add new crypto</label>
+        <NewCryptoModal />
+      </Box>
+
+      <Select
+        name="Select"
+        label="Remove crypto"
+        options={options}
+        handleChange={(e: any) => setRemoveCrypto(e.target.value)}
+      />
     </form>
   );
 }
