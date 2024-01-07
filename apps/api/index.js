@@ -3,6 +3,7 @@ import passport from "passport";
 import userRoutes from "./user/user.js";
 import cryptoRoutes from "./crypto/crypto.js";
 import articleRoutes from "./article/article.js"
+import keywordRoutes from "./keyword/keyword.js"
 import dotenv from "dotenv";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(passport.initialize());
 app.use("/users", userRoutes);
 app.use("/cryptos", cryptoRoutes);
 app.use("/articles", articleRoutes);
+app.use("/keywords", keywordRoutes);
 
 app.listen(port, () => {
   console.log(`API server listening at http://localhost:${port}`);
