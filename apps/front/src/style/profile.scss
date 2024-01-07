@@ -60,3 +60,11 @@
         max-width: 205px;
     }
 }
+@media (max-width: $sm-width) { //smartphone
+    .labelInfo{
+        width:70%;
+    }
+    .profileLayout{
+        font-size: 12px;
+    }
+}
