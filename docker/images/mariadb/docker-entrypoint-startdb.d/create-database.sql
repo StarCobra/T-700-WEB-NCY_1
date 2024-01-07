@@ -30,7 +30,7 @@ CREATE TABLE `crypto` (
     `id` int(11) NOT NULL,
     `name` varchar(50) NOT NULL,
     `short_name` varchar(50) NOT NULL,
-    `image` text NOT NULL,
+    `image` text NULL DEFAULT NULL,
     `deleted_at` DATE NULL
     
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -68,10 +68,10 @@ CREATE TABLE `rss_flux` (
 -- Primary key: id
 CREATE TABLE `user` (
     `id` int(11) NOT NULL,
-    `email` varchar(100) NOT NULL,
+    `email` varchar(100) NOT NULL UNIQUE,
     `first_name` varchar(50) NOT NULL,
     `last_name` varchar(50) NOT NULL,
-    `password` varchar(120) DEFAULT NULL,
+    `password` varchar(120) NOT NULL,
     `birth_date` date NOT NULL,
     `provider_id` int(11) DEFAULT NULL,
     `provider_name` varchar(50) DEFAULT NULL,

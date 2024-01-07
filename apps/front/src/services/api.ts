@@ -94,6 +94,84 @@ const api = {
       throw error;
     }
   },
+
+  postCrypto: async (crypto: any, userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/cryptos`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify(crypto),
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error posting crypto:", error);
+      throw error;
+    }
+  },
+
+  getInternalCrypto: async (
+    onlyTrashed: boolean,
+    userToken: string,
+  ): Promise<any> => {
+    const only_trashed = onlyTrashed
+      ? "?only_trashed=true"
+      : "?only_trashed=false";
+    try {
+      const response = await fetch(
+        `${apiUrl}/cryptos/internal${only_trashed}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        },
+      );
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error fetching internal crypto:", error);
+      throw error;
+    }
+  },
+
+  deleteInternalCrypto: async (
+    cryptoId: number,
+    userToken: string,
+  ): Promise<any> => {
+    console.log("cryptoId", cryptoId);
+    try {
+      const response = await fetch(`${apiUrl}/cryptos/${cryptoId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error deleting internal crypto:", error);
+      throw error;
+    }
+  },
+
+  restoreInternalCrypto: async (
+    cryptoId: number,
+    userToken: string,
+  ): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/cryptos/${cryptoId}/restore`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error restoring internal crypto:", error);
+      throw error;
+    }
+  },
 };
 
 export default api;
