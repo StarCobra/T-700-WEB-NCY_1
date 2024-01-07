@@ -74,6 +74,10 @@ router.post(
   },
 );
 
+router.get("/login-failed", (req, res) => {
+  res.redirect("/users/login?error=auth_failed");
+});
+
 router.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -91,7 +95,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/login-failed" }),
   function (req, res) {
     res.status(200).send({ data: req.user });
-    // res.redirect("/");
+    res.redirect("/");
   },
 );
 
@@ -99,9 +103,7 @@ router.post("/logout", verifyToken, (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
 
-router.get("/login-failed", (req, res) => {
-  res.redirect("/users/login?error=auth_failed");
-});
+
 
 router.patch(
   "/keywords/:keyword_id/restore",
@@ -221,6 +223,7 @@ router.delete("/cryptos/favorite", verifyToken, async (req, res) => {
   }
 });
 
+
 router.post("/cryptos/favorite", verifyToken, async (req, res) => {
   const user_id = req.user.id;
 
@@ -233,8 +236,7 @@ router.post("/cryptos/favorite", verifyToken, async (req, res) => {
 
       if (favorite_cryptos) {
         favorite_cryptos.forEach(async (crypto) => {
-          const query =
-            "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
+          const query = "INSERT INTO favorite_cryptos (user_id, crypto_id) VALUES (?,?)";
           const params = [user_id, crypto.id];
           await connection.query(query, params);
         });
