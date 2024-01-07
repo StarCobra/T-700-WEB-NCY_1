@@ -1,0 +1,25 @@
+@import 'Config/config';
+
+h3{
+    color: $borderColor;
+}
+
+.headerContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.addPrefContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+    .headerContainer{
+        text-align: center !important;
+    } 
+}

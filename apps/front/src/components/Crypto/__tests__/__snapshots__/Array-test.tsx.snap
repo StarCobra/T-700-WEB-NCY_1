@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Crypto > Array should render the component generic 1`] = `
+<div
+  className="arrayContainer MuiBox-root css-0"
+>
+  <h1>
+    No data
+  </h1>
+</div>
+`;

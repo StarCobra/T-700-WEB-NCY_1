@@ -1,0 +1,94 @@
+version: '3.9'
+
+services:
+
+  # API (NodeJS)
+  api:
+    build:
+      context: apps/api
+    user: "${USER_ID}:${GROUP_ID}"
+    container_name: "${PROJECT_NAME}-api"
+    tty: true
+    volumes:
+      - ./apps/api:/var/www/apps/api
+    environment:
+      - APP_ENV=${APP_ENV:-local}
+      - HOME=/tmp
+      - TZ=Europe/Paris
+    ports:
+      - "3005:3005"
+    depends_on:
+      - mariadb
+    networks:
+      - default
+
+  # Frontend (ReactJS)
+  front:
+    build:
+      context: apps/front
+      args:
+        - NODE_ENV=development
+    user: "${USER_ID}:${GROUP_ID}"
+    container_name: "${PROJECT_NAME}-front"
+    tty: true
+    volumes:
+      - ./apps/front:/var/www/apps/front
+    environment:
+      - NODE_ENV=development
+      - HOME=/tmp
+    ports:
+      - "3004:3000"
+    depends_on:
+      - api
+      - nginx
+    networks:
+      - default
+
+  # Server web (Nginx)
+  # Documentation : https://hub.docker.com/_/nginx
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: "${PROJECT_NAME}-nginx"
+    volumes:
+      - ./apps:/var/www/apps
+      - ./docker/images/nginx/conf.d:/etc/nginx/conf.d:delegated
+      - ./docker/images/nginx/mime.types:/etc/nginx/mime.types:delegated
+      - ./docker/images/nginx/snippets:/etc/nginx/snippets:delegated
+    ports:
+      - "80:80"
+    environment:
+      - "DOCKER_GATEWAY_HOST=${DOCKER_GATEWAY_HOST:-host.docker.internal}"
+    networks:
+      default:
+        aliases:
+          - "api.count-of-money.local"
+          - "front.count-of-money.local"
+
+  # Database (MariaDB)
+  # Documentation : https://hub.docker.com/r/bitnami/mariadb
+  mariadb:
+    image: bitnami/mariadb:10.6-debian-11
+    container_name: "${PROJECT_NAME}-mariadb"
+    volumes:
+      - ./docker/images/mariadb/my.cnf:/etc/mysql/mariadb.conf.d/my.cnf:delegated
+      - ./docker/images/mariadb/docker-entrypoint-startdb.d:/docker-entrypoint-startdb.d:delegated
+    environment:
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_SKIP_TEST_DB=true
+      - MARIADB_ENABLE_SLOW_QUERY=1
+      - MARIADB_LONG_QUERY_TIME=10.0
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+
+networks:
+    default:
+      name: ${PROJECT_NAME}
+      driver: bridge
+
+volumes:
+  mariadb:
+    name: count-of-money-mariadb
+    driver: local

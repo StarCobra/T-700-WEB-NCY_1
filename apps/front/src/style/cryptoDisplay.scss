@@ -1,0 +1,138 @@
+@import 'Config/config';
+
+.homeDisplay{
+    display:flex;
+    flex-direction: column;
+}
+
+.switchDisplay{
+    display: flex;
+    justify-content: center;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
+    color:$borderColor !important;
+}
+
+.css-1yjjitx-MuiSwitch-track{
+    background-color: $borderColor !important;
+}
+
+.prefContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        color:$borderColor;
+        padding:10px;
+        text-decoration: none;
+        &:hover{
+            color:white;
+            background-color: $borderColor;
+            padding:10px;
+            border-radius: $borderRadius;
+        }
+        &:active{
+            background-color: $borderColorClick;
+        }
+    }
+}
+
+.selectCryptoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    width:100%;
+    .SelectCryptoLabel{
+        margin:5px;
+        width:300px;
+        color:white;
+    }
+}
+.chartContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    .arrayContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        flex-direction: column;
+        table{
+            background-color: $bg-color;
+            border:solid $borderColor 2px;
+            border-radius: $borderRadius;
+            border-collapse: collapse;
+        }
+        th{
+            background-color: $borderColor;
+            padding:10px;
+            border:solid 1px $bg-color-light;
+            color:white;
+
+        }
+        tr{
+            border:solid 1px $bg-color-light;
+            &:hover{
+                background-color: $bg-color-semidark;
+            }
+        }
+        td{
+            border:solid 1px $bg-color-light;
+            margin:auto;
+            color:white;
+        }
+    }
+    
+    .positivePercentage{
+        color:#93FFA5 !important;
+    }
+    .negativePercentage{
+        color:#FF9393 !important;
+    }
+    .zeroPercentage{
+        color:white !important;
+    }
+
+    @media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+        .cryptoChartContainer{
+            width:500px !important;
+        }
+        .selectCryptoContainer{
+            flex-direction: column;
+
+        }
+    }
+    @media (max-width: $sm-width) { //smartphone
+        .css-4stev7{
+            width:115%;
+        }
+        .modalContainer{
+            label{
+                display:none !important;
+            }
+        }
+
+        .chartContainer {
+            width:330px !important;
+        }
+        .cryptoChartContainer {
+            width:330px !important;
+        }
+        .selectCryptoContainer {
+            flex-direction: column !important;
+            width: 95% !important;
+        }
+        .SelectCryptoBox {
+            width:100% !important;
+        }
+        .arrayContainer{
+            width:330px !important;
+        }
+    }

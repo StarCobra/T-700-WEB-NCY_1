@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Profile > Layout should render the component generic 1`] = `
+<div
+  className="profileLayout MuiBox-root css-0"
+>
+  <div
+    className="profileThumbnailContainer MuiBox-root css-0"
+  >
+    <img
+      alt=""
+      src="default"
+    />
+  </div>
+  <div
+    className="profileInfoContainer MuiBox-root css-0"
+  >
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+      id="usernameBox"
+    >
+      <h3>
+        Username :
+      </h3>
+      <h3>
+        test
+      </h3>
+    </div>
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+    >
+      <h3>
+        E-mail :
+      </h3>
+      <h3>
+        test@gmail.com
+      </h3>
+    </div>
+    <div
+      className="labelInfo MuiBox-root css-ks2x85"
+      id="birhtBox"
+    >
+      <h3>
+        Birth date :
+      </h3>
+      <h3>
+        2000-01-01
+      </h3>
+    </div>
+    <div
+      className="buttonDiv MuiBox-root css-i6jodw"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        id="edit"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Edit my profile
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        id="delete"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Delete my profile
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

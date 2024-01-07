@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components > Articles > Layout should render the component default props 1`] = `
+<div
+  className="articleDisplayContainer MuiBox-root css-0"
+>
+  <form
+    className="searchBarContainer"
+  >
+    <div
+      className="selectSearchContainer MuiBox-root css-0"
+    >
+      <div
+        className="selectSearch MuiBox-root css-0"
+      >
+        <div
+          className="selectCryptoContainer MuiBox-root css-0"
+        >
+          <p>
+            Choose a keyword
+          </p>
+          <div
+            className="SelectCryptoBox MuiBox-root css-4stev7"
+          >
+            <div
+              className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root SelectCryptoLabel css-wb57ya-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorWarning MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-mk9tez-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink={false}
+                htmlFor=":r0:"
+                id=":r0:-label"
+              >
+                Choose a keyword
+              </label>
+              <div
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorWarning MuiInputBase-fullWidth MuiInputBase-formControl css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root"
+                onClick={[Function]}
+              >
+                <div
+                  aria-controls=":r1:"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  aria-labelledby=":r0:-label :r0:"
+                  className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                  id=":r0:"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseDown={[Function]}
+                  role="combobox"
+                  tabIndex={0}
+                >
+                  <span
+                    className="notranslate"
+                  >
+                    ​
+                  </span>
+                </div>
+                <input
+                  aria-hidden={true}
+                  aria-invalid={false}
+                  autoFocus={false}
+                  className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                  disabled={false}
+                  name="Select"
+                  onAnimationStart={[Function]}
+                  onChange={[Function]}
+                  required={false}
+                  tabIndex={-1}
+                  value=""
+                />
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                  data-testid="ArrowDropDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+                <fieldset
+                  aria-hidden={true}
+                  className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    className="css-yjsfm1"
+                  >
+                    <span>
+                      Choose a keyword
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div
+    className="articleMasterContainer MuiBox-root css-0"
+  >
+    <div
+      className="articleSample MuiBox-root css-0"
+    >
+      <div
+        className="articleThumbnail MuiBox-root css-0"
+      >
+        <img
+          src="default"
+        />
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="articleSample MuiBox-root css-0"
+    >
+      <div
+        className="articleThumbnail MuiBox-root css-0"
+      >
+        <img
+          src="default"
+        />
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="articleSample MuiBox-root css-0"
+    >
+      <div
+        className="articleThumbnail MuiBox-root css-0"
+      >
+        <img
+          src="default"
+        />
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="articleSample MuiBox-root css-0"
+    >
+      <div
+        className="articleThumbnail MuiBox-root css-0"
+      >
+        <img
+          src="default"
+        />
+      </div>
+      <div
+        className="articleSampleContent MuiBox-root css-0"
+      >
+        <div
+          className="articleTitle MuiBox-root css-0"
+        >
+          <h3>
+            Bitcoin Collapse
+          </h3>
+        </div>
+        <div
+          className="articleSampleContent MuiBox-root css-0"
+        >
+          <p>
+            In recent times, the once-revered and volatile king of cryptocurrencies, Bitcoin, has experienced a notable decline, leaving investors and enthusiasts puzzled. This downturn questions about the long-term sustainability of the digital currency and its ever-evolving landscape of finance and technology.
+          </p>
+        </div>
+        <div
+          className="articleDateSample MuiBox-root css-0"
+        >
+          <h4>
+            November 13, 2023
+          </h4>
+        </div>
+        <div
+          className="seeMore MuiBox-root css-0"
+        >
+          <a
+            className="Menu"
+            href="/articles/1"
+            id="menu1"
+            onClick={[Function]}
+          >
+            Click here to see more ...
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

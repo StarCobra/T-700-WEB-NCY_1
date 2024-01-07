@@ -1,0 +1,250 @@
+@import 'Config/config';
+
+.dataContainer{
+    max-height: 95.25%;
+    margin:5px;
+    // overflow-y: auto;
+}
+
+.keywordFilterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: $bg-color;
+    border:$borderColor solid 2px;
+    border-radius: $borderRadius;
+    padding:5px;
+    .css-nmbvik-MuiInputBase-root-MuiOutlinedInput-root{
+        width:250px;
+    }
+    .SelectKeywordLabel{
+        margin:5px;
+        width:300px;
+        color:white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border-width: 1px !important;
+        border-color: $borderColor !important;
+        color: $borderColor !important;
+      }
+      
+      .Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: $borderColor !important;
+      }
+
+      .MuiInputLabel-animated{
+        color:$borderColor !important;
+      }
+
+      .MuiOutlinedInput-input{
+        color:$borderColor !important;
+      }
+
+      .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+        color: $borderColor !important;
+      }
+
+    }
+    .MuiTableContainer-root{
+        max-height: 200px !important;
+      }
+      .MuiMenu-paper{
+        background-color: $bg-color-semilight !important;
+        color:$borderColor;
+      }
+      .MuiMenuItem-gutters{
+          color:$borderColor !important;
+      }
+      .css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
+          color:$borderColor !important;
+      }
+      .css-rqglhn-MuiTable-root{
+          max-height: 200px;
+      }    
+
+.articleMasterContainer{
+    overflow-y: auto;
+    display: inline-block;
+}
+    .articleSample{
+        display: grid;
+        gap:5px;
+        padding:5px;
+        grid-template-areas: "thumbnail content content";
+        border-bottom: 1px solid $borderColor;
+            .articleTitle{
+                flex-grow: 10;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20 !important;
+            }
+            .articleSampleContent{
+                text-justify: auto;
+                display:grid;
+                a{
+                    color: $borderColor;
+                    &:hover{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .articleDateSample{
+                color:$bg-color-light;
+            }
+
+        }
+        .articleThumbnail{
+            display: flex;
+            flex-grow: 1;
+            img{
+                max-width: 300px;
+                max-height: 300px;
+                border-radius:$borderRadius;
+            }
+        }
+.fullArticleDisplay{
+    display: flex;
+    flex-direction: column;
+    .articleHeader{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding:5px;
+        gap:10px;
+        
+        .articleTitleContainer{
+            flex-grow: 10;
+            display: flex;
+            flex-direction: column;
+            color: $borderColor;
+            .title{
+                flex-grow: 10;
+                margin-left: auto;
+                margin-right: 15%;
+                font-size: 25px;
+                margin-bottom: 5px;
+            }
+            .dateAndSource{
+                flex-grow: 2;
+                margin-left: auto;
+                margin-right: 15%;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .fullArticleContent{
+        max-height: 100%;
+        overflow-y: auto;
+        display: flex;
+        h3{
+            color:$borderColor;
+            text-decoration: underline;
+        }
+        p{
+            text-align: justify;
+        }
+        .keywordsContainer{
+            flex-grow: 1;
+        }
+        .descriptionContainer{
+            flex-grow: 1;
+        }
+        .sourceContainer{
+            flex-grow: 1;
+        }
+        
+    }
+}
+button{
+    a{
+        color:$borderColor !important;
+        text-decoration: none !important;
+
+    }
+    &:hover{
+        color:white;
+    }
+}
+.backButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.articleDisplayContainer{
+    display:flex;
+    flex-direction: column;
+    overflow-y:unset;
+    .searchBarContainer{
+        flex-grow: 1;
+        display: grid;
+        justify-content: center;
+        position: sticky;
+        top:0;
+        background-color: $bg-color-semilight;
+        border:solid 2px $borderColor;
+        border-radius: $borderRadius;
+        padding:15px;
+        p{
+            display:none;
+        }
+        .textSearch{
+            grid-area: textSearch;
+            padding:5px;
+        }
+        .selectSearchContainer{
+            grid-area: selectContainer;
+            padding:5px;
+            .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+                width:180px;
+            }
+        }
+    }
+    .articleMasterContainer{
+        flex-grow: 11;
+    }
+}
+
+
+@media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+    .articleThumbnail{
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        img{
+            max-width: 100px;
+            max-height: 100px;
+            border-radius:$borderRadius;
+        }
+    }
+    .title{
+        font-size: 20px;
+    }
+    .fullArticleContent{
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: $sm-width) { //smartphone
+    .articleThumbnail{
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        img{
+            max-width: 150px;
+            max-height: 150px;
+            border-radius:$borderRadius;
+        }
+    }
+    .title{
+        font-size: 15px !important;
+    }
+    .fullArticleContent{
+        flex-direction: column;
+    }
+}
