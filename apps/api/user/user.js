@@ -11,20 +11,21 @@ const router = express.Router();
 
 dotenv.config();
 
-// router.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, Content-Type, Accept, Authorization",
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, DELETE, PATCH",
-//   );
-//   next();
-// });
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept, Authorization",
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH",
+  );
+  next();
+});
 
 router.post("/register", async (req, res) => {
+  
   try {
 
     let user = req.body.user;
@@ -216,10 +217,7 @@ router.delete("/cryptos/favorite", verifyToken, async(req,res) => {
 })
 
 router.post("/cryptos/favorite", verifyToken, async (req, res) => {
-  const 
-  
-  
-  _id = req.user.id;
+  const user_id = req.user.id;
 
   if(user_id) {
     const favorite_cryptos = req.body.favorite_cryptos;

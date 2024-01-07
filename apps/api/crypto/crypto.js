@@ -7,18 +7,18 @@ const router = express.Router();
 
 dotenv.config();
 
-// router.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, Content-Type, Accept, Content-Type, Authorization",
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PATCH, DELETE"
-//   );
-//   next();
-// });
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept, Content-Type, Authorization",
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE"
+  );
+  next();
+});
 
 router.get("/", async (req, res) => {
   const cmids = req.query.cmids;
@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
     
     const transformedData = await transformJSON(json);
 
-    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   } else {
 
     const response = await fetch(
@@ -41,7 +41,7 @@ router.get("/", async (req, res) => {
     
     const transformedData = await transformJSON(json);
 
-    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: transformedData });
+    res.status(200).send({ data: transformedData });
   }
 
 });
@@ -73,6 +73,7 @@ router.delete("/:cmid", verifyToken, isAdmin, async(req, res) => {
 router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
 
   try {
+
     let limit;
 
     const cmid = req.params.cmid;
@@ -91,26 +92,25 @@ router.get("/:cmid/history/:period", verifyToken, async (req,res) => {
         limit = 60;
         break;
       default:
-        console.error('Période non reconnue');
+        console.error('Unrecognized period');
         return;
     }
 
     const url = `https://min-api.cryptocompare.com/data/v2/histo${period}?fsym=${cmid}&tsym=USD&limit=${limit}&api_key=${process.env.SECRET_API_KEY_CRYPTO_COMPARE}`
 
-
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Erreur de requête: ${response.statusText}`);
+      throw new Error(`Error request : ${response.statusText}`);
     }
 
     const priceHistory = await response.json();
 
-    const priceHistoryData = priceHistory.Data.Data
+    const priceHistoryData = priceHistory.Data.Data;
 
     const priceHistoryFormatted = await formatHistoryPrice(priceHistoryData)
 
-    res.status(200).header('Access-Control-Allow-Origin', '*').send({ data: priceHistoryFormatted })
+    res.status(200).send({ data: priceHistoryFormatted })
 
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
