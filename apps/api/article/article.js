@@ -6,6 +6,17 @@ import { verifyToken } from "../middleware/authentication.js";
 const router = express.Router();
 const parseStringPromisified = promisify(parseString);
 
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept, Content-Type, Authorization",
+  );
+
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  next();
+});
+
 router.get("/", verifyToken, async (req, res) => {
   const rss = "https://cointelegraph.com/rss";
 
@@ -25,12 +36,16 @@ router.get("/", verifyToken, async (req, res) => {
         ),
       );
 
-            res.status(200).header('Access-Control-Allow-Origin', '*').send({data: filteredArticles});
-        }
-        else {
-            res.status(200).header('Access-Control-Allow-Origin', '*').send({data: articles});
-        }
-       
+      res
+        .status(200)
+        .header("Access-Control-Allow-Origin", "*")
+        .send({ data: filteredArticles });
+    } else {
+      res
+        .status(200)
+        .header("Access-Control-Allow-Origin", "*")
+        .send({ data: articles });
+    }
   } catch (error) {
     res.status(500).send({ message: error + "Internal server error" });
   }

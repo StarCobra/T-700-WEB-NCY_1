@@ -9,6 +9,7 @@ export default function Select(props: any) {
     handleChange = null,
     options = [],
     forCrypto = false,
+    forkeyword = false,
     ...other
   } = props;
 
@@ -38,7 +39,13 @@ export default function Select(props: any) {
           {options.map((option: any) => (
             <MenuItem
               key={option.id}
-              value={forCrypto ? option.short_name : option.id}
+              value={
+                forCrypto
+                  ? option.short_name
+                  : forkeyword
+                    ? option.name
+                    : option.id
+              }
             >
               {option.name}
             </MenuItem>

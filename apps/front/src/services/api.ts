@@ -48,14 +48,29 @@ const api = {
     }
   },
 
-  getArticles: async (params: string): Promise<any> => {
-    try {
-      const fields = params !== "" ? `?params=${params}` : "";
-      const response = await fetch(`${apiUrl}/articles${fields}`);
-      return handleErrors(response);
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-      throw error;
+  getArticles: async (params: string, userToken: string): Promise<any> => {
+    const fields = params !== "" ? `?params=${params}` : "";
+
+    if (userToken !== "") {
+      try {
+        const response = await fetch(`${apiUrl}/articles${fields}`, {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+        return handleErrors(response);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        throw error;
+      }
+    } else {
+      try {
+        const response = await fetch(`${apiUrl}/articles${fields}`);
+        return handleErrors(response);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        throw error;
+      }
     }
   },
 
@@ -279,6 +294,21 @@ const api = {
       return handleErrors(response);
     } catch (error) {
       console.error("Error restoring keyword:", error);
+      throw error;
+    }
+  },
+
+  deleteProfile: async (userID: number, userToken: string): Promise<any> => {
+    try {
+      const response = await fetch(`${apiUrl}/profile/${userID}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return handleErrors(response);
+    } catch (error) {
+      console.error("Error deleting keyword:", error);
       throw error;
     }
   },

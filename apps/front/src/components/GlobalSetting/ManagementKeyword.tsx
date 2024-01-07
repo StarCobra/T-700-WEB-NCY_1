@@ -64,7 +64,6 @@ export default function ManagementKeyword(props: any) {
     fetchData();
   }, [action]);
 
-  console.log("responsekeyword", responseKeyword);
   return (
     <Box>
       <form onSubmit={handleSubmit}>

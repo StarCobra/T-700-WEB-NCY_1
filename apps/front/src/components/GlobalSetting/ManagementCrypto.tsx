@@ -66,7 +66,6 @@ export default function ManagementCrypto(props: any) {
     fetchData();
   }, [action]);
 
-  console.log("responseCrypto", responseCrypto);
   return (
     <Box>
       <form onSubmit={handleSubmit}>
