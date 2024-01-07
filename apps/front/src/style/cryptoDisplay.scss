@@ -116,4 +116,21 @@
                 display:none !important;
             }
         }
+
+        .chartContainer {
+            width:330px !important;
+        }
+        .cryptoChartContainer {
+            width:330px !important;
+        }
+        .selectCryptoContainer {
+            flex-direction: column !important;
+            width: 95% !important;
+        }
+        .SelectCryptoBox {
+            width:100% !important;
+        }
+        .arrayContainer{
+            width:330px !important;
+        }
     }

@@ -2,13 +2,7 @@ import React from "react";
 import CryptoArray from "../Crypto/Array";
 import CryptoChart from "../Crypto/Chart";
 import Select from "../Select";
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  SnackbarContent,
-  Switch,
-} from "@mui/material";
+import {Box,SnackbarContent} from "@mui/material";
 import { Link } from "react-router-dom";
 import "../../style/cryptoDisplay.scss";
 import api from "../../services/api";
@@ -92,14 +86,6 @@ export default function Layout() {
 
   return (
     <Box className="homeDisplay">
-      <FormControl>
-        <FormControlLabel
-          className="switchDisplay"
-          control={<Switch defaultChecked />}
-          label="Multi crypto table"
-        />
-      </FormControl>
-
       <Box className="selectCryptoContainer">
         <Select
           label={loadingAllCrypto ? "Loading crypto..." : "Select a crypto(s):"}
