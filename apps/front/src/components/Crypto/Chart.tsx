@@ -63,7 +63,7 @@ export default function Chart(props: any) {
   }));
 
   return (
-    <Box width="800px" style={{ color: "#000000" }}>
+    <Box className="cryptoChartContainer" width="800px" style={{ color: "#000000" }}>
       <ReactApexChart
         // eslint-disable-next-line
         // @ts-ignore

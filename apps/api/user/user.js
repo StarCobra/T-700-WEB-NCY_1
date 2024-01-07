@@ -131,7 +131,7 @@ router.patch(
       }
     }
   }
-})
+)
 
 router.patch("/cryptos/:crypto_id/restore", verifyToken, isAdmin, async(req,res) => {
   const crypto_id = req.params.crypto_id

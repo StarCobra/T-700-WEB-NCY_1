@@ -36,8 +36,7 @@ export default function LogIn() {
 
   return (
     <Box className="centering">
-      <Box className="loginContainer">
-        <form onSubmit={handleSubmit}>
+        <form className="loginContainer" onSubmit={handleSubmit}>
           <TextField
             name="email"
             type="email"
@@ -78,6 +77,5 @@ export default function LogIn() {
         </form>
         {loading && <Loader />}
       </Box>
-    </Box>
   );
 }

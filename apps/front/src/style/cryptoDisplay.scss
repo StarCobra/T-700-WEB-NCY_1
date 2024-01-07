@@ -98,4 +98,12 @@
     .zeroPercentage{
         color:white !important;
     }
-// }
+
+    @media screen and (max-width: $md-width) and (min-width:$sm-width) { // between smartphone and tablet display
+        .cryptoChartContainer{
+            width:500px !important;
+        }
+        .selectCryptoContainer{
+            flex-direction: column;
+        }
+    }
